@@ -1,4 +1,4 @@
 <h1 align="center">
-  Prem Kumar Tenga (Coming Soon Dei!) I dont like cockroach
+  Prem Kumar (Coming Soon!)
 </h1>
 
