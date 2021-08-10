@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://premstroke.com/sitemap.xml
+Host: https://premstroke.com
