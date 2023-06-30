@@ -37,7 +37,7 @@ const StyledContactSection = styled.section`
 
   .email-link {
     ${({ theme }) => theme.mixins.bigButton};
-    margin-top: 50px;
+    margin-top: 30px;
   }
 `;
 
@@ -55,13 +55,12 @@ const Contact = () => {
 
   return (
     <StyledContactSection id="contact" ref={revealContainer}>
-      <h2 className="numbered-heading overline">What’s Next?</h2>
-
+      <h1 className="numbered-heading overline">What’s Next?</h1>
       <h2 className="title">Get In Touch</h2>
 
       <p>
-        Although I'm not currently looking for any new opportunities, my inbox is always open.
-        Whether you have a question or just want to say hi, I'll try my best to get back to you!
+        I am always looking for new opportunities and my inbox is always open.
+        Whether you have a question or just want to say hi, just send me an email or connect with me on LindkedIn
       </p>
 
       <a className="email-link" href={`mailto:${email}`}>

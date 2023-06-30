@@ -13,7 +13,7 @@ const StyledJobsSection = styled.section`
   .inner {
     display: flex;
 
-    @media (max-width: 600px) {
+    @media (max-width: 650px) {
       display: block;
     }
 
@@ -244,7 +244,7 @@ const Jobs = () => {
 
   return (
     <StyledJobsSection id="jobs" ref={revealContainer}>
-      <h2 className="numbered-heading">Where I’ve Worked</h2>
+      <h2 className="numbered-heading">Work Experience</h2>
 
       <div className="inner">
         <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={e => onKeyDown(e)}>
@@ -276,7 +276,7 @@ const Jobs = () => {
               const { title, url, company, range } = frontmatter;
 
               return (
-                <CSSTransition key={i} in={activeTabId === i} timeout={250} classNames="fade">
+                <CSSTransition key={i} in={activeTabId === i} timeout={100} classNames="fade">
                   <StyledTabPanel
                     id={`panel-${i}`}
                     role="tabpanel"

@@ -1,42 +1,32 @@
 module.exports = {
-  email: 'brittany.chiang@gmail.com',
+  email: 'premstroke95@gmail.com',
 
   socialMedia: [
     {
       name: 'GitHub',
-      url: 'https://github.com/bchiang7',
-    },
-    {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/bchiang7',
-    },
-    {
-      name: 'Twitter',
-      url: 'https://twitter.com/bchiang7',
+      url: 'https://github.com/Prem95',
     },
     {
       name: 'Linkedin',
-      url: 'https://www.linkedin.com/in/bchiang7',
-    },
-    {
-      name: 'Codepen',
-      url: 'https://codepen.io/bchiang7',
+      url: 'https://www.linkedin.com/in/premstrk/',
     },
   ],
 
   navLinks: [
     {
-      name: 'About',
+      name: 'About Me',
       url: '/#about',
     },
     {
       name: 'Experience',
       url: '/#jobs',
     },
+
     {
-      name: 'Work',
+      name: 'Projects',
       url: '/#projects',
     },
+
     {
       name: 'Contact',
       url: '/#contact',
@@ -46,10 +36,11 @@ module.exports = {
   colors: {
     green: '#64ffda',
     navy: '#0a192f',
-    darkNavy: '#020c1b',
+    darkNavy: '#20c1b',
+    mediumBlue: '#00008B'
   },
 
-  srConfig: (delay = 200, viewFactor = 0.25) => ({
+  srConfig: (delay = 40, viewFactor = 0.25) => ({
     origin: 'bottom',
     distance: '20px',
     duration: 500,

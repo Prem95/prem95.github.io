@@ -1,14 +1,15 @@
 const config = require('./src/config');
 
 module.exports = {
+
   siteMetadata: {
-    title: 'Brittany Chiang',
-    description:
-      'Brittany Chiang is a software engineer who specializes in building (and occasionally designing) exceptional digital experiences.',
-    siteUrl: 'https://brittanychiang.com', // No trailing slash allowed!
-    image: '/og.png', // Path to your image you placed in the 'static' folder
-    twitterUsername: '@bchiang7',
+    title: 'Prem Kumar',
+    description:'Prem Kumar is a Machine Learning Engineer currently focusing on building Face Recognition solutions',
+    siteUrl: 'https://premstroke.com',
+    image: '/og.png',
+    pathPrefix: "/prem",
   },
+
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
@@ -18,13 +19,22 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-robots-txt`,
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // The property ID; the tracking code won't be generated without it
+        trackingId: "UA-73011038-3",
+        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        head: true,
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'BrittanyChiang',
-        short_name: 'BrittanyChiang',
-        start_url: '/',
+        name: 'Prem Kumar',
+        short_name: 'Prem Kumar',
+        start_url: '/home',
         background_color: config.colors.darkNavy,
-        theme_color: config.colors.navy,
+        theme_color: config.colors.green,
         display: 'minimal-ui',
         icon: 'src/images/logo.png',
       },
@@ -147,12 +157,6 @@ module.exports = {
             },
           },
         ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: 'UA-45666519-2',
       },
     },
   ],

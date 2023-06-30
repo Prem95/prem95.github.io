@@ -58,26 +58,39 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const one = <h1>Hi, my name is</h1>;
-  const two = <h2 className="big-heading">Brittany Chiang.</h2>;
-  const three = <h3 className="big-heading">I build things for the web.</h3>;
+  const one_A = <h1>  </h1>;
+  const one_B = <h1>  </h1>;
+  const one_C = <h1>  </h1>;
+  const one = <h1>Hi there!</h1>;
+  const two = <h2 className="big-heading">Prem Kumar</h2>;
+  const three = <h3 className="medium-heading">AI Product Manager</h3>;
+
   const four = (
     <p>
-      I'm a software engineer specializing in building (and occasionally designing) exceptional
-      digital experiences. Currently, I'm focused on building accessible, human-centered products at{' '}
-      <a href="https://upstatement.com/" target="_blank" rel="noreferrer">
-        Upstatement
-      </a>
-      .
+      I'm a Malaysia-based Engineer with a passion for Generative AI and Digital Identity
     </p>
   );
+
+  const four_A = (
+    <p>
+      Currently, I am a Machine Learning Engineer at <a href="https://wiseai.tech/">WISE AI</a> where I develop customer on-boarding <a href="https://www.electronicid.eu/en/blog/post/what-is-ekyc/en">e-KYC</a> solutions.
+    </p>
+  );
+
+  const four_B = (
+    <p>
+      Apart from work, I actively write technology articles at <a href="https://medium.com/">Medium</a> and explore on some of the interesting things elated to Science, Technology and Finance. Currently exploring
+      some ideas with ChatGPT and how it can be integrated into our daily lives.
+    </p>
+  );
+
   const five = (
     <a href={`mailto:${email}`} className="email-link">
-      Get In Touch
+      Contact Me
     </a>
   );
 
-  const items = [one, two, three, four, five];
+  const items = [one_A, one_B, one_C, one, two, three, four, four_A, four_B, five];
 
   return (
     <StyledHeroSection>

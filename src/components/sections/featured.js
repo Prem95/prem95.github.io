@@ -151,6 +151,27 @@ const StyledProject = styled.li`
     }
   }
 
+  .project-year {
+    color: var(--green);
+    font-size: clamp(14px, 5vw, 16px);
+
+      a {
+        position: static;
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          z-index: 0;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+        }
+      }
+    }
+  }
+
   .project-description {
     ${({ theme }) => theme.mixins.boxShadow};
     position: relative;
@@ -280,14 +301,11 @@ const StyledProject = styled.li`
 
     .img {
       border-radius: var(--border-radius);
-      mix-blend-mode: multiply;
-      filter: grayscale(100%) contrast(1) brightness(90%);
 
       @media (max-width: 768px) {
         object-fit: cover;
         width: auto;
         height: 100%;
-        filter: grayscale(100%) contrast(1) brightness(80%);
       }
     }
   }
@@ -306,10 +324,11 @@ const Featured = () => {
               title
               cover {
                 childImageSharp {
-                  gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                  gatsbyImageData(width: 720, placeholder: NONE, formats: [AUTO, WEBP, AVIF])
                 }
               }
               tech
+              year
               github
               external
             }
@@ -337,7 +356,7 @@ const Featured = () => {
   return (
     <section id="projects">
       <h2 className="numbered-heading" ref={revealTitle}>
-        Some Things I’ve Built
+        Some Cool Projects
       </h2>
 
       <StyledProjectsGrid>
@@ -346,15 +365,18 @@ const Featured = () => {
             const { frontmatter, html } = node;
             const { external, title, tech, github, cover } = frontmatter;
             const image = getImage(cover);
+            const { year } = frontmatter;
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div className="project-content">
                   <div>
-                    <p className="project-overline">Featured Project</p>
-
                     <h3 className="project-title">
                       <a href={external}>{title}</a>
+                    </h3>
+
+                    <h3 className="project-year">
+                      <a href={external}>{year}</a>
                     </h3>
 
                     <div

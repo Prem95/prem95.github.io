@@ -1,54 +1,62 @@
 ---
-title: Accessible Clickable Cards
-description: Clickable cards with multiple child links
-date: 2021-04-21
+title: Image Augmentation with Python
+description: Quickly apply common augmentations using Python
+date: 2021-01-01
 draft: false
-slug: /pensieve/clickable-cards
+slug: /pensieve/image-aug
 tags:
-  - Accessibility
-  - CSS
+  - Python
 ---
 
-[Codepen Demo](https://codepen.io/bchiang7/pen/xxRBvgd?editors=1100)
+<p>First, let us import the related libraries and make a sample plot using the images from the local folder</p>
 
-Card layout where the card itself isn't an anchor link, but the whole card is clickable (with a `:before` pseudo element on the main `<a>`). Links inside of the card are still clickable.
+```python
+import matplotlib.pyplot as plt
+from imgaug import augmenters as iaa
+import cv2
 
-## CSS
-
-```css
-.grid__item {
-  &:hover,
-  &:focus-within {
-    background-color: #eee;
-  }
-
-  a {
-    position: relative;
-    z-index: 1;
-  }
-
-  h2 {
-    a {
-      position: static;
-
-      &:hover,
-      &:focus {
-        color: blue;
-      }
-
-      &:before {
-        content: '';
-        display: block;
-        position: absolute;
-        z-index: 0;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        transition: background-color 0.1s ease-out;
-        background-color: transparent;
-      }
-    }
-  }
-}
+image = 'your-image-list'
+fig = plt.figure(figsize=(17, 17))
+columns = 2
+rows = 3
+for n, images in enumerate(image):
+    fig.add_subplot(columns, rows, n+1)
+    plt.imshow(cv2.imread(images)[:, :, ::-1])
+plt.show()
 ```
+
+<p>Next, let us import the augmentation library, imgaug and add in brightness augmentation</p>
+
+```python
+aug = iaa.imgcorruptlike.Brightness(severity=3)
+fig = plt.figure(figsize=(17, 17))
+columns = 2
+rows = 3
+for n, images in enumerate(image):
+    fig.add_subplot(columns, rows, n+1)
+    blur_image = aug(image=cv2.imread(images))
+    plt.imshow(blur_image[:, :, ::-1])
+plt.show()
+```
+
+<p>We can go on a use the function to declare different augmentations such as contrast, motion blur, saturation and so on. As a bonus, let us try to add in combined augmentations</p>
+
+```python
+aug = iaa.Sequential([
+    iaa.Crop(px=(0, 16)),
+    iaa.imgcorruptlike.GaussianNoise(severity=5),
+    iaa.imgcorruptlike.MotionBlur(severity=5)
+])
+
+fig = plt.figure(figsize=(20, 20))
+columns = 2
+rows = 3
+for n, images in enumerate(image[0:3]):
+    fig.add_subplot(columns, rows, n+1)
+    blur_image = aug(image=cv2.resize(cv2.imread(images), (750, 1000), interpolation = cv2.INTER_AREA))
+    plt.imshow(blur_image[:, :, ::-1])
+plt.show()
+```
+
+
+And that is how you perform augmentation using the imgAug library.

@@ -264,11 +264,7 @@ const Projects = () => {
 
   return (
     <StyledProjectsSection>
-      <h2 ref={revealTitle}>Other Noteworthy Projects</h2>
-
-      <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
-        view the archive
-      </Link>
+      <h1 ref={revealTitle}>Side Projects / Articles </h1>
 
       <ul className="projects-grid">
         {prefersReducedMotion ? (
@@ -300,7 +296,6 @@ const Projects = () => {
           </TransitionGroup>
         )}
       </ul>
-
       <button className="more-button" onClick={() => setShowMore(!showMore)}>
         Show {showMore ? 'Less' : 'More'}
       </button>

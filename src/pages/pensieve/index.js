@@ -151,12 +151,8 @@ const PensievePage = ({ location, data }) => {
 
       <StyledMainContainer>
         <header>
-          <h1 className="big-heading">Pensieve</h1>
-          <p className="subtitle">
-            <a href="https://www.wizardingworld.com/writing-by-jk-rowling/pensieve">
-              a collection of memories
-            </a>
-          </p>
+          <h1 className="big-heading">Snippets</h1>
+          <p className="subtitle"></p>
         </header>
 
         <StyledGrid>
