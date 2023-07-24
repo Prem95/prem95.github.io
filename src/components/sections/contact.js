@@ -60,11 +60,11 @@ const Contact = () => {
 
       <p>
         I am always looking for new opportunities and my inbox is always open.
-        Whether you have a question or just want to say hi, just send me an email or connect with me on LindkedIn
+        Whether you have a question or just want to say hi, connect with me on LinkedIn or on Twitter!
       </p>
 
       <a className="email-link" href={`mailto:${email}`}>
-        Say Hello
+        Contact Me!
       </a>
     </StyledContactSection>
   );

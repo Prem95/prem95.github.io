@@ -102,7 +102,7 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['Python', 'Tensorflow', 'OpenCV', 'Jupyter', 'Docker', 'Git', 'Linux', 'Flask', 'Pandas', 'Dash'];
+  const skills = ['Python', 'TensorFlow', 'ChatGPT', 'LLMs', 'Docker', 'Git', 'Linux', 'REST', 'Pandas', 'Generative AI'];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -111,8 +111,8 @@ const About = () => {
       <div className="inner">
         <StyledText>
           <div>
-            At <a href="https://wiseai.tech/">WISE AI</a>, I develop Passive Face Anti-Spoofing algorithms using Deep Learning.
-            During the development, I actively try to get my hands deep into some of the popular frameworks and tools such as:
+            At <a href="https://wiseai.tech/">WISE AI</a>, I am a full time AI Product Manager coordinating our cutting edge Generative AI product.
+            I actively work with our team of engineers and clients to ensure that our product is delivered on time and meets the needs of our clients.
           </div>
 
           <ul className="skills-list">{skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}

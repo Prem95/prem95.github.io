@@ -67,20 +67,21 @@ const Hero = () => {
 
   const four = (
     <p>
-      I'm a Malaysia-based Engineer with a passion for Generative AI and Digital Identity
+      I'm a Engineer passionate in Generative AI and Digital Identity solutions!
     </p>
   );
 
   const four_A = (
     <p>
-      Currently, I am a Machine Learning Engineer at <a href="https://wiseai.tech/">WISE AI</a> where I develop customer on-boarding <a href="https://www.electronicid.eu/en/blog/post/what-is-ekyc/en">e-KYC</a> solutions.
+      Currently, I am a AI Product Manager in <a href="https://wiseai.tech/">WISE AI</a> where I lead the development of our Generative AI solution, the first in SEA!
     </p>
   );
 
   const four_B = (
     <p>
-      Apart from work, I actively write technology articles at <a href="https://medium.com/">Medium</a> and explore on some of the interesting things elated to Science, Technology and Finance. Currently exploring
-      some ideas with ChatGPT and how it can be integrated into our daily lives.
+      Apart from work, I actively write technology articles at <a href="https://medium.com/">Medium</a> and explore on some of the interesting things elated to Science, Technology and Finance
+
+      I love building my own products. One of the recent product that I have built is <a href="https://chat-with-database.com/">Chat-With-Database</a>
     </p>
   );
 

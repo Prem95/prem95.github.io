@@ -10,6 +10,16 @@ module.exports = {
       name: 'Linkedin',
       url: 'https://www.linkedin.com/in/premstrk/',
     },
+
+    {
+      name: 'Medium',
+      url: 'https://medium.com/@premstroke95',
+    },
+
+    {
+      name: 'Twitter',
+      url: 'https://twitter.com/defichemist95',
+    }
   ],
 
   navLinks: [

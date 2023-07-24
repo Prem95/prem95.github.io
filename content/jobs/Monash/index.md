@@ -1,6 +1,6 @@
 ---
 date: '2018-01-21'
-title: 'Research Engineer (ML)'
+title: 'Research Engineer (Computer Vision)'
 company: 'Monash '
 location: 'Malaysia'
 range: 'January 2018 - December 2018'

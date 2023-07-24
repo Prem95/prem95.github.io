@@ -103,10 +103,6 @@ const Footer = () => {
             ))}
         </ul>
       </StyledSocialLinks>
-
-      <StyledCredit tabindex="-1">
-          <h6>Template from www.brittanychiang.com | Made in 2021 | Hosted by GitHub</h6>
-      </StyledCredit>
     </StyledFooter>
   );
 };
