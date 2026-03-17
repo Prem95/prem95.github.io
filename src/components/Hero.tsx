@@ -56,7 +56,7 @@ export default function Hero() {
           className="h-item leading-none mb-4"
           style={{
             fontFamily: "var(--font-sans)",
-            fontSize: "clamp(4rem, 14vw, 9.5rem)",
+            fontSize: "clamp(3rem, 12vw, 9.5rem)",
             fontWeight: 800,
             fontStyle: "italic",
             color: "var(--text-1)",
@@ -91,12 +91,12 @@ export default function Hero() {
         </p>
 
         {/* CTAs */}
-        <div className="h-item flex flex-wrap gap-3 mb-14">
+        <div className="h-item flex flex-col sm:flex-row flex-wrap gap-3 mb-14">
           <a
             href="#products"
-            className="inline-flex items-center text-xs font-semibold transition-all duration-200"
+            className="inline-flex items-center justify-center text-xs font-semibold transition-all duration-200"
             style={{
-              padding: "0.875rem 2rem",
+              padding: "0.875rem 1.5rem",
               background: "var(--accent)",
               color: "var(--bg)",
               letterSpacing: "0.1em",
@@ -114,9 +114,9 @@ export default function Hero() {
           <a
             href={config.resume}
             download
-            className="inline-flex items-center gap-2 text-xs font-semibold transition-all duration-200"
+            className="inline-flex items-center justify-center gap-2 text-xs font-semibold transition-all duration-200"
             style={{
-              padding: "0.875rem 2rem",
+              padding: "0.875rem 1.5rem",
               border: "1px solid var(--border)",
               color: "var(--text-2)",
               letterSpacing: "0.1em",
@@ -137,8 +137,8 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* Quick nav */}
-        <div className="h-item flex flex-wrap items-center gap-6">
+        {/* Quick nav — hidden on mobile (MobileNav covers it) */}
+        <div className="h-item hidden sm:flex flex-wrap items-center gap-6">
           {[
             { label: "Experience", href: "#experience" },
             { label: "Products", href: "#products" },

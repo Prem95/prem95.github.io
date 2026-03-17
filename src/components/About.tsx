@@ -49,14 +49,14 @@ export default function About() {
           {/* Photo + Skills */}
           <div>
             {/* Photo */}
-            <div className="mb-7">
+            <div className="mb-7 flex justify-center lg:justify-start">
               <img
                 src="/avatar.jpg"
                 alt="Prem Kumar"
                 width={200}
                 height={200}
+                className="w-32 sm:w-40 lg:w-full"
                 style={{
-                  width: "100%",
                   maxWidth: "200px",
                   aspectRatio: "1 / 1",
                   objectFit: "cover",

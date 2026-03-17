@@ -63,7 +63,7 @@ export default function MobileNav() {
           onClick={() => setOpen(!open)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          className="flex flex-col gap-1.5 p-1"
+          className="flex flex-col gap-1.5 p-2.5"
         >
           {[0, 1, 2].map((idx) => (
             <span

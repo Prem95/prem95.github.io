@@ -178,10 +178,10 @@ export default function Experience() {
                 </button>
 
                 {/* Accordion panel — grid-template-rows animation */}
-                <div className={`accordion-body ${isOpen ? "open" : ""} sm:ml-24`}>
+                <div className={`accordion-body ${isOpen ? "open" : ""} ml-0 sm:ml-24`}>
                   <div>
                     <div
-                      className="pb-6 sm:pl-10 pr-2 pt-1 border-l-2"
+                      className="pb-6 pl-4 sm:pl-10 pr-2 pt-1 border-l-2"
                       style={{ borderColor: "var(--accent)", marginLeft: "1px" }}
                     >
                       <ul className="arrow-list space-y-1.5 mb-5">
