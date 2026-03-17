@@ -1,26 +1,173 @@
 @import "tailwindcss";
 
+/* ─── Black & white token system ─── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg:           oklch(98.5% 0.002 255);  /* near-white, barely cool */
+  --surface:      oklch(100% 0 0);          /* true white */
+  --border:       oklch(86%  0.008 255);
+  --border-light: oklch(92%  0.005 255);
+
+  --text-1:       oklch(9%   0.01  255);   /* near-black */
+  --text-2:       oklch(32%  0.012 255);   /* dark gray */
+  --text-3:       oklch(56%  0.01  255);   /* mid gray */
+  --text-4:       oklch(68%  0.008 255);   /* light gray */
+
+  --accent:       oklch(9%   0.01  255);   /* same as text-1 — pure black accent */
+  --accent-mid:   oklch(22%  0.01  255);
+  --accent-tint:  oklch(95%  0.005 255);   /* very light gray */
+
+  /* Sidebar */
+  --sb-bg:        oklch(7%   0.01  255);   /* near-black */
+  --sb-hi:        oklch(90%  0.004 255);   /* off-white */
+  --sb-lo:        oklch(48%  0.008 255);   /* medium gray */
+  --sb-border:    oklch(16%  0.01  255);
+
+  --font-sans:    var(--font-sans),  system-ui, sans-serif;
+  --font-mono:    var(--font-mono),  "Fira Code", monospace;
+  --ease-expo:    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ─── Reset ─── */
+*, *::before, *::after { box-sizing: border-box; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: oklch(78% 0.005 255) var(--bg);
+}
+html::-webkit-scrollbar { width: 6px; }
+html::-webkit-scrollbar-track { background: var(--bg); }
+html::-webkit-scrollbar-thumb {
+  background: oklch(80% 0.005 255);
+  border-radius: 3px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text-1);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  font-size: 1rem;
+  line-height: 1.6;
 }
+
+::selection { background: var(--text-1); color: var(--bg); }
+:focus-visible { outline: 2px solid var(--text-1); outline-offset: 3px; }
+
+/* ─── Section headers ─── */
+.section-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-4);
+  margin-bottom: 0.3rem;
+}
+
+.section-title {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  color: var(--text-1);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.section-rule {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* Ghost section number — editorial watermark */
+.section-rule::before {
+  content: attr(data-num);
+  position: absolute;
+  right: 0;
+  bottom: -0.1rem;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: clamp(5rem, 12vw, 8rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: var(--text-1);
+  opacity: 0.04;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ─── Arrow list ─── */
+.arrow-list { padding: 0; margin: 0; list-style: none; }
+.arrow-list li {
+  position: relative;
+  padding-left: 1.35rem;
+  margin-bottom: 0.45rem;
+  font-size: 0.875rem;
+  color: var(--text-2);
+  line-height: 1.65;
+}
+.arrow-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--text-4);
+  font-size: 0.75rem;
+  top: 0.2rem;
+}
+
+/* ─── Hover underline ─── */
+.link-grow {
+  position: relative;
+  display: inline;
+}
+.link-grow::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.22s var(--ease-expo);
+}
+.link-grow:hover::after { width: 100%; }
+
+/* ─── Scroll reveal ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s var(--ease-expo), transform 0.65s var(--ease-expo);
+}
+.reveal.in-view { opacity: 1; transform: none; }
+
+/* ─── Accordion (grid-template-rows) ─── */
+.accordion-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s var(--ease-expo);
+}
+.accordion-body.open { grid-template-rows: 1fr; }
+.accordion-body > div { overflow: hidden; }
+
+/* ─── Card hover lift ─── */
+.card-lift {
+  transition: transform 0.2s var(--ease-expo), border-color 0.15s ease;
+}
+.card-lift:hover { transform: translateY(-3px); }
+
+/* ─── Stagger ─── */
+.stagger > * {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.stagger.in-view > *:nth-child(1) { opacity:1; transform:none; transition-delay:0ms;   }
+.stagger.in-view > *:nth-child(2) { opacity:1; transform:none; transition-delay:80ms;  }
+.stagger.in-view > *:nth-child(3) { opacity:1; transform:none; transition-delay:160ms; }
+.stagger.in-view > *:nth-child(4) { opacity:1; transform:none; transition-delay:240ms; }
+.stagger.in-view > *:nth-child(5) { opacity:1; transform:none; transition-delay:320ms; }
