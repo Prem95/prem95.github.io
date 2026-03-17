@@ -7,14 +7,12 @@ import Experience from "@/components/Experience";
 import Products from "@/components/Products";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import Chat from "@/components/Chat";
 
 export default function Home() {
   return (
     <>
       <ScrollProgress />
       <MobileNav />
-      <Chat />
 
       <div className="lg:flex min-h-screen">
         <Sidebar />

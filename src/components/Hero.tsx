@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { config } from "@/lib/data";
+import Chat from "@/components/Chat";
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -89,6 +90,11 @@ export default function Hero() {
         >
           {config.tagline}
         </p>
+
+        {/* Chat */}
+        <div className="h-item mb-10 max-w-[520px]">
+          <Chat />
+        </div>
 
         {/* CTAs */}
         <div className="h-item flex flex-col sm:flex-row flex-wrap gap-3 mb-14">
