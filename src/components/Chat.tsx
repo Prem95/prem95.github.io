@@ -1,7 +1,7 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, FormEvent } from "react";
 
 const SUGGESTIONS = [
   "What does Prem do?",
@@ -9,13 +9,22 @@ const SUGGESTIONS = [
   "What's his tech stack?",
 ];
 
+function getTextContent(message: { parts: Array<{ type: string; text?: string }> }): string {
+  return message.parts
+    .filter((p) => p.type === "text")
+    .map((p) => p.text ?? "")
+    .join("");
+}
+
 export default function Chat() {
   const [open, setOpen] = useState(false);
+  const [input, setInput] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { messages, input, handleInputChange, handleSubmit, isLoading, setInput } =
-    useChat({ api: "/api/chat", streamProtocol: "text" });
+  const { messages, sendMessage, status } = useChat();
+
+  const isLoading = status === "submitted" || status === "streaming";
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -26,6 +35,19 @@ export default function Chat() {
   useEffect(() => {
     if (open) inputRef.current?.focus();
   }, [open]);
+
+  const handleSubmit = (e?: FormEvent) => {
+    e?.preventDefault();
+    const text = input.trim();
+    if (!text || isLoading) return;
+    setInput("");
+    sendMessage({ text });
+  };
+
+  const handleSuggestion = (text: string) => {
+    setInput("");
+    sendMessage({ text });
+  };
 
   return (
     <>
@@ -105,13 +127,7 @@ export default function Chat() {
                   {SUGGESTIONS.map((s) => (
                     <button
                       key={s}
-                      onClick={() => {
-                        setInput(s);
-                        setTimeout(() => {
-                          const form = document.getElementById("chat-form") as HTMLFormElement;
-                          form?.requestSubmit();
-                        }, 0);
-                      }}
+                      onClick={() => handleSuggestion(s)}
                       className="text-xs px-2.5 py-1.5 transition-colors duration-150"
                       style={{
                         border: "1px solid var(--border)",
@@ -126,26 +142,30 @@ export default function Chat() {
               </div>
             )}
 
-            {messages.map((m) => (
-              <div
-                key={m.id}
-                className="flex"
-                style={{ justifyContent: m.role === "user" ? "flex-end" : "flex-start" }}
-              >
+            {messages.map((m) => {
+              const text = getTextContent(m);
+              if (!text) return null;
+              return (
                 <div
-                  className="text-sm leading-relaxed max-w-[85%] px-3 py-2"
-                  style={{
-                    background: m.role === "user" ? "var(--accent)" : "var(--surface)",
-                    color: m.role === "user" ? "var(--bg)" : "var(--text-1)",
-                    border: m.role === "user" ? "none" : "1px solid var(--border-light)",
-                  }}
+                  key={m.id}
+                  className="flex"
+                  style={{ justifyContent: m.role === "user" ? "flex-end" : "flex-start" }}
                 >
-                  {m.content}
+                  <div
+                    className="text-sm leading-relaxed max-w-[85%] px-3 py-2"
+                    style={{
+                      background: m.role === "user" ? "var(--accent)" : "var(--surface)",
+                      color: m.role === "user" ? "var(--bg)" : "var(--text-1)",
+                      border: m.role === "user" ? "none" : "1px solid var(--border-light)",
+                    }}
+                  >
+                    {text}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
 
-            {isLoading && messages[messages.length - 1]?.role === "user" && (
+            {status === "submitted" && (
               <div className="flex justify-start">
                 <div
                   className="text-sm px-3 py-2 flex items-center gap-1"
@@ -165,7 +185,6 @@ export default function Chat() {
 
           {/* Input */}
           <form
-            id="chat-form"
             onSubmit={handleSubmit}
             className="flex items-center gap-2 px-4 py-3 shrink-0"
             style={{ borderTop: "1px solid var(--border-light)" }}
@@ -173,7 +192,7 @@ export default function Chat() {
             <input
               ref={inputRef}
               value={input}
-              onChange={handleInputChange}
+              onChange={(e) => setInput(e.target.value)}
               placeholder="Type a message..."
               className="flex-1 text-sm bg-transparent outline-none"
               style={{ color: "var(--text-1)" }}
