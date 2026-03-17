@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: config.name,
     description: config.tagline,
-    url: "https://premstroke.com",
+    url: "https://premstroke95.com",
     siteName: config.name,
     type: "website",
   },
