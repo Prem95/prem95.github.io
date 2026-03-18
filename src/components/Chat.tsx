@@ -7,7 +7,7 @@ import { useState, useRef, useEffect, useMemo, FormEvent } from "react";
 const SUGGESTIONS = [
   "What does Prem build?",
   "His SaaS products",
-  "Tech stack",
+  "Experience & background",
 ];
 
 function getTextContent(message: { parts: Array<{ type: string; text?: string }> }): string {
@@ -19,6 +19,7 @@ function getTextContent(message: { parts: Array<{ type: string; text?: string }>
 
 export default function Chat() {
   const [input, setInput] = useState("");
+  const [focused, setFocused] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -49,113 +50,48 @@ export default function Chat() {
 
   return (
     <div className="w-full">
-      {/* Input bar */}
-      <form
-        onSubmit={handleSubmit}
-        className="flex items-center gap-2 w-full"
-        style={{
-          padding: "0.75rem 1rem",
-          background: "var(--surface)",
-          border: "1px solid var(--border)",
-          transition: "border-color 0.15s ease",
-        }}
-        onFocus={(e) => {
-          (e.currentTarget as HTMLElement).style.borderColor = "var(--text-3)";
-        }}
-        onBlur={(e) => {
-          if (!e.currentTarget.contains(e.relatedTarget)) {
-            (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
-          }
-        }}
-      >
-        <svg viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 shrink-0" style={{ color: "var(--text-4)" }}>
-          <path d="M1 2.75C1 1.784 1.784 1 2.75 1h10.5c.966 0 1.75.784 1.75 1.75v7.5A1.75 1.75 0 0113.25 12H9.06l-2.9 2.9A.75.75 0 015 14.44V12H2.75A1.75 1.75 0 011 10.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25H5.5a.75.75 0 01.75.75v1.94l2.22-2.22a.75.75 0 01.53-.22h4.25a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25H2.75z" />
-        </svg>
-        <input
-          ref={inputRef}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Ask me anything about Prem..."
-          className="flex-1 text-sm bg-transparent outline-none"
-          style={{ color: "var(--text-1)" }}
-          disabled={isLoading}
-        />
-        <button
-          type="submit"
-          disabled={isLoading || !input.trim()}
-          className="shrink-0 w-7 h-7 flex items-center justify-center transition-opacity duration-150"
-          style={{
-            background: "var(--accent)",
-            color: "var(--bg)",
-            opacity: isLoading || !input.trim() ? 0.25 : 1,
-          }}
-        >
-          <svg viewBox="0 0 16 16" fill="currentColor" className="w-3 h-3">
-            <path d="M.989 8 .064 2.68a1.342 1.342 0 011.85-1.462l13.402 5.744a1.13 1.13 0 010 2.076L1.913 14.782a1.343 1.343 0 01-1.85-1.463L.99 8zm.603-5.318L2.38 7.25h4.87a.75.75 0 010 1.5H2.38l-.788 4.568L13.929 8 1.592 2.682z" />
-          </svg>
-        </button>
-      </form>
-
-      {/* Suggestions */}
-      {!hasMessages && (
-        <div className="flex flex-wrap gap-1.5 mt-3">
-          {SUGGESTIONS.map((s) => (
-            <button
-              key={s}
-              onClick={() => handleSuggestion(s)}
-              className="text-xs px-2.5 py-1 transition-colors duration-150"
-              style={{
-                border: "1px solid var(--border)",
-                color: "var(--text-3)",
-                background: "transparent",
-                fontFamily: "var(--font-mono)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "var(--text-3)";
-                (e.currentTarget as HTMLElement).style.color = "var(--text-1)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
-                (e.currentTarget as HTMLElement).style.color = "var(--text-3)";
-              }}
-            >
-              {s}
-            </button>
-          ))}
-          <span className="text-xs self-center" style={{ color: "var(--text-4)", fontFamily: "var(--font-mono)" }}>
-            Powered by Gemini
-          </span>
-        </div>
-      )}
-
-      {/* Messages */}
+      {/* Messages — above input when present */}
       {hasMessages && (
         <div
           ref={scrollRef}
-          className="mt-3 space-y-2.5 overflow-y-auto"
+          className="space-y-3 overflow-y-auto mb-3"
           style={{
-            maxHeight: "280px",
-            padding: "0.75rem",
-            background: "var(--surface)",
-            border: "1px solid var(--border-light)",
+            maxHeight: "260px",
+            scrollbarWidth: "none",
           }}
         >
           {messages.map((m) => {
             const text = getTextContent(m);
             if (!text) return null;
+            const isUser = m.role === "user";
             return (
               <div
                 key={m.id}
                 className="flex"
-                style={{ justifyContent: m.role === "user" ? "flex-end" : "flex-start" }}
+                style={{ justifyContent: isUser ? "flex-end" : "flex-start" }}
               >
+                {!isUser && (
+                  <div
+                    className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center mr-2.5 mt-0.5"
+                    style={{
+                      background: "var(--text-1)",
+                      color: "var(--bg)",
+                      fontSize: "0.55rem",
+                      fontWeight: 700,
+                      fontFamily: "var(--font-sans)",
+                    }}
+                  >
+                    P
+                  </div>
+                )}
                 <div
-                  className="text-sm leading-relaxed px-3 py-2"
+                  className="text-sm leading-relaxed"
                   style={{
-                    maxWidth: "85%",
-                    background: m.role === "user" ? "var(--accent)" : "var(--bg)",
-                    color: m.role === "user" ? "var(--bg)" : "var(--text-1)",
-                    border: m.role === "user" ? "none" : "1px solid var(--border-light)",
+                    maxWidth: "80%",
+                    padding: isUser ? "0.5rem 0.85rem" : "0",
+                    borderRadius: isUser ? "1rem 1rem 0.25rem 1rem" : "0",
+                    background: isUser ? "var(--text-1)" : "transparent",
+                    color: isUser ? "var(--bg)" : "var(--text-2)",
                   }}
                 >
                   {text}
@@ -165,23 +101,133 @@ export default function Chat() {
           })}
 
           {status === "submitted" && (
-            <div className="flex justify-start">
+            <div className="flex items-start">
               <div
-                className="text-sm px-3 py-2 flex items-center gap-1.5"
+                className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center mr-2.5 mt-0.5"
                 style={{
-                  background: "var(--bg)",
-                  border: "1px solid var(--border-light)",
-                  color: "var(--text-3)",
+                  background: "var(--text-1)",
+                  color: "var(--bg)",
+                  fontSize: "0.55rem",
+                  fontWeight: 700,
+                  fontFamily: "var(--font-sans)",
                 }}
               >
-                <span className="inline-block w-1 h-1 rounded-full animate-pulse" style={{ background: "var(--text-3)" }} />
-                <span className="inline-block w-1 h-1 rounded-full animate-pulse" style={{ background: "var(--text-3)", animationDelay: "0.2s" }} />
-                <span className="inline-block w-1 h-1 rounded-full animate-pulse" style={{ background: "var(--text-3)", animationDelay: "0.4s" }} />
+                P
+              </div>
+              <div className="flex items-center gap-1 pt-1">
+                {[0, 1, 2].map((i) => (
+                  <span
+                    key={i}
+                    className="block w-1 h-1 rounded-full"
+                    style={{
+                      background: "var(--text-4)",
+                      animation: "chat-dot 1.4s ease-in-out infinite",
+                      animationDelay: `${i * 0.16}s`,
+                    }}
+                  />
+                ))}
               </div>
             </div>
           )}
         </div>
       )}
+
+      {/* Input */}
+      <form
+        onSubmit={handleSubmit}
+        className="flex items-center gap-3 w-full"
+        style={{
+          padding: "0.65rem 0.65rem 0.65rem 1.1rem",
+          background: focused ? "var(--surface)" : "transparent",
+          border: "1px solid",
+          borderColor: focused ? "var(--text-4)" : "var(--border)",
+          borderRadius: "2rem",
+          transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+          boxShadow: focused ? "0 2px 12px oklch(0% 0 0 / 0.04)" : "none",
+        }}
+      >
+        <input
+          ref={inputRef}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          placeholder={hasMessages ? "Ask a follow-up..." : "Ask about my work, stack, or experience..."}
+          className="flex-1 text-sm bg-transparent outline-none"
+          style={{
+            color: "var(--text-1)",
+            caretColor: "var(--text-1)",
+          }}
+          disabled={isLoading}
+        />
+        <button
+          type="submit"
+          disabled={isLoading || !input.trim()}
+          className="shrink-0 w-8 h-8 flex items-center justify-center transition-all duration-200"
+          style={{
+            background: input.trim() ? "var(--text-1)" : "var(--border)",
+            color: "var(--bg)",
+            borderRadius: "50%",
+            opacity: isLoading ? 0.4 : 1,
+            transform: input.trim() ? "scale(1)" : "scale(0.92)",
+          }}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-3.5 h-3.5"
+            style={{ transform: "translateX(0.5px)" }}
+          >
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </button>
+      </form>
+
+      {/* Suggestions */}
+      {!hasMessages && (
+        <div className="flex flex-wrap gap-2 mt-3 pl-1">
+          {SUGGESTIONS.map((s) => (
+            <button
+              key={s}
+              onClick={() => handleSuggestion(s)}
+              className="text-xs transition-all duration-200"
+              style={{
+                padding: "0.35rem 0.75rem",
+                borderRadius: "1rem",
+                border: "1px solid var(--border)",
+                color: "var(--text-3)",
+                background: "transparent",
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget;
+                el.style.borderColor = "var(--text-3)";
+                el.style.color = "var(--text-1)";
+                el.style.background = "var(--surface)";
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget;
+                el.style.borderColor = "var(--border)";
+                el.style.color = "var(--text-3)";
+                el.style.background = "transparent";
+              }}
+            >
+              {s}
+            </button>
+          ))}
+        </div>
+      )}
+
+      <style jsx>{`
+        @keyframes chat-dot {
+          0%, 80%, 100% { opacity: 0.25; transform: scale(0.8); }
+          40% { opacity: 1; transform: scale(1); }
+        }
+      `}</style>
     </div>
   );
 }
