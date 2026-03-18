@@ -1,9 +1,10 @@
 import { createOpenAI } from "@ai-sdk/openai";
-import { streamText } from "ai";
+import { streamText, type UIMessage } from "ai";
 
 const openrouter = createOpenAI({
   baseURL: "https://openrouter.ai/api/v1",
   apiKey: process.env.OPENROUTER_API_KEY!,
+  compatibility: "compatible",
 });
 
 const SYSTEM_PROMPT = `You are Prem's portfolio assistant. You help visitors learn about Prem Kumar — an AI Engineer & Builder based in Singapore.
@@ -22,13 +23,25 @@ Key facts about Prem:
 
 Be concise, friendly, and direct. Keep responses short (2-4 sentences) unless asked for detail. If asked something you don't know about Prem, say so honestly. Do not make up information.`;
 
+function convertMessages(uiMessages: UIMessage[]) {
+  return uiMessages.map((msg) => ({
+    role: msg.role as "user" | "assistant",
+    content: msg.parts
+      .filter((p): p is { type: "text"; text: string } => p.type === "text")
+      .map((p) => p.text)
+      .join(""),
+  }));
+}
+
 export async function POST(req: Request) {
   const { messages } = await req.json();
 
+  const converted = convertMessages(messages);
+
   const result = streamText({
-    model: openrouter("google/gemini-2.5-flash-preview-05-20"),
+    model: openrouter("google/gemini-2.5-flash"),
     system: SYSTEM_PROMPT,
-    messages,
+    messages: converted,
     maxOutputTokens: 300,
   });
 
