@@ -1,7 +1,8 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
-import { useState, useRef, useEffect, FormEvent } from "react";
+import { TextStreamChatTransport } from "ai";
+import { useState, useRef, useEffect, useMemo, FormEvent } from "react";
 
 const SUGGESTIONS = [
   "What does Prem build?",
@@ -21,7 +22,8 @@ export default function Chat() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { messages, sendMessage, status } = useChat();
+  const transport = useMemo(() => new TextStreamChatTransport({ api: "/api/chat" }), []);
+  const { messages, sendMessage, status } = useChat({ transport });
 
   const isLoading = status === "submitted" || status === "streaming";
   const hasMessages = messages.length > 0;
