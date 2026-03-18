@@ -68,10 +68,11 @@ body {
 .section-title {
   font-family: var(--font-sans);
   font-weight: 800;
-  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-style: italic;
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
   color: var(--text-1);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  line-height: 1;
+  letter-spacing: -0.035em;
 }
 
 .section-rule {
@@ -92,11 +93,12 @@ body {
   bottom: -0.1rem;
   font-family: var(--font-sans);
   font-weight: 800;
-  font-size: clamp(5rem, 12vw, 8rem);
+  font-size: clamp(6rem, 14vw, 10rem);
   line-height: 1;
   letter-spacing: -0.05em;
+  font-style: italic;
   color: var(--text-1);
-  opacity: 0.04;
+  opacity: 0.06;
   user-select: none;
   pointer-events: none;
 }
@@ -131,7 +133,7 @@ body {
   bottom: -1px;
   left: 0;
   width: 0;
-  height: 1px;
+  height: 1.5px;
   background: currentColor;
   transition: width 0.22s var(--ease-expo);
 }
@@ -158,7 +160,7 @@ body {
 .card-lift {
   transition: transform 0.2s var(--ease-expo), border-color 0.15s ease;
 }
-.card-lift:hover { transform: translateY(-3px); }
+.card-lift:hover { transform: translateY(-4px); }
 
 /* ─── Stagger ─── */
 .stagger > * {
