@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/fetch-github-stats.js && next build",
     "start": "next start",
     "lint": "eslint"
   },

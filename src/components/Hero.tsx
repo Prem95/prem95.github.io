@@ -28,12 +28,12 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="flex flex-col justify-center"
-      style={{ minHeight: "calc(100svh - 56px)", paddingTop: "2rem", paddingBottom: "3rem" }}
+      className="flex flex-col justify-end"
+      style={{ minHeight: "auto", paddingTop: "1rem", paddingBottom: "1rem" }}
     >
       <div ref={ref}>
-        {/* Status — tight, understated */}
-        <div className="h-item flex items-center gap-3 mb-8 sm:mb-14">
+        {/* Status */}
+        <div className="h-item flex items-center gap-2.5 mb-4 sm:mb-10">
           <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
             <span
               className="animate-ping absolute inline-flex h-full w-full opacity-75"
@@ -49,7 +49,7 @@ export default function Hero() {
             style={{
               color: "var(--text-3)",
               fontFamily: "var(--font-mono)",
-              fontSize: "0.625rem",
+              fontSize: "0.6rem",
               letterSpacing: "0.25em",
             }}
           >
@@ -57,14 +57,14 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Name — the unavoidable moment */}
+        {/* Name */}
         <h1
-          className="h-item mb-6"
+          className="h-item mb-3 sm:mb-5"
           style={{
             fontFamily: "var(--font-sans)",
-            fontSize: "clamp(3.2rem, 13vw, 10rem)",
+            fontSize: "clamp(2.8rem, 14vw, 10rem)",
             fontWeight: 800,
-            fontStyle: "italic",
+            
             color: "var(--text-1)",
             letterSpacing: "-0.045em",
             lineHeight: 0.92,
@@ -73,12 +73,12 @@ export default function Hero() {
           Prem<br />Kumar.
         </h1>
 
-        {/* Role — extreme weight contrast against the name */}
+        {/* Role */}
         <h2
-          className="h-item mb-10 sm:mb-16"
+          className="h-item mb-6 sm:mb-10"
           style={{
             fontFamily: "var(--font-sans)",
-            fontSize: "clamp(1.1rem, 2.8vw, 1.5rem)",
+            fontSize: "clamp(1rem, 2.8vw, 1.5rem)",
             fontWeight: 300,
             color: "var(--text-3)",
             letterSpacing: "0.01em",
@@ -99,61 +99,36 @@ export default function Hero() {
           {" "}and shipping SaaS products that make work simpler.
         </h2>
 
-        {/* Chat — the hero interaction */}
-        <div className="h-item mb-8 sm:mb-12 w-full" style={{ maxWidth: "520px" }}>
+        {/* Chat */}
+        <div className="h-item mb-5 sm:mb-8 w-full" style={{ maxWidth: "520px" }}>
           <Chat />
         </div>
 
-        {/* Minimal CTAs — text links, not buttons */}
-        <div className="h-item flex flex-wrap items-center gap-x-8 gap-y-4">
-          <a
-            href="#products"
-            className="text-xs uppercase tracking-widest link-grow transition-colors duration-150"
-            style={{
-              fontFamily: "var(--font-mono)",
-              color: "var(--text-1)",
-              fontWeight: 500,
-            }}
-          >
-            Work
-          </a>
-          <a
-            href="#experience"
-            className="text-xs uppercase tracking-widest link-grow transition-colors duration-150"
-            style={{
-              fontFamily: "var(--font-mono)",
-              color: "var(--text-3)",
-            }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--text-1)")}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--text-3)")}
-          >
-            Experience
-          </a>
-          <a
-            href={config.resume}
-            download
-            className="text-xs uppercase tracking-widest link-grow transition-colors duration-150"
-            style={{
-              fontFamily: "var(--font-mono)",
-              color: "var(--text-3)",
-            }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--text-1)")}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--text-3)")}
-          >
-            Resume
-          </a>
-          <a
-            href="#contact"
-            className="text-xs uppercase tracking-widest link-grow transition-colors duration-150"
-            style={{
-              fontFamily: "var(--font-mono)",
-              color: "var(--text-3)",
-            }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--text-1)")}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--text-3)")}
-          >
-            Contact
-          </a>
+        {/* CTAs — horizontal scroll on mobile for clean flow */}
+        <div
+          className="h-item flex items-center gap-x-6 sm:gap-x-8 gap-y-3 overflow-x-auto no-scrollbar"
+          style={{ WebkitOverflowScrolling: "touch" }}
+        >
+          {[
+            { href: "#products", label: "Work", primary: true },
+            { href: "#experience", label: "Experience" },
+            { href: config.resume, label: "Resume", download: true },
+            { href: "#contact", label: "Contact" },
+          ].map(({ href, label, primary, download }) => (
+            <a
+              key={label}
+              href={href}
+              {...(download ? { download: true } : {})}
+              className="text-xs uppercase tracking-widest link-grow transition-colors duration-150 whitespace-nowrap shrink-0"
+              style={{
+                fontFamily: "var(--font-mono)",
+                color: primary ? "var(--text-1)" : "var(--text-3)",
+                fontWeight: primary ? 500 : 400,
+              }}
+            >
+              {label}
+            </a>
+          ))}
         </div>
       </div>
     </section>

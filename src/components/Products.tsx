@@ -27,7 +27,7 @@ export default function Products() {
   const [featured, ...rest] = products;
 
   return (
-    <section id="products" className="py-16 sm:py-20 lg:py-28">
+    <section id="products" className="py-8 sm:py-12 lg:py-14">
       <div>
         {/* Section header */}
         <div ref={headerRef}>
@@ -42,45 +42,45 @@ export default function Products() {
           </div>
         </div>
 
-        {/* ── Featured product — full width strip ── */}
+        {/* Featured product */}
         <div ref={featuredRef}>
-          {/* Featured — full black inversion */}
           <a
             href={featured.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="card-lift group flex flex-col sm:flex-row gap-5 sm:gap-10 p-5 sm:p-8 mb-5"
+            className="card-lift group flex flex-col sm:flex-row gap-3 sm:gap-8 p-4 sm:p-7 mb-3 sm:mb-4"
             style={{
-              background: "var(--accent)",
-              border: "1px solid var(--accent)",
+              background: "var(--color-accent)",
+              border: "1px solid var(--border-light)",
             }}
           >
             <div className="flex-1">
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-2.5 mb-2 sm:mb-3">
                 <span
-                  className="text-xs border px-2 py-0.5"
+                  className="text-xs px-2 py-1 rounded-sm font-semibold"
                   style={{
                     fontFamily: "var(--font-mono)",
-                    color: "oklch(90% 0.004 255)",
-                    borderColor: "oklch(30% 0.01 255)",
+                    color: "#ffffff",
+                    background: "oklch(28% 0.08 142)",
                     letterSpacing: "0.08em",
+                    fontSize: "0.65rem",
                   }}
                 >
                   {featured.status}
                 </span>
                 <span
                   className="text-xs uppercase tracking-widest"
-                  style={{ color: "oklch(48% 0.008 255)", fontFamily: "var(--font-mono)" }}
+                  style={{ color: "oklch(48% 0.008 255)", fontFamily: "var(--font-mono)", fontSize: "0.6rem" }}
                 >
                   Featured
                 </span>
               </div>
               <h3
-                className="mb-3 font-bold"
+                className="mb-1.5 font-bold"
                 style={{
                   fontFamily: "var(--font-sans)",
-                  fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
-                  color: "oklch(95% 0.002 255)",
+                  fontSize: "clamp(1.25rem, 3vw, 1.9rem)",
+                  color: "var(--text-1)",
                   letterSpacing: "-0.025em",
                   lineHeight: 1.1,
                 }}
@@ -89,23 +89,24 @@ export default function Products() {
               </h3>
               <p
                 className="text-sm leading-relaxed max-w-sm"
-                style={{ color: "oklch(58% 0.008 255)" }}
+                style={{ color: "var(--text-2)", fontSize: "0.825rem" }}
               >
                 {featured.description}
               </p>
             </div>
 
-            <div className="sm:w-44 shrink-0 flex flex-col justify-between gap-5">
+            <div className="sm:w-44 shrink-0 flex flex-col justify-between gap-3 sm:gap-4">
               <div className="flex flex-wrap gap-1.5">
                 {featured.tech.map((t) => (
                   <span
                     key={t}
-                    className="text-xs px-2 py-0.5"
+                    className="text-xs px-1.5 py-0.5"
                     style={{
                       fontFamily: "var(--font-mono)",
-                      background: "oklch(14% 0.01 255)",
-                      border: "1px solid oklch(22% 0.01 255)",
-                      color: "oklch(55% 0.008 255)",
+                      background: "rgba(0, 0, 0, 0.05)",
+                      border: "1px solid rgba(0, 0, 0, 0.1)",
+                      color: "var(--text-2)",
+                      fontSize: "0.65rem",
                     }}
                   >
                     {t}
@@ -115,7 +116,7 @@ export default function Products() {
 
               <span
                 className="inline-flex items-center gap-1.5 text-sm font-medium transition-all duration-200"
-                style={{ color: "oklch(90% 0.004 255)" }}
+                style={{ color: "var(--text-1)" }}
               >
                 Visit site
                 <span className="transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
@@ -125,15 +126,15 @@ export default function Products() {
             </div>
           </a>
 
-          {/* Two smaller products side by side */}
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 mb-10 sm:mb-14">
+          {/* Secondary products */}
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 mb-8 sm:mb-12">
             {rest.map((product) => (
               <a
                 key={product.name}
                 href={product.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card-lift group flex flex-col p-5 sm:p-6"
+                className="card-lift group flex flex-col p-3.5 sm:p-5"
                 style={{
                   background: "var(--surface)",
                   border: "1px solid var(--border)",
@@ -145,14 +146,14 @@ export default function Products() {
                   (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
                 }}
               >
-                <div className="flex items-start justify-between mb-3">
+                <div className="flex items-start justify-between mb-2">
                   <span
-                    className="text-xs border px-1.5 py-0 leading-5"
+                    className="text-xs px-2 py-1 rounded-sm font-semibold leading-4"
                     style={{
                       fontFamily: "var(--font-mono)",
-                      color: "var(--accent)",
-                      borderColor: "var(--accent)",
-                      background: "var(--accent-tint)",
+                      color: "#ffffff",
+                      background: "oklch(28% 0.08 142)",
+                      fontSize: "0.65rem",
                     }}
                   >
                     {product.status}
@@ -165,14 +166,14 @@ export default function Products() {
                 </div>
 
                 <h3
-                  className="font-semibold text-base mb-2"
-                  style={{ color: "var(--text-1)" }}
+                  className="font-semibold text-base mb-1"
+                  style={{ color: "var(--text-1)", fontSize: "0.95rem" }}
                 >
                   {product.name}
                 </h3>
                 <p
-                  className="text-sm leading-relaxed flex-1 mb-4"
-                  style={{ color: "var(--text-2)" }}
+                  className="text-sm leading-relaxed flex-1 mb-2.5"
+                  style={{ color: "var(--text-2)", fontSize: "0.825rem" }}
                 >
                   {product.description}
                 </p>
@@ -186,6 +187,7 @@ export default function Products() {
                         color: "var(--text-3)",
                         background: "var(--bg)",
                         border: "1px solid var(--border-light)",
+                        fontSize: "0.65rem",
                       }}
                     >
                       {t}
@@ -197,11 +199,11 @@ export default function Products() {
           </div>
         </div>
 
-        {/* Other projects — compact rows, no cards */}
+        {/* Other projects */}
         <div ref={otherRef}>
           <p
-            className="text-xs uppercase tracking-widest mb-5"
-            style={{ color: "var(--text-3)", fontFamily: "var(--font-mono)" }}
+            className="text-xs uppercase tracking-widest mb-3"
+            style={{ color: "var(--text-3)", fontFamily: "var(--font-mono)", fontSize: "0.6rem" }}
           >
             Other noteworthy projects
           </p>
@@ -209,44 +211,44 @@ export default function Products() {
           <div className="space-y-0">
             {otherProjects.map((proj, i) => (
               <div key={proj.name}>
-                <div className="flex items-start justify-between gap-4 py-4 group">
-                  <div className="flex-1">
-                    <div className="flex flex-wrap items-baseline gap-2 mb-1">
+                <div className="flex items-start justify-between gap-3 py-2.5 group">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 mb-0.5">
                       <h4
                         className="font-medium text-sm"
                         style={{ color: "var(--text-1)" }}
                       >
                         {proj.name}
                       </h4>
-                      <span className="flex flex-wrap gap-2">
+                      <span className="flex flex-wrap gap-1.5">
                         {proj.tech.slice(0, 3).map((t) => (
                           <span
                             key={t}
                             className="text-xs"
-                            style={{ fontFamily: "var(--font-mono)", color: "var(--text-3)" }}
+                            style={{ fontFamily: "var(--font-mono)", color: "var(--text-4)", fontSize: "0.65rem" }}
                           >
                             {t}
                           </span>
                         ))}
                       </span>
                     </div>
-                    <p className="text-xs leading-relaxed" style={{ color: "var(--text-3)" }}>
+                    <p className="text-xs leading-relaxed" style={{ color: "var(--text-3)", fontSize: "0.75rem" }}>
                       {proj.description}
                     </p>
                   </div>
-                  <div className="flex items-center gap-3 shrink-0 pt-0.5">
+                  <div className="flex items-center gap-2.5 shrink-0 pt-0.5">
                     {proj.github && (
                       <a
                         href={proj.github}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="GitHub"
-                        className="transition-colors duration-150"
+                        className="transition-colors duration-150 p-1"
                         style={{ color: "var(--text-3)" }}
                         onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--accent)")}
                         onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--text-3)")}
                       >
-                        <GHIcon size={16} />
+                        <GHIcon size={15} />
                       </a>
                     )}
                     {proj.external && (
@@ -255,12 +257,12 @@ export default function Products() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="External"
-                        className="transition-colors duration-150"
+                        className="transition-colors duration-150 p-1"
                         style={{ color: "var(--text-3)" }}
                         onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--accent)")}
                         onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--text-3)")}
                       >
-                        <ExtIcon size={15} />
+                        <ExtIcon size={14} />
                       </a>
                     )}
                   </div>

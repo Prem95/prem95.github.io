@@ -4,12 +4,6 @@ import { useChat } from "@ai-sdk/react";
 import { TextStreamChatTransport } from "ai";
 import { useState, useRef, useEffect, useMemo, FormEvent } from "react";
 
-const SUGGESTIONS = [
-  "What does Prem build?",
-  "His SaaS products",
-  "Experience & background",
-];
-
 function getTextContent(message: { parts: Array<{ type: string; text?: string }> }): string {
   return message.parts
     .filter((p) => p.type === "text")
@@ -43,20 +37,15 @@ export default function Chat() {
     sendMessage({ text });
   };
 
-  const handleSuggestion = (text: string) => {
-    setInput("");
-    sendMessage({ text });
-  };
-
   return (
     <div className="w-full">
       {/* Messages — above input when present */}
       {hasMessages && (
         <div
           ref={scrollRef}
-          className="space-y-3 overflow-y-auto mb-3"
+          className="space-y-2.5 overflow-y-auto mb-2.5"
           style={{
-            maxHeight: "260px",
+            maxHeight: "220px",
             scrollbarWidth: "none",
           }}
         >
@@ -100,35 +89,6 @@ export default function Chat() {
             );
           })}
 
-          {status === "submitted" && (
-            <div className="flex items-start">
-              <div
-                className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center mr-2.5 mt-0.5"
-                style={{
-                  background: "var(--text-1)",
-                  color: "var(--bg)",
-                  fontSize: "0.55rem",
-                  fontWeight: 700,
-                  fontFamily: "var(--font-sans)",
-                }}
-              >
-                P
-              </div>
-              <div className="flex items-center gap-1 pt-1">
-                {[0, 1, 2].map((i) => (
-                  <span
-                    key={i}
-                    className="block w-1 h-1 rounded-full"
-                    style={{
-                      background: "var(--text-4)",
-                      animation: "chat-dot 1.4s ease-in-out infinite",
-                      animationDelay: `${i * 0.16}s`,
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       )}
 
@@ -137,7 +97,7 @@ export default function Chat() {
         onSubmit={handleSubmit}
         className="flex items-center gap-3 w-full"
         style={{
-          padding: "0.65rem 0.65rem 0.65rem 1.1rem",
+          padding: "0.55rem 0.55rem 0.55rem 1rem",
           background: focused ? "var(--surface)" : "transparent",
           border: "1px solid",
           borderColor: focused ? "var(--text-4)" : "var(--border)",
@@ -188,46 +148,6 @@ export default function Chat() {
         </button>
       </form>
 
-      {/* Suggestions */}
-      {!hasMessages && (
-        <div className="flex flex-wrap gap-2 mt-3 pl-1">
-          {SUGGESTIONS.map((s) => (
-            <button
-              key={s}
-              onClick={() => handleSuggestion(s)}
-              className="text-xs transition-all duration-200"
-              style={{
-                padding: "0.35rem 0.75rem",
-                borderRadius: "1rem",
-                border: "1px solid var(--border)",
-                color: "var(--text-3)",
-                background: "transparent",
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget;
-                el.style.borderColor = "var(--text-3)";
-                el.style.color = "var(--text-1)";
-                el.style.background = "var(--surface)";
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget;
-                el.style.borderColor = "var(--border)";
-                el.style.color = "var(--text-3)";
-                el.style.background = "transparent";
-              }}
-            >
-              {s}
-            </button>
-          ))}
-        </div>
-      )}
-
-      <style jsx>{`
-        @keyframes chat-dot {
-          0%, 80%, 100% { opacity: 0.25; transform: scale(0.8); }
-          40% { opacity: 1; transform: scale(1); }
-        }
-      `}</style>
     </div>
   );
 }

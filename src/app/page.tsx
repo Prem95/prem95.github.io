@@ -1,4 +1,3 @@
-import Sidebar from "@/components/Sidebar";
 import MobileNav from "@/components/MobileNav";
 import ScrollProgress from "@/components/ScrollProgress";
 import Hero from "@/components/Hero";
@@ -14,12 +13,9 @@ export default function Home() {
       <ScrollProgress />
       <MobileNav />
 
-      <div className="lg:flex min-h-screen">
-        <Sidebar />
-
-        <main className="flex-1 min-w-0" style={{ background: "var(--bg)" }}>
+      <main className="flex justify-center" style={{ background: "var(--bg)" }}>
           <div
-            className="mx-auto px-6 sm:px-10 lg:px-14 xl:px-20"
+            className="w-full px-5 sm:px-10 lg:px-14 xl:px-20"
             style={{ maxWidth: "780px" }}
           >
             <Hero />
@@ -38,7 +34,6 @@ export default function Home() {
             <Footer />
           </div>
         </main>
-      </div>
     </>
   );
 }

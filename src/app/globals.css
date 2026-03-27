@@ -15,6 +15,7 @@
   --accent:       oklch(9%   0.01  255);   /* same as text-1 — pure black accent */
   --accent-mid:   oklch(22%  0.01  255);
   --accent-tint:  oklch(95%  0.005 255);   /* very light gray */
+  --color-accent: oklch(94%  0.02  250);   /* minimalist muted blue tint */
 
   /* Sidebar */
   --sb-bg:        oklch(7%   0.01  255);   /* near-black */
@@ -62,14 +63,13 @@ body {
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--text-4);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
 }
 
 .section-title {
   font-family: var(--font-sans);
   font-weight: 800;
-  font-style: italic;
-  font-size: clamp(2rem, 6vw, 3.2rem);
+  font-size: clamp(1.85rem, 7vw, 3.2rem);
   color: var(--text-1);
   line-height: 1;
   letter-spacing: -0.04em;
@@ -92,21 +92,21 @@ body {
   display: flex;
   align-items: flex-end;
   gap: 1.25rem;
-  margin-bottom: 2rem;
-  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--border-light);
 }
 
 @media (min-width: 640px) {
   .section-rule {
-    margin-bottom: 3rem;
-    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
   }
 }
 
 @media (min-width: 1024px) {
   .section-rule {
-    margin-bottom: 3.5rem;
+    margin-bottom: 2.5rem;
   }
 }
 
@@ -121,7 +121,6 @@ body {
   font-size: clamp(4.5rem, 14vw, 10rem);
   line-height: 1;
   letter-spacing: -0.05em;
-  font-style: italic;
   color: var(--text-1);
   opacity: 0.05;
   user-select: none;
@@ -133,7 +132,7 @@ body {
 .arrow-list li {
   position: relative;
   padding-left: 1.35rem;
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.5rem;
   font-size: 0.875rem;
   color: var(--text-2);
   line-height: 1.65;
@@ -163,6 +162,10 @@ body {
   transition: width 0.22s var(--ease-expo);
 }
 .link-grow:hover::after { width: 100%; }
+
+/* ─── Hide scrollbar utility ─── */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
 
 /* ─── Scroll reveal ─── */
 .reveal {
@@ -198,3 +201,32 @@ body {
 .stagger.in-view > *:nth-child(3) { opacity:1; transform:none; transition-delay:160ms; }
 .stagger.in-view > *:nth-child(4) { opacity:1; transform:none; transition-delay:240ms; }
 .stagger.in-view > *:nth-child(5) { opacity:1; transform:none; transition-delay:320ms; }
+
+/* ─── Mobile refinements ─── */
+@media (max-width: 639px) {
+  /* Tighter section padding on mobile */
+  section { scroll-margin-top: 56px; }
+
+  /* Ghost number — smaller on mobile to prevent overflow */
+  .section-rule::before {
+    font-size: clamp(3.5rem, 18vw, 5rem);
+    bottom: -0.05rem;
+  }
+
+  /* Better touch targets */
+  .arrow-list li {
+    padding-left: 1.1rem;
+    font-size: 0.825rem;
+    line-height: 1.7;
+    margin-bottom: 0.55rem;
+  }
+  .arrow-list li::before {
+    font-size: 0.65rem;
+    top: 0.25rem;
+  }
+}
+
+/* ─── Safe-area insets for notched devices ─── */
+@supports (padding: env(safe-area-inset-bottom)) {
+  body { padding-bottom: env(safe-area-inset-bottom); }
+}

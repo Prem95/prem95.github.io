@@ -2,20 +2,20 @@ export const config = {
   name: "Prem Kumar",
   role: "AI Engineer & Builder",
   tagline:
-    "I build agentic AI systems for the insurance industry and ship SaaS products that make work simpler.",
+    "Building agentic AI for insurance by day, shipping SaaS products by night.",
   email: "premkumar@premstroke.com",
   github: "https://github.com/Prem95",
   twitter: "https://twitter.com/premstroke95",
   linkedin: "https://linkedin.com/in/prem-kumar",
   resume: "/resume.pdf",
   availability: "Open to consulting & partnerships",
+  githubStats: null as any, // Will be populated at build time
 };
 
 export const about = {
   bio: [
-    "I'm a Generative AI Engineer at Ancileo, where I design and ship agentic systems for the insurance industry — autonomous agents that handle claims processing, policy recommendations, and customer interactions end-to-end.",
-    "Outside of Ancileo, I build the Simpler product suite: SaaS tools that solve real problems for freelancers and small businesses. Started as scratch-my-own-itch projects, now used by real people.",
-    "I care about performance, clean interfaces, and systems that stay out of the way.",
+    "At Ancileo I build the agents that process travel insurance claims end-to-end. LangGraph, RAG over policy docs, runs on Azure. 80% of claims go through without a human.",
+    "On the side: the Simpler suite (invoices, outreach, disputes, infographics). Scratch-my-own-itch projects that became actual products. I like systems that are boring to operate.",
   ],
   skills: [
     { name: "Python" },
@@ -59,20 +59,18 @@ export const experience = [
   {
     company: "Ancileo",
     url: "https://ancileo.com",
-    role: "Generative AI Engineer",
+    role: "AI Engineer (Agents)",
     location: "Singapore (Remote)",
     range: "February 2024 — Present",
     start: 2024,
     end: null,
     description: [
-      "Developed automated travel insurance claim process using LangGraph AI Agent and RAG in Azure cluster.",
-      "Optimised AI Agent to run 24/7 at $2/hour, reducing claims processing time by 60%.",
-      "Applied advanced prompt engineering techniques using LangChain, LlamaIndex and DSPy frameworks.",
-      "Cross-evaluated open source LLMs on HuggingFace including Mixtral, Qwen and Llama models.",
-      "Deployed AI Agents on Kubernetes clusters with auto-scaling worker pods for scalability.",
-      "Implemented CI/CD pipelines for model deployment on Azure cloud infrastructure.",
+      "Currently building a conversational insurance agent using OpenAI's Agents SDK and Strands — multi-turn, context-aware, handles the full claims conversation end-to-end. Claude Code does most of the heavy lifting on the engineering side.",
+      "Built an earlier claims agent on Azure using LangGraph and RAG over policy docs — ran without human-in-the-loop for 80% of cases.",
+      "Cut claims processing time by 60% and kept it running at $2/hour by optimising token usage and caching intermediate steps.",
+      "Ran structured evals across Mixtral, Qwen, and Llama using DSPy and LlamaIndex to find what holds up in production, not just benchmarks.",
     ],
-    tech: ["LangGraph", "LangChain", "Azure", "Kubernetes", "Python"],
+    tech: ["Strands", "OpenAI Agents SDK", "Claude Code", "LangGraph", "Azure"],
   },
   {
     company: "Azara AI",
@@ -83,11 +81,11 @@ export const experience = [
     start: 2022,
     end: 2023,
     description: [
-      "Delivered Enterprise AI Agents with task-based workflows, enhancing operational efficiency.",
-      "Pioneered the development of the first RAG pipeline for AI Chatbots with document retrieval and summarisation.",
-      "Integrated AI agents with WhatsApp and Gmail — increased customer engagement by 35%.",
-      "Deployed LLM-Ops infrastructure on AWS using LangSmith, Grafana, Jaeger, and Prometheus for monitoring.",
-      "Evaluated multiple LLMs using synthetic data with RAGAS, improving output quality by 35%.",
+      "Built task-based AI agents for enterprise clients — the kind that replace a repeatable human workflow, not just answer questions.",
+      "Shipped the first RAG pipeline at the company: document ingestion, retrieval, summarisation, hooked into an LLM chatbot interface.",
+      "Wired agents into WhatsApp and Gmail. Customer engagement went up 35% — though that number is partly a product decision, not just engineering.",
+      "Set up LLM-Ops on AWS: LangSmith for tracing, Grafana and Prometheus for infra. The goal was catching regressions before users did.",
+      "Ran evals with RAGAS on synthetic data across model versions. Got output quality up 35% by cutting hallucination on retrieval-heavy tasks.",
     ],
     tech: ["LangChain", "RAG", "AWS", "LangSmith", "Python"],
   },
@@ -100,10 +98,10 @@ export const experience = [
     start: 2020,
     end: 2022,
     description: [
-      "Developed Face Anti-Spoofing (Passive Liveness Detection) algorithm using state-of-the-art Deep Learning for eKYC.",
-      "Built 2D/3D Face Detector (3DDFA) using TensorFlow, deployed as a SaaS service.",
-      "Developed a web dashboard to track ML model performance on evaluation datasets.",
-      "Conducted applied research on Deep Learning papers to improve production model accuracy.",
+      "Built passive liveness detection for eKYC — the model tells a live face from a printed photo or screen replay without asking the user to blink or nod.",
+      "Shipped 2D/3D face detection (3DDFA) as a SaaS service on TensorFlow. Small team, fast iteration.",
+      "Built an internal dashboard for tracking model accuracy across eval datasets — made regressions visible before they hit production.",
+      "Read ML papers and turned the useful bits into production improvements. Most papers don't survive contact with real data.",
     ],
     tech: ["TensorFlow", "OpenCV", "Keras", "Flask", "Docker"],
   },
@@ -116,9 +114,9 @@ export const experience = [
     start: 2019,
     end: 2020,
     description: [
-      "Worked on core Software Electronics development for next-generation robotics in Singapore and Malaysia.",
-      "Designed and tested Electronics Circuit Boards.",
-      "Wrote scripts to perform autonomous testing on products, showcasing engineering initiative.",
+      "Worked on electronics for Dyson's robotics division across Singapore and Malaysia — the hardware side, not the app.",
+      "Designed and tested circuit boards. Slow feedback loops, a lot of patience.",
+      "Wrote Python scripts to automate hardware testing. Saved a meaningful amount of manual QA time.",
     ],
     tech: ["Python", "C++", "Electronics", "Robotics"],
   },
@@ -131,10 +129,10 @@ export const experience = [
     start: 2018,
     end: 2019,
     description: [
-      "Developed Liveness Detection for e-KYC, serving private and governmental clients across Malaysia.",
-      "Built Facial Recognition models using DepthMap, 3DDFA and FaceNet technologies.",
-      "Led data collection for model training, aggregating data from 30+ global sources.",
-      "Achieved ISO 30107-3 Facial Recognition certification — first company in Southeast Asia to meet this standard.",
+      "Built liveness detection for e-KYC used by private and government clients in Malaysia — the thing that stops someone holding up a photo to a camera.",
+      "Trained facial recognition models on DepthMap, 3DDFA, and FaceNet. A lot of the work was data, not architecture.",
+      "Sourced training data from 30+ datasets across countries. Diversity in training data matters more than most ML engineers admit.",
+      "Got the company ISO 30107-3 certified — first in Southeast Asia at the time. Mostly paperwork, but the underlying model had to actually meet the bar.",
     ],
     tech: ["FaceNet", "3DDFA", "Python", "TensorFlow"],
   },
@@ -147,9 +145,9 @@ export const experience = [
     start: 2017,
     end: 2018,
     description: [
-      "Developed multi-class Palm Seed Classification algorithm for Sime Darby Plantation.",
-      "Built stage-wise image classification using CNN (AlexNet) with SVM as the final classifier.",
-      "Created representative data visualisations and presented research results to stakeholders.",
+      "Built a palm seed classifier for Sime Darby Plantation — multi-class CV model to sort seeds by quality at scale.",
+      "Used AlexNet as the backbone with an SVM on top as the final classifier. This was 2017; that was the move.",
+      "Turned the results into visualisations for non-technical stakeholders. Learned early that a model nobody understands doesn't get deployed.",
     ],
     tech: ["AlexNet", "SVM", "Python", "Computer Vision"],
   },
@@ -157,19 +155,28 @@ export const experience = [
 
 export const products = [
   {
+    name: "Hiregents",
+    url: "https://hiregents.com",
+    description:
+      "Pick an agent. Connect your Telegram bot. Agent is live and running on its own private server in minutes.",
+    tech: ["AI Agents", "Telegram Bot API", "Infrastructure"],
+    status: "Live",
+    featured: true,
+  },
+  {
     name: "Simpler Invoices",
     url: "https://simplerinvoices.com",
     description:
-      "Professional invoice generation for freelancers and small businesses. Create, send, and track invoices in seconds — no accounting degree required.",
+      "Invoicing for freelancers who don't want to think about invoicing. Generate, send, and track — the whole thing takes under a minute.",
     tech: ["Next.js", "Supabase", "Stripe", "Resend"],
     status: "Live",
-    featured: true,
+    featured: false,
   },
   {
     name: "Simpler Infographics",
     url: "https://simplerinfographics.com",
     description:
-      "AI-powered PDF to infographic converter. Transform documents into stunning, print-ready infographics in seconds — Executive, Visual, or Minimal styles.",
+      "Drop in a PDF, get a print-ready infographic. Three output styles — pick the one that fits the audience.",
     tech: ["Next.js", "OpenAI", "Vercel"],
     status: "Live",
     featured: false,
@@ -178,7 +185,7 @@ export const products = [
     name: "Simpler Outreach",
     url: "https://simpleroutreach.com",
     description:
-      "AI-powered cold email tool that writes personalised outreach at scale. Built on Claude Haiku for speed and efficiency.",
+      "Cold email that doesn't read like cold email. Personalised at scale using Claude Haiku — fast enough to not be annoying.",
     tech: ["Node.js", "OpenRouter", "Resend", "Stripe"],
     status: "Live",
     featured: false,
@@ -187,7 +194,7 @@ export const products = [
     name: "Simpler Disputes",
     url: "https://simplerdisputes.com",
     description:
-      "Automated dispute letter generator for consumers. Turn a frustrating chargeback process into a two-minute task.",
+      "Chargeback dispute letters, generated. The process is tedious by design — this makes it take two minutes instead of two hours.",
     tech: ["HTML", "Vercel", "Stripe"],
     status: "Live",
     featured: false,
@@ -198,7 +205,7 @@ export const otherProjects = [
   {
     name: "Health Trend Keeper",
     description:
-      "Web app that tracks health metrics by extracting data from medical reports and visualising trends over time.",
+      "Pulls health metrics out of medical report PDFs and charts them over time. Built it after getting tired of manually logging numbers from lab results.",
     tech: ["React", "OpenAI", "TypeScript", "Tailwind"],
     github: "https://github.com/Prem95/health-trend-keeper",
     external: null,
@@ -206,7 +213,7 @@ export const otherProjects = [
   {
     name: "Face Recognition System",
     description:
-      "Production-grade face recognition pipeline with real-time detection, embedding storage, and REST API.",
+      "End-to-end face recognition pipeline — detection, embedding storage, REST API. Reusable reference implementation from my eKYC work.",
     tech: ["TensorFlow", "OpenCV", "Keras", "FastAPI"],
     github: "https://github.com/Prem95",
     external: null,
@@ -214,7 +221,7 @@ export const otherProjects = [
   {
     name: "Overcooking",
     description:
-      "Browser-based 3D cooking game inspired by Overcooked, built with Three.js. Features 3D kitchen environment with interactive stations.",
+      "A browser Overcooked clone in Three.js. 3D kitchen, interactive stations, multiplayer chaos. Built it to learn WebGL.",
     tech: ["Three.js", "Node.js", "JavaScript"],
     github: "https://github.com/Prem95/Overcooking",
     external: null,
@@ -222,7 +229,7 @@ export const otherProjects = [
   {
     name: "Catering Chatbot",
     description:
-      "Catering order chatbot for Caterspot using LangChain and OpenAI. Handles order flow end-to-end.",
+      "Order-taking chatbot for Caterspot. Handles the full flow — menu, quantities, delivery — so staff don't have to repeat the same questions.",
     tech: ["LangChain", "OpenAI", "React", "Node.js"],
     github: null,
     external: null,

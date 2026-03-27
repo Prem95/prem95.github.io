@@ -7,38 +7,38 @@ export default function Contact() {
   const ref = useFadeUp<HTMLDivElement>(0.1);
 
   return (
-    <section id="contact" className="py-16 sm:py-20 lg:py-28">
+    <section id="contact" className="py-8 sm:py-12 lg:py-14">
       <div ref={ref} className="max-w-xl">
         <span className="section-label">Contact</span>
 
         <h2
-          className="mb-5"
+          className="mb-3 sm:mb-4"
           style={{
             fontFamily: "var(--font-sans)",
-            fontSize: "clamp(2.2rem, 6vw, 3.2rem)",
+            fontSize: "clamp(1.85rem, 7vw, 3.2rem)",
             fontWeight: 800,
-            fontStyle: "italic",
+            
             color: "var(--text-1)",
             letterSpacing: "-0.04em",
-            lineHeight: 0.92,
+            lineHeight: 1,
           }}
         >
           Get in touch<br />
           <span style={{ color: "var(--text-4)" }}>let&apos;s build something</span>
         </h2>
 
-        <p className="text-base leading-relaxed mb-10 mt-6" style={{ color: "var(--text-2)" }}>
+        <p className="text-sm sm:text-base leading-relaxed mb-6 sm:mb-8 mt-3 sm:mt-4" style={{ color: "var(--text-2)" }}>
           I&apos;m open to consulting engagements and product partnerships. Whether
           you want to talk about AI systems, explore a collaboration, or just
           say hello — reach out.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
           <a
             href={`mailto:${config.email}`}
             className="inline-flex items-center justify-center gap-2 text-sm font-medium transition-all duration-150"
             style={{
-              padding: "0.8rem 2rem",
+              padding: "0.75rem 2rem",
               background: "var(--accent)",
               color: "white",
             }}
@@ -60,7 +60,7 @@ export default function Contact() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 text-sm font-medium transition-all duration-200"
             style={{
-              padding: "0.8rem 2rem",
+              padding: "0.75rem 2rem",
               border: "1px solid var(--border)",
               color: "var(--text-2)",
             }}
