@@ -14,6 +14,26 @@ Recruiters, potential clients, collaborators, and fellow engineers who land on t
 - **Reference feel**: Editorial / typographic-first — think Stripe Docs meets a personal portfolio
 - **Motion**: Subtle — fade-up on scroll (IntersectionObserver + CSS), hover underlines, no distracting motion
 
+### Section Heading Pattern (extracted from Hiregents/Synapse)
+Every major section uses this exact 3-part structure:
+```
+<span className="section-label">Eyebrow label</span>
+<h2 className="section-title">
+  Primary bold line<br />
+  <span className="dim">Secondary faded line</span>
+</h2>
+```
+- **Eyebrow**: `font-mono`, `0.625rem`, `letter-spacing: 0.25em`, `text-transform: uppercase`, `color: var(--text-4)`
+- **Title**: `font-sans`, `font-weight: 800`, `font-style: italic`, `clamp(2.2rem, 6vw, 3.2rem)`, `line-height: 0.92`, `letter-spacing: -0.04em`
+- **Dim span**: `color: var(--text-4)` — fades the secondary line to ~40% opacity
+- Applied to: About, Experience, Products, Contact sections
+
+### Copy rules (from Hiregents)
+- No AI slop ("seamlessly", "empower", "leverage", "autonomous intelligence")
+- No negative parallelisms, no em dash overuse
+- Button labels: plain verbs ("Send an email", "Download", "Visit site")
+- Conversational, not corporate
+
 ### Design Principles
 1. **Contrast does the work** — rely on type weight, size hierarchy, and whitespace rather than color or decoration
 2. **Content first** — every pixel should serve information, not aesthetics for its own sake

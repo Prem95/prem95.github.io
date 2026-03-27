@@ -152,7 +152,7 @@ export default function Chat() {
           onChange={(e) => setInput(e.target.value)}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
-          placeholder={hasMessages ? "Ask a follow-up..." : "Ask about my work, stack, or experience..."}
+          placeholder={hasMessages ? "Ask a follow-up..." : "Ask about my work or experience..."}
           className="flex-1 text-sm bg-transparent outline-none"
           style={{
             color: "var(--text-1)",
@@ -163,7 +163,7 @@ export default function Chat() {
         <button
           type="submit"
           disabled={isLoading || !input.trim()}
-          className="shrink-0 w-8 h-8 flex items-center justify-center transition-all duration-200"
+          className="shrink-0 w-9 h-9 flex items-center justify-center transition-all duration-200"
           style={{
             background: input.trim() ? "var(--text-1)" : "var(--border)",
             color: "var(--bg)",

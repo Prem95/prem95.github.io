@@ -63,7 +63,7 @@ export default function MobileNav() {
           onClick={() => setOpen(!open)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          className="flex flex-col gap-1.5 p-2.5"
+          className="flex flex-col gap-1.5 p-3 -mr-1"
         >
           {[0, 1, 2].map((idx) => (
             <span
@@ -84,14 +84,14 @@ export default function MobileNav() {
 
       {open && (
         <nav
-          className="px-6 py-8 flex flex-col items-center gap-5"
+          className="px-6 py-6 flex flex-col items-center gap-2"
           style={{ background: SIDEBAR_BG }}
         >
           {navItems.map((item, i) => (
             <button
               key={item.id}
               onClick={() => handleNav(item.id)}
-              className="flex flex-col items-center gap-0.5 transition-colors"
+              className="flex flex-col items-center gap-0.5 transition-colors w-full py-3 min-h-[48px] justify-center"
               style={{ color: activeId === item.id ? ACCENT : TEXT_LO }}
             >
               <span

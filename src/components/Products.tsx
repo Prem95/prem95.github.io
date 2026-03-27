@@ -27,14 +27,17 @@ export default function Products() {
   const [featured, ...rest] = products;
 
   return (
-    <section id="products" className="py-24 lg:py-28">
+    <section id="products" className="py-16 sm:py-20 lg:py-28">
       <div>
         {/* Section header */}
         <div ref={headerRef}>
           <div className="section-rule" data-num="03">
             <div>
-              <span className="section-label">03.</span>
-              <h2 className="section-title">Things I&apos;ve Built</h2>
+              <span className="section-label">Products</span>
+              <h2 className="section-title">
+                Things I&apos;ve built<br />
+                <span className="dim">and shipped to real users</span>
+              </h2>
             </div>
           </div>
         </div>
@@ -46,7 +49,7 @@ export default function Products() {
             href={featured.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="card-lift group flex flex-col sm:flex-row gap-6 sm:gap-10 p-8 mb-5"
+            className="card-lift group flex flex-col sm:flex-row gap-5 sm:gap-10 p-5 sm:p-8 mb-5"
             style={{
               background: "var(--accent)",
               border: "1px solid var(--accent)",
@@ -123,14 +126,14 @@ export default function Products() {
           </a>
 
           {/* Two smaller products side by side */}
-          <div className="grid sm:grid-cols-2 gap-5 mb-14">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 mb-10 sm:mb-14">
             {rest.map((product) => (
               <a
                 key={product.name}
                 href={product.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card-lift group flex flex-col p-6"
+                className="card-lift group flex flex-col p-5 sm:p-6"
                 style={{
                   background: "var(--surface)",
                   border: "1px solid var(--border)",

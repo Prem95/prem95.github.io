@@ -11,19 +11,22 @@ export default function Experience() {
   const ref = useFadeUp<HTMLDivElement>(0.04);
 
   return (
-    <section id="experience" className="py-24 lg:py-28">
+    <section id="experience" className="py-16 sm:py-20 lg:py-28">
       <div ref={ref}>
         {/* Section header */}
         <div className="section-rule" data-num="02">
           <div>
-            <span className="section-label">02.</span>
-            <h2 className="section-title">Where I&apos;ve Worked</h2>
+            <span className="section-label">Experience</span>
+            <h2 className="section-title">
+              Where I&apos;ve worked<br />
+              <span className="dim">and what I shipped</span>
+            </h2>
           </div>
         </div>
 
         {/* Summary bar */}
         <div
-          className="flex flex-wrap items-center gap-6 mb-10 pb-8"
+          className="flex flex-wrap items-center gap-6 mb-6 sm:mb-10 pb-6 sm:pb-8"
           style={{ borderBottom: "1px solid var(--border-light)" }}
         >
           <div>

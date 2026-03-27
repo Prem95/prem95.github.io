@@ -86,8 +86,8 @@ export default function Sidebar() {
                   <li key={item.id}>
                     <a
                       href={`#${item.id}`}
-                      className="flex items-center gap-3.5 py-2 text-xs uppercase tracking-widest font-medium transition-all duration-200 group"
-                      style={{ color: active ? "var(--sb-hi)" : "var(--sb-lo)" }}
+                      className="flex items-center gap-3.5 py-2 uppercase font-medium transition-all duration-200 group"
+                      style={{ fontSize: "0.625rem", letterSpacing: "0.25em", color: active ? "var(--sb-hi)" : "var(--sb-lo)" }}
                     >
                       <span
                         className="block h-px transition-all duration-300"

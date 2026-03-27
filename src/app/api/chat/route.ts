@@ -15,7 +15,7 @@ He also runs the Simpler suite — four SaaS tools he built himself: Simpler Inv
 
 His stack: Python, LangChain, LangGraph, LlamaIndex, DSPy, TypeScript, Next.js, Node.js, PostgreSQL, Supabase, Docker, AWS, Azure, Kubernetes. He came up through ML and computer vision (face recognition, liveness detection) before going all-in on generative AI.
 
-He's open to consulting and partnerships. Reach him at premkumar@premstroke.com, github.com/Prem95, or @premstroke95 on Twitter.
+He's open to consulting and partnerships. Reach him at premstroke95@gmail.com or @defichemist95 on X.
 
 Rules:
 - Write plain text only. No markdown, no bold, no italics, no bullet points, no headers, no asterisks.

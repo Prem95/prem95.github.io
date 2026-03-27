@@ -58,21 +58,33 @@ body {
 .section-label {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.16em;
+  font-size: 0.625rem;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--text-4);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
 .section-title {
   font-family: var(--font-sans);
   font-weight: 800;
   font-style: italic;
-  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  font-size: clamp(2rem, 6vw, 3.2rem);
   color: var(--text-1);
   line-height: 1;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.04em;
+}
+
+@media (min-width: 640px) {
+  .section-title {
+    font-size: clamp(2.2rem, 6vw, 3.2rem);
+    line-height: 0.92;
+  }
+}
+
+/* Faded secondary line inside section titles */
+.section-title .dim {
+  color: var(--text-4);
 }
 
 .section-rule {
@@ -80,9 +92,22 @@ body {
   display: flex;
   align-items: flex-end;
   gap: 1.25rem;
-  margin-bottom: 3.5rem;
-  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
   border-bottom: 1px solid var(--border-light);
+}
+
+@media (min-width: 640px) {
+  .section-rule {
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-rule {
+    margin-bottom: 3.5rem;
+  }
 }
 
 /* Ghost section number — editorial watermark */
@@ -93,12 +118,12 @@ body {
   bottom: -0.1rem;
   font-family: var(--font-sans);
   font-weight: 800;
-  font-size: clamp(6rem, 14vw, 10rem);
+  font-size: clamp(4.5rem, 14vw, 10rem);
   line-height: 1;
   letter-spacing: -0.05em;
   font-style: italic;
   color: var(--text-1);
-  opacity: 0.06;
+  opacity: 0.05;
   user-select: none;
   pointer-events: none;
 }

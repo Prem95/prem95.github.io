@@ -29,11 +29,11 @@ export default function Hero() {
     <section
       id="hero"
       className="flex flex-col justify-center"
-      style={{ minHeight: "calc(100svh - 0px)", paddingTop: "2rem", paddingBottom: "4rem" }}
+      style={{ minHeight: "calc(100svh - 56px)", paddingTop: "2rem", paddingBottom: "3rem" }}
     >
       <div ref={ref}>
         {/* Status — tight, understated */}
-        <div className="h-item flex items-center gap-3 mb-16">
+        <div className="h-item flex items-center gap-3 mb-8 sm:mb-14">
           <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
             <span
               className="animate-ping absolute inline-flex h-full w-full opacity-75"
@@ -45,8 +45,13 @@ export default function Hero() {
             />
           </span>
           <span
-            className="text-xs tracking-widest uppercase"
-            style={{ color: "var(--text-3)", fontFamily: "var(--font-mono)" }}
+            className="uppercase"
+            style={{
+              color: "var(--text-3)",
+              fontFamily: "var(--font-mono)",
+              fontSize: "0.625rem",
+              letterSpacing: "0.25em",
+            }}
           >
             {config.availability}
           </span>
@@ -54,7 +59,7 @@ export default function Hero() {
 
         {/* Name — the unavoidable moment */}
         <h1
-          className="h-item leading-none mb-6"
+          className="h-item mb-6"
           style={{
             fontFamily: "var(--font-sans)",
             fontSize: "clamp(3.2rem, 13vw, 10rem)",
@@ -62,6 +67,7 @@ export default function Hero() {
             fontStyle: "italic",
             color: "var(--text-1)",
             letterSpacing: "-0.045em",
+            lineHeight: 0.92,
           }}
         >
           Prem<br />Kumar.
@@ -69,7 +75,7 @@ export default function Hero() {
 
         {/* Role — extreme weight contrast against the name */}
         <h2
-          className="h-item mb-16"
+          className="h-item mb-10 sm:mb-16"
           style={{
             fontFamily: "var(--font-sans)",
             fontSize: "clamp(1.1rem, 2.8vw, 1.5rem)",
@@ -94,12 +100,12 @@ export default function Hero() {
         </h2>
 
         {/* Chat — the hero interaction */}
-        <div className="h-item mb-12" style={{ maxWidth: "520px" }}>
+        <div className="h-item mb-8 sm:mb-12 w-full" style={{ maxWidth: "520px" }}>
           <Chat />
         </div>
 
         {/* Minimal CTAs — text links, not buttons */}
-        <div className="h-item flex items-center gap-8">
+        <div className="h-item flex flex-wrap items-center gap-x-8 gap-y-4">
           <a
             href="#products"
             className="text-xs uppercase tracking-widest link-grow transition-colors duration-150"
