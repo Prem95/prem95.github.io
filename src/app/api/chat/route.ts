@@ -43,7 +43,7 @@ export async function POST(req: Request) {
   const converted = convertMessages(messages);
 
   const result = streamText({
-    model: openrouter.chat("google/gemini-2.5-flash"),
+    model: openrouter.chat("qwen/qwen3.6-plus:free"),
     system: SYSTEM_PROMPT,
     messages: converted,
     maxOutputTokens: 300,
