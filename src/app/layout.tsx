@@ -19,19 +19,37 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${config.name} — AI Engineer`,
+  metadataBase: new URL(config.siteUrl),
+  title: `${config.name} — AI Engineer · Agentic AI, LangGraph & RAG`,
   description: config.tagline,
+  alternates: { canonical: "/" },
+  keywords: [
+    "Prem Kumar",
+    "AI Engineer",
+    "Agentic AI",
+    "LangGraph",
+    "RAG",
+    "Multi-Agent Orchestration",
+    "LLM Engineering",
+    "Machine Learning Engineer",
+    "Claude Code",
+    "AI Agents",
+  ],
+  authors: [{ name: config.name, url: config.siteUrl }],
+  creator: config.name,
   openGraph: {
-    title: config.name,
+    title: `${config.name} — AI Engineer`,
     description: config.tagline,
-    url: "https://premkumar95.com",
+    url: config.siteUrl,
     siteName: config.name,
-    type: "website",
+    type: "profile",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: config.name,
+    title: `${config.name} — AI Engineer`,
     description: config.tagline,
+    creator: "@premstroke",
   },
   robots: { index: true, follow: true },
 };
