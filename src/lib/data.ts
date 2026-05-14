@@ -1,8 +1,9 @@
 export const config = {
   name: "Prem Kumar",
   role: "AI Engineer & Builder",
+  siteUrl: "https://premkumar95.com",
   tagline:
-    "Building agentic AI for insurance by day, shipping SaaS products by night.",
+    "AI Engineer building agentic AI for insurance — LangGraph, RAG, multi-agent orchestration. Indie builder shipping the Simpler SaaS suite.",
   email: "premstroke95@gmail.com",
   github: "https://github.com/Prem95",
   twitter: "https://x.com/premstroke",
@@ -14,8 +15,8 @@ export const config = {
 
 export const about = {
   bio: [
-    "At Ancileo I build the agents that process travel insurance claims end-to-end. LangGraph, RAG over policy docs, runs on Azure. 80% of claims go through without a human.",
-    "On the side: the Simpler suite (invoices, outreach, disputes, infographics). Scratch-my-own-itch projects that became actual products. I like systems that are boring to operate.",
+    "Senior AI Engineer with 8 years building AI agents, multi-agent orchestration, and agentic pipelines for enterprise and B2B clients in insurance and finance. Strong in LangGraph orchestration, RAG, tool-use, and Claude Code-driven development. Shipped agentic systems from prototype to 24/7 production.",
+    "On the side I ship my own products. Hiregents is an AI agent marketplace for Telegram. Paste your keys, an agent boots on a private VPS in about five minutes. SaaSClips turns a URL into a launch video in sixty seconds. I like systems that are boring to operate.",
   ],
   skills: [
     { name: "Python" },
@@ -69,6 +70,22 @@ export const experience = [
       "Designed multi-step agent workflows with stateful orchestration, tool-use, and human-in-the-loop checkpoints.",
     ],
     tech: ["LangGraph", "RAG", "Azure Kubernetes", "Claude Code"],
+  },
+  {
+    company: "Chromia",
+    url: "https://chromia.com",
+    role: "Lead AI Developer",
+    location: "Sweden (Remote)",
+    range: "November 2023 — February 2024",
+    start: 2023,
+    end: 2024,
+    description: [
+      "Designed and maintained Chromia's AI backend infrastructure across projects.",
+      "Set up backend servers, services, and open-source projects for AI and robotics work.",
+      "Kept services running and aligned to proper frameworks.",
+      "Built quick proofs of concept and MVPs.",
+    ],
+    tech: ["Web3", "Vector Database", "Rell"],
   },
   {
     company: "Azara AI",
@@ -138,6 +155,17 @@ export const products = [
     tech: ["AI Agents", "Telegram Bot API", "Infrastructure"],
     status: "Live",
     featured: true,
+    image: "/og/hiregents.png",
+  },
+  {
+    name: "SaaSClips",
+    url: "https://saasclips.com",
+    description:
+      "Launch-video generator for SaaS founders. Paste a URL, get a square MP4 in sixty seconds.",
+    tech: ["Next.js", "FFmpeg", "AI Voiceover"],
+    status: "Live",
+    featured: false,
+    image: "/og/saasclips.png",
   },
   {
     name: "Simpler Invoices",
@@ -147,6 +175,7 @@ export const products = [
     tech: ["Next.js", "Supabase", "Stripe", "Resend"],
     status: "Live",
     featured: false,
+    image: "/og/simpler-invoices.png",
   },
   {
     name: "Simpler Infographics",
@@ -156,6 +185,7 @@ export const products = [
     tech: ["Next.js", "OpenAI", "Vercel"],
     status: "Live",
     featured: false,
+    image: null,
   },
   {
     name: "Simpler Outreach",
@@ -165,15 +195,17 @@ export const products = [
     tech: ["Node.js", "OpenRouter", "Resend", "Stripe"],
     status: "Live",
     featured: false,
+    image: "/og/simpler-outreach.png",
   },
   {
     name: "Simpler Disputes",
     url: "https://simplerdisputes.com",
     description:
-      "Chargeback dispute letters, generated. The process is tedious by design — this makes it take two minutes instead of two hours.",
+      "Chargeback dispute letters, generated. The process is tedious by design. This makes it take two minutes instead of two hours.",
     tech: ["HTML", "Vercel", "Stripe"],
     status: "Live",
     featured: false,
+    image: "/og/simpler-disputes.png",
   },
 ];
 
@@ -189,7 +221,7 @@ export const otherProjects = [
   {
     name: "Face Recognition System",
     description:
-      "End-to-end face recognition pipeline — detection, embedding storage, REST API. Reusable reference implementation from my eKYC work.",
+      "End-to-end face recognition pipeline: detection, embedding storage, REST API. A reusable reference implementation from my eKYC work.",
     tech: ["TensorFlow", "OpenCV", "Keras", "FastAPI"],
     github: "https://github.com/Prem95",
     external: null,
@@ -205,7 +237,7 @@ export const otherProjects = [
   {
     name: "Catering Chatbot",
     description:
-      "Order-taking chatbot for Caterspot. Handles the full flow — menu, quantities, delivery — so staff don't have to repeat the same questions.",
+      "Order-taking chatbot for Caterspot. Handles the full flow (menu, quantities, delivery) so staff don't repeat the same questions.",
     tech: ["LangChain", "OpenAI", "React", "Node.js"],
     github: null,
     external: null,
