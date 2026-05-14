@@ -5,7 +5,6 @@ import { ArrowDownRight, FileText } from "lucide-react";
 import type { PointerEvent, ReactNode } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import Chat from "@/components/Chat";
 import ResumeDrawer from "@/components/ResumeDrawer";
 import { config } from "@/lib/data";
 
@@ -55,8 +54,8 @@ export default function Hero() {
       >
         <Badge variant="outline" size="lg" className="gap-2 font-mono">
           <span className="relative flex size-1.5">
-            <span className="absolute inline-flex size-full animate-ping rounded-full bg-foreground opacity-60" />
-            <span className="relative inline-flex size-1.5 rounded-full bg-foreground" />
+            <span className="absolute inline-flex size-full animate-ping rounded-full bg-live opacity-70" />
+            <span className="relative inline-flex size-1.5 rounded-full bg-live" />
           </span>
           <span className="tracking-[0.18em] uppercase text-[0.6rem]">
             {config.availability}
@@ -91,35 +90,17 @@ export default function Hero() {
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: EASE, delay: 0.5 }}
-        className="mt-6 max-w-md text-lg font-light leading-relaxed text-muted-foreground sm:text-xl"
+        className="mt-6 max-w-lg text-lg font-light leading-relaxed text-muted-foreground sm:text-xl"
       >
-        AI Engineer building agentic systems at{" "}
-        <a
-          href="https://ancileo.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="link-underline font-medium text-foreground"
-        >
-          Ancileo
-        </a>{" "}
-        — and shipping SaaS products on the side.
+        AI Engineer shipping agentic systems to production — LangGraph, RAG,
+        Claude Code. Indie SaaS on the side.
       </motion.h2>
-
-      {/* chat */}
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: EASE, delay: 0.65 }}
-        className="mt-8 w-full max-w-lg"
-      >
-        <Chat />
-      </motion.div>
 
       {/* CTAs */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: EASE, delay: 0.78 }}
+        transition={{ duration: 0.7, ease: EASE, delay: 0.62 }}
         className="mt-8 flex flex-wrap items-center gap-2.5"
       >
         <Button
