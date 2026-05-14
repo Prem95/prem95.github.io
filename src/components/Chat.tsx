@@ -86,7 +86,7 @@ export default function Chat() {
 
       <form
         onSubmit={handleSubmit}
-        className="flex w-full items-center gap-3 rounded-full border py-[0.55rem] pr-[0.55rem] pl-4 transition-all"
+        className="flex w-full items-center gap-3 rounded-full border py-[0.55rem] pr-[0.55rem] pl-4 transition-[background-color,border-color,box-shadow] duration-300"
         style={{
           background: focused ? "var(--card)" : "transparent",
           borderColor: focused ? "var(--ring)" : "var(--border)",
@@ -110,7 +110,7 @@ export default function Chat() {
           type="submit"
           disabled={isLoading || !input.trim()}
           aria-label="Send"
-          className="flex size-9 shrink-0 items-center justify-center rounded-full transition-all"
+          className="flex size-9 shrink-0 items-center justify-center rounded-full transition-[background-color,transform,opacity] duration-200 active:scale-[0.96]"
           style={{
             background: input.trim() ? "var(--foreground)" : "var(--border)",
             color: "var(--background)",

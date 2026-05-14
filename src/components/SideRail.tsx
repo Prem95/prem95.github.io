@@ -34,7 +34,7 @@ export default function SideRail() {
         <a
           href="#hero"
           aria-label="Home"
-          className="mb-9 inline-flex size-10 items-center justify-center border border-foreground text-base font-extrabold transition-colors hover:bg-foreground hover:text-background"
+          className="mb-9 inline-flex size-10 items-center justify-center border border-foreground text-base font-extrabold transition-[background-color,color,transform] duration-200 hover:bg-foreground hover:text-background active:scale-[0.96]"
         >
           P
         </a>
@@ -95,7 +95,7 @@ export default function SideRail() {
       </div>
 
       <div className="flex flex-col gap-5">
-        <div className="flex items-center gap-3">
+        <div className="-ml-2 flex items-center gap-1">
           {socials.map(({ label, href, Icon }) => (
             <a
               key={label}
@@ -103,7 +103,7 @@ export default function SideRail() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="text-muted-foreground transition-colors hover:text-foreground"
+              className="inline-flex size-10 items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
             >
               <Icon className="size-[1.05rem]" />
             </a>

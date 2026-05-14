@@ -128,6 +128,10 @@
     border-radius: 4px;
   }
   ::selection { background: var(--foreground); color: var(--background); }
+
+  /* Geometric display type wraps better balanced; body avoids orphans */
+  h1, h2, h3, .display { text-wrap: balance; }
+  p { text-wrap: pretty; }
 }
 
 /* ───────────────────────────────────────────
@@ -143,11 +147,11 @@
   color: var(--muted-foreground);
 }
 
-/* Display title */
+/* Display title — Jost is geometric, so it tightens less than a grotesque */
 .display {
   font-weight: 800;
-  letter-spacing: -0.045em;
-  line-height: 0.92;
+  letter-spacing: -0.03em;
+  line-height: 0.94;
 }
 
 /* Outlined / ghost numerals */

@@ -55,7 +55,7 @@ export default function TopBar() {
           {[0, 1, 2].map((i) => (
             <span
               key={i}
-              className="block h-px bg-foreground transition-all duration-300"
+              className="block h-px bg-foreground transition-[width,opacity,transform] duration-300"
               style={{
                 width: i === 1 ? (open ? 0 : 14) : 20,
                 opacity: i === 1 && open ? 0 : 1,

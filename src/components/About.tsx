@@ -62,7 +62,7 @@ export default function About({ stats }: { stats: GitHubStats | null }) {
                     href={l.href}
                     target={l.href.startsWith("mailto") ? undefined : "_blank"}
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-between text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                    className="group flex items-center justify-between py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                   >
                     <span className="link-underline">{l.label}</span>
                     <ArrowUpRight className="size-3.5 opacity-0 transition-opacity group-hover:opacity-100" />

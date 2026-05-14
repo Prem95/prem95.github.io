@@ -27,7 +27,7 @@ export default function Products() {
           render={
             <a href={featured.url} target="_blank" rel="noopener noreferrer" />
           }
-          className="group mb-4 flex-row flex-wrap gap-6 overflow-hidden p-6 transition-all hover:-translate-y-1 hover:border-foreground sm:p-8"
+          className="group mb-4 flex-row flex-wrap gap-6 overflow-hidden p-6 transition-[transform,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-foreground sm:p-8"
         >
           <div className="dot-grid pointer-events-none absolute inset-0 opacity-40" />
           <div className="relative flex-1 basis-72">
@@ -70,7 +70,7 @@ export default function Products() {
                   rel="noopener noreferrer"
                 />
               }
-              className="group h-full gap-0 p-5 transition-all hover:-translate-y-1 hover:border-foreground"
+              className="group h-full gap-0 p-5 transition-[transform,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-foreground"
             >
               <div className="flex items-start justify-between">
                 <Badge size="sm">{product.status}</Badge>
@@ -130,7 +130,7 @@ export default function Products() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${proj.name} on GitHub`}
-                    className="mt-0.5 shrink-0 text-muted-foreground transition-colors hover:text-foreground"
+                    className="-m-2 inline-flex size-10 shrink-0 items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
                   >
                     <Github className="size-[1.05rem]" />
                   </a>

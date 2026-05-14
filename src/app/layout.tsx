@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, DM_Mono } from "next/font/google";
+import { Jost, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { config } from "@/lib/data";
 
-const jakarta = Plus_Jakarta_Sans({
+// Jost — a geometric sans in the Futura lineage. Distinctive, not a default.
+const jost = Jost({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const dmMono = DM_Mono({
@@ -39,7 +40,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${jakarta.variable} ${dmMono.variable}`}>
+    <html lang="en" className={`${jost.variable} ${dmMono.variable}`}>
       <body className="antialiased isolate relative">{children}</body>
     </html>
   );
