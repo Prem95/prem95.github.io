@@ -45,7 +45,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-[88vh] flex-col justify-center py-16 sm:py-20"
+      className="relative flex flex-col pt-12 pb-20 sm:pt-20 sm:pb-28"
     >
       {/* status */}
       <motion.div

@@ -19,7 +19,6 @@ export default function SiteFooter() {
         >
           {config.name}
         </a>
-        . Built with coss UI.
       </p>
       <div className="flex items-center gap-5">
         {links.map((l) => (

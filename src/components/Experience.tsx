@@ -39,7 +39,7 @@ export default function Experience() {
               {experience.length}
             </span>
             <span className="text-xs text-muted-foreground">
-              roles, from Dyson to Ancileo
+              roles, from Monash to Ancileo
             </span>
           </div>
         </div>
