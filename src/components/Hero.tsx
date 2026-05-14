@@ -1,136 +1,149 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { config } from "@/lib/data";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import { ArrowDownRight, FileText } from "lucide-react";
+import type { PointerEvent, ReactNode } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import Chat from "@/components/Chat";
+import ResumeDrawer from "@/components/ResumeDrawer";
+import { config } from "@/lib/data";
+
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+function Magnetic({ children }: { children: ReactNode }) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const sx = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
+  const sy = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
+
+  const onMove = (e: PointerEvent<HTMLDivElement>) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    x.set((e.clientX - (r.left + r.width / 2)) * 0.12);
+    y.set((e.clientY - (r.top + r.height / 2)) * 0.18);
+  };
+  const reset = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      onPointerMove={onMove}
+      onPointerLeave={reset}
+      style={{ x: sx, y: sy }}
+      className="w-fit"
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+const lines = ["Prem", "Kumar."];
 
 export default function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const children = el.querySelectorAll<HTMLElement>(".h-item");
-    children.forEach((child, i) => {
-      child.style.opacity = "0";
-      child.style.transform = "translateY(32px)";
-      child.style.transition = `opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)`;
-      child.style.transitionDelay = `${i * 140}ms`;
-      requestAnimationFrame(() =>
-        requestAnimationFrame(() => {
-          child.style.opacity = "1";
-          child.style.transform = "none";
-        })
-      );
-    });
-  }, []);
-
   return (
     <section
       id="hero"
-      className="flex flex-col justify-end"
-      style={{ minHeight: "auto", paddingTop: "1rem", paddingBottom: "1rem" }}
+      className="relative flex min-h-[88vh] flex-col justify-center py-16 sm:py-20"
     >
-      <div ref={ref}>
-        {/* Status */}
-        <div className="h-item flex items-center gap-2.5 mb-4 sm:mb-10">
-          <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
-            <span
-              className="animate-ping absolute inline-flex h-full w-full opacity-75"
-              style={{ background: "var(--accent)" }}
-            />
-            <span
-              className="relative inline-flex h-1.5 w-1.5"
-              style={{ background: "var(--accent)" }}
-            />
+      {/* status */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: EASE }}
+      >
+        <Badge variant="outline" size="lg" className="gap-2 font-mono">
+          <span className="relative flex size-1.5">
+            <span className="absolute inline-flex size-full animate-ping rounded-full bg-foreground opacity-60" />
+            <span className="relative inline-flex size-1.5 rounded-full bg-foreground" />
           </span>
-          <span
-            className="uppercase"
-            style={{
-              color: "var(--text-3)",
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.6rem",
-              letterSpacing: "0.25em",
-            }}
-          >
+          <span className="tracking-[0.18em] uppercase text-[0.6rem]">
             {config.availability}
           </span>
-        </div>
+        </Badge>
+      </motion.div>
 
-        {/* Name */}
-        <h1
-          className="h-item mb-3 sm:mb-5"
-          style={{
-            fontFamily: "var(--font-sans)",
-            fontSize: "clamp(2.8rem, 14vw, 10rem)",
-            fontWeight: 800,
-            
-            color: "var(--text-1)",
-            letterSpacing: "-0.045em",
-            lineHeight: 0.92,
-          }}
-        >
-          Prem<br />Kumar.
-        </h1>
-
-        {/* Role */}
-        <h2
-          className="h-item mb-6 sm:mb-10"
-          style={{
-            fontFamily: "var(--font-sans)",
-            fontSize: "clamp(1rem, 2.8vw, 1.5rem)",
-            fontWeight: 300,
-            color: "var(--text-3)",
-            letterSpacing: "0.01em",
-            lineHeight: 1.5,
-            maxWidth: "480px",
-          }}
-        >
-          AI Engineer building agentic systems at{" "}
-          <a
-            href="https://ancileo.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link-grow"
-            style={{ color: "var(--text-1)", fontWeight: 500 }}
-          >
-            Ancileo
-          </a>
-          {" "}and shipping SaaS products that make work simpler.
-        </h2>
-
-        {/* Chat */}
-        <div className="h-item mb-5 sm:mb-8 w-full" style={{ maxWidth: "520px" }}>
-          <Chat />
-        </div>
-
-        {/* CTAs — horizontal scroll on mobile for clean flow */}
-        <div
-          className="h-item flex items-center gap-x-6 sm:gap-x-8 gap-y-3 overflow-x-auto no-scrollbar"
-          style={{ WebkitOverflowScrolling: "touch" }}
-        >
-          {[
-            { href: "#products", label: "Work", primary: true },
-            { href: "#experience", label: "Experience" },
-            { href: config.resume, label: "Resume", download: true },
-            { href: "#contact", label: "Contact" },
-          ].map(({ href, label, primary, download }) => (
-            <a
-              key={label}
-              href={href}
-              {...(download ? { download: true } : {})}
-              className="text-xs uppercase tracking-widest link-grow transition-colors duration-150 whitespace-nowrap shrink-0"
-              style={{
-                fontFamily: "var(--font-mono)",
-                color: primary ? "var(--text-1)" : "var(--text-3)",
-                fontWeight: primary ? 500 : 400,
-              }}
-            >
-              {label}
-            </a>
+      {/* name */}
+      <Magnetic>
+        <h1 className="display mt-6 text-[clamp(3.4rem,15vw,11rem)]">
+          {lines.map((line, li) => (
+            <span key={line} className="block overflow-hidden">
+              <motion.span
+                className="block"
+                initial={{ y: "110%" }}
+                animate={{ y: 0 }}
+                transition={{
+                  duration: 0.9,
+                  ease: EASE,
+                  delay: 0.15 + li * 0.12,
+                }}
+              >
+                {line}
+              </motion.span>
+            </span>
           ))}
-        </div>
-      </div>
+        </h1>
+      </Magnetic>
+
+      {/* role */}
+      <motion.h2
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: EASE, delay: 0.5 }}
+        className="mt-6 max-w-md text-lg font-light leading-relaxed text-muted-foreground sm:text-xl"
+      >
+        AI Engineer building agentic systems at{" "}
+        <a
+          href="https://ancileo.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link-underline font-medium text-foreground"
+        >
+          Ancileo
+        </a>{" "}
+        — and shipping SaaS products on the side.
+      </motion.h2>
+
+      {/* chat */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: EASE, delay: 0.65 }}
+        className="mt-8 w-full max-w-lg"
+      >
+        <Chat />
+      </motion.div>
+
+      {/* CTAs */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: EASE, delay: 0.78 }}
+        className="mt-8 flex flex-wrap items-center gap-2.5"
+      >
+        <Button
+          size="lg"
+          render={
+            <a href="#products">
+              View work <ArrowDownRight data-icon="inline-end" />
+            </a>
+          }
+        />
+        <ResumeDrawer
+          trigger={
+            <Button size="lg" variant="outline">
+              <FileText data-icon="inline-start" />
+              Résumé
+            </Button>
+          }
+        />
+        <Button
+          size="lg"
+          variant="ghost"
+          render={<a href="#contact">Contact</a>}
+        />
+      </motion.div>
     </section>
   );
 }

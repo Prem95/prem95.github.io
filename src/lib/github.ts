@@ -43,7 +43,7 @@ export async function fetchGitHubStats(): Promise<GitHubStats | null> {
       const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
 
       const activeDays = new Set<string>();
-      events.forEach((event: any) => {
+      events.forEach((event: { created_at: string }) => {
         const eventDate = new Date(event.created_at);
         if (eventDate > sevenDaysAgo) {
           activeDays.add(eventDate.toDateString());

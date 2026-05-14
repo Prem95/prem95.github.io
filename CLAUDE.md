@@ -48,6 +48,19 @@ Every major section uses this exact 3-part structure:
 - TypeScript
 - `next/font` (Geist Sans + Geist Mono)
 
+### Commands
+```bash
+npm run dev       # Next.js dev server
+npm run build     # Static export build
+npm run lint      # ESLint
+vercel --prod     # Deploy
+```
+
+### Key Files
+- `app/page.tsx` — Landing with all sections
+- `app/layout.tsx` — Fonts, metadata
+- `components/` — Section components
+
 ### Sections
 1. **Hero** — name, role, tagline, two CTAs
 2. **About** — bio (AI Engineer @ Ancileo, agentic insurance, indie builder), skills

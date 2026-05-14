@@ -14,7 +14,7 @@ const dmMono = DM_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400"],
+  weight: ["300", "400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -39,10 +39,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${jakarta.variable} ${dmMono.variable} antialiased`}>
-        {children}
-      </body>
+    <html lang="en" className={`${jakarta.variable} ${dmMono.variable}`}>
+      <body className="antialiased isolate relative">{children}</body>
     </html>
   );
 }

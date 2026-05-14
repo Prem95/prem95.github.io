@@ -1,84 +1,82 @@
 "use client";
 
-import { useFadeUp } from "@/hooks/useFadeUp";
+import { ArrowUpRight, Check, Copy, Mail } from "lucide-react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { toastManager } from "@/components/ui/toast";
+import SectionHeading from "@/components/SectionHeading";
+import { Reveal } from "@/components/motion/Reveal";
 import { config } from "@/lib/data";
 
 export default function Contact() {
-  const ref = useFadeUp<HTMLDivElement>(0.1);
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = () => {
+    navigator.clipboard?.writeText(config.email);
+    setCopied(true);
+    toastManager.add({
+      title: "Email copied to clipboard",
+      description: config.email,
+      type: "success",
+    });
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
-    <section id="contact" className="py-8 sm:py-12 lg:py-14">
-      <div ref={ref} className="max-w-xl">
-        <span className="section-label">Contact</span>
+    <section
+      id="contact"
+      className="scroll-mt-20 border-t border-border py-16 sm:py-24"
+    >
+      <SectionHeading
+        num="04"
+        label="Contact"
+        title="Get in touch"
+        dim="let's build something"
+      />
 
-        <h2
-          className="mb-3 sm:mb-4"
-          style={{
-            fontFamily: "var(--font-sans)",
-            fontSize: "clamp(1.85rem, 7vw, 3.2rem)",
-            fontWeight: 800,
-            
-            color: "var(--text-1)",
-            letterSpacing: "-0.04em",
-            lineHeight: 1,
-          }}
-        >
-          Get in touch<br />
-          <span style={{ color: "var(--text-4)" }}>let&apos;s build something</span>
-        </h2>
+      <Reveal>
+        <div className="max-w-xl">
+          <p className="leading-relaxed text-muted-foreground">
+            I&apos;m open to consulting engagements and product partnerships.
+            Whether you want to talk about AI systems, explore a collaboration,
+            or just say hello — reach out.
+          </p>
 
-        <p className="text-sm sm:text-base leading-relaxed mb-6 sm:mb-8 mt-3 sm:mt-4" style={{ color: "var(--text-2)" }}>
-          I&apos;m open to consulting engagements and product partnerships. Whether
-          you want to talk about AI systems, explore a collaboration, or just
-          say hello — reach out.
-        </p>
+          <div className="mt-7 flex flex-wrap items-center gap-2.5">
+            <Button
+              size="lg"
+              render={
+                <a href={`mailto:${config.email}`}>
+                  <Mail data-icon="inline-start" />
+                  Send an email
+                </a>
+              }
+            />
+            <Button size="lg" variant="outline" onClick={copyEmail}>
+              {copied ? (
+                <Check data-icon="inline-start" />
+              ) : (
+                <Copy data-icon="inline-start" />
+              )}
+              {copied ? "Copied" : "Copy address"}
+            </Button>
+            <Button
+              size="lg"
+              variant="ghost"
+              render={
+                <a href={config.twitter} target="_blank" rel="noopener noreferrer">
+                  Twitter / X
+                  <ArrowUpRight data-icon="inline-end" />
+                </a>
+              }
+            />
+          </div>
 
-        <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
-          <a
-            href={`mailto:${config.email}`}
-            className="inline-flex items-center justify-center gap-2 text-sm font-medium transition-all duration-150"
-            style={{
-              padding: "0.75rem 2rem",
-              background: "var(--accent)",
-              color: "white",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.background = "var(--accent-mid)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.background = "var(--accent)";
-            }}
-          >
-            Send an email
-            <svg viewBox="0 0 16 16" fill="currentColor" className="w-3.5 h-3.5" aria-hidden="true">
-              <path d="M2.75 2h10.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0113.25 14H2.75A1.75 1.75 0 011 12.25v-8.5C1 2.784 1.784 2 2.75 2zm0 1.5a.25.25 0 00-.25.25V4.9l5.5 3.584 5.5-3.584V3.75a.25.25 0 00-.25-.25H2.75zm-.25 8.75c0 .138.112.25.25.25h10.5a.25.25 0 00.25-.25V6.604l-5.216 3.399a.75.75 0 01-.818 0L2.5 6.604v5.646z" />
-            </svg>
-          </a>
-          <a
-            href={config.twitter}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 text-sm font-medium transition-all duration-200"
-            style={{
-              padding: "0.75rem 2rem",
-              border: "1px solid var(--border)",
-              color: "var(--text-2)",
-            }}
-            onMouseEnter={(e) => {
-              const el = e.currentTarget as HTMLElement;
-              el.style.borderColor = "var(--accent)";
-              el.style.color = "var(--accent)";
-            }}
-            onMouseLeave={(e) => {
-              const el = e.currentTarget as HTMLElement;
-              el.style.borderColor = "var(--border)";
-              el.style.color = "var(--text-2)";
-            }}
-          >
-            Twitter / X
-          </a>
+          <p className="mt-6 font-mono text-sm text-muted-foreground">
+            {config.email}
+          </p>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

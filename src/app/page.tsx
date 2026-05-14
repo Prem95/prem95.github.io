@@ -1,39 +1,46 @@
-import MobileNav from "@/components/MobileNav";
-import ScrollProgress from "@/components/ScrollProgress";
+import { readFileSync } from "fs";
+import { join } from "path";
+import Chrome from "@/components/Chrome";
+import SideRail from "@/components/SideRail";
+import TopBar from "@/components/TopBar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
 import Products from "@/components/Products";
 import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import SiteFooter from "@/components/SiteFooter";
+import type { GitHubStats } from "@/lib/github";
+
+function loadStats(): GitHubStats | null {
+  try {
+    return JSON.parse(
+      readFileSync(join(process.cwd(), "public/github-stats.json"), "utf8"),
+    ) as GitHubStats;
+  } catch {
+    return null;
+  }
+}
 
 export default function Home() {
+  const stats = loadStats();
+
   return (
     <>
-      <ScrollProgress />
-      <MobileNav />
-
-      <main className="flex justify-center" style={{ background: "var(--bg)" }}>
-          <div
-            className="w-full px-5 sm:px-10 lg:px-14 xl:px-20"
-            style={{ maxWidth: "780px" }}
-          >
+      <Chrome />
+      <div className="mx-auto flex w-full max-w-[1200px]">
+        <SideRail />
+        <main className="min-w-0 flex-1 border-border lg:border-x">
+          <TopBar />
+          <div className="px-5 sm:px-9 lg:px-14">
             <Hero />
-            <div style={{ borderTop: "1px solid var(--border-light)" }}>
-              <About />
-            </div>
-            <div style={{ borderTop: "1px solid var(--border-light)" }}>
-              <Experience />
-            </div>
-            <div style={{ borderTop: "1px solid var(--border-light)" }}>
-              <Products />
-            </div>
-            <div style={{ borderTop: "1px solid var(--border-light)" }}>
-              <Contact />
-            </div>
-            <Footer />
+            <About stats={stats} />
+            <Experience />
+            <Products />
+            <Contact />
+            <SiteFooter />
           </div>
         </main>
+      </div>
     </>
   );
 }

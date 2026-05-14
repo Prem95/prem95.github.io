@@ -8,8 +8,8 @@ export const config = {
   twitter: "https://twitter.com/premstroke95",
   linkedin: "https://linkedin.com/in/prem-kumar",
   resume: "/resume.pdf",
+  resumeUpdated: "2026",
   availability: "Open to consulting & partnerships",
-  githubStats: null as any, // Will be populated at build time
 };
 
 export const about = {
