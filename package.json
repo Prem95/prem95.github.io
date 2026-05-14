@@ -9,10 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@ai-sdk/openai": "^3.0.41",
-    "@ai-sdk/react": "^3.0.118",
     "@base-ui/react": "^1.4.1",
-    "ai": "^6.0.116",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.37.0",
