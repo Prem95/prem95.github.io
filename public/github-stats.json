@@ -1,6 +1,13 @@
 {
   "followers": 20,
   "publicRepos": 35,
-  "contributionStreak": 2,
-  "lastUpdated": "2026-04-28T16:10:55.256Z"
+  "totalContributions": 675,
+  "totalStars": 67,
+  "yearsOnGitHub": 10,
+  "topLanguages": [
+    "TypeScript",
+    "HTML",
+    "Python"
+  ],
+  "lastUpdated": "2026-05-15T10:40:38.527Z"
 }

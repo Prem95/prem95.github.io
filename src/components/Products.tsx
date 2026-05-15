@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import { Github } from "@/components/BrandIcons";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -30,7 +31,19 @@ export default function Products() {
           className="group mb-4 flex-row flex-wrap gap-6 overflow-hidden p-6 transition-[transform,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-foreground sm:p-8"
         >
           <div className="dot-grid pointer-events-none absolute inset-0 opacity-40" />
-          <div className="relative flex-1 basis-72">
+          {featured.image && (
+            <>
+              <Image
+                src={featured.image}
+                alt=""
+                fill
+                sizes="(max-width: 1024px) 100vw, 760px"
+                className="pointer-events-none object-cover opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-card via-card/85 to-card/45 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            </>
+          )}
+          <div className="relative z-10 flex-1 basis-72">
             <div className="flex items-center gap-2.5">
               <Badge size="sm">{featured.status}</Badge>
               <span className="eyebrow">Featured</span>
@@ -42,7 +55,7 @@ export default function Products() {
               {featured.description}
             </p>
           </div>
-          <div className="relative flex shrink-0 basis-44 flex-col justify-between gap-4">
+          <div className="relative z-10 flex shrink-0 basis-44 flex-col justify-between gap-4">
             <div className="flex flex-wrap gap-1.5">
               {featured.tech.map((t) => (
                 <Badge key={t} variant="secondary" size="sm" className="font-mono">
@@ -70,27 +83,41 @@ export default function Products() {
                   rel="noopener noreferrer"
                 />
               }
-              className="group h-full gap-0 p-5 transition-[transform,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-foreground"
+              className="group h-full gap-0 overflow-hidden p-5 transition-[transform,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-foreground"
             >
-              <div className="flex items-start justify-between">
-                <Badge size="sm">{product.status}</Badge>
-                <ArrowUpRight className="size-4 text-muted-foreground transition-colors group-hover:text-foreground" />
-              </div>
-              <h3 className="mt-3 text-base font-bold tracking-tight">
-                {product.name}
-              </h3>
-              <p className="mt-1.5 flex-1 text-sm leading-relaxed text-muted-foreground">
-                {product.description}
-              </p>
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {product.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="font-mono text-[0.65rem] text-muted-foreground"
-                  >
-                    {t}
-                  </span>
-                ))}
+              {product.image && (
+                <>
+                  <Image
+                    src={product.image}
+                    alt=""
+                    fill
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    className="pointer-events-none object-cover opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-card/85 to-card/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                </>
+              )}
+              <div className="relative z-10 flex h-full flex-col">
+                <div className="flex items-start justify-between">
+                  <Badge size="sm">{product.status}</Badge>
+                  <ArrowUpRight className="size-4 text-muted-foreground transition-colors group-hover:text-foreground" />
+                </div>
+                <h3 className="mt-3 text-base font-bold tracking-tight">
+                  {product.name}
+                </h3>
+                <p className="mt-1.5 flex-1 text-sm leading-relaxed text-muted-foreground">
+                  {product.description}
+                </p>
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {product.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="font-mono text-[0.65rem] text-muted-foreground"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
             </Card>
           </StaggerItem>

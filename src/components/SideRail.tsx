@@ -39,17 +39,17 @@ export default function SideRail() {
           P
         </a>
 
-        <h1 className="text-[1.35rem] font-extrabold leading-tight tracking-tight">
+        <p className="text-[1.35rem] font-extrabold leading-tight tracking-tight text-foreground">
           {config.name}
-        </h1>
+        </p>
         <p className="mt-1 text-sm font-medium text-muted-foreground">
           {config.role}
         </p>
 
         <div className="mt-4 flex items-center gap-2">
           <span className="relative flex size-1.5">
-            <span className="absolute inline-flex size-full animate-ping rounded-full bg-foreground opacity-60" />
-            <span className="relative inline-flex size-1.5 rounded-full bg-foreground" />
+            <span className="absolute inline-flex size-full animate-ping rounded-full bg-live opacity-70" />
+            <span className="relative inline-flex size-1.5 rounded-full bg-live" />
           </span>
           <span className="eyebrow">Open to consulting</span>
         </div>

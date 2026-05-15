@@ -21,7 +21,7 @@ export default function SectionHeading({
           {num}
         </span>
         <span className="eyebrow">{label}</span>
-        <h2 className="display mt-2 text-[clamp(2rem,6vw,3.4rem)]">
+        <h2 className="section-title mt-3 text-[clamp(2rem,6vw,3.4rem)]">
           {title}
           <br />
           <span className="text-muted-foreground">{dim}</span>

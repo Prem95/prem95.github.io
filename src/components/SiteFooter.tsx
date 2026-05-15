@@ -11,12 +11,7 @@ export default function SiteFooter() {
     <footer className="flex flex-col items-start justify-between gap-3 border-t border-border py-9 sm:flex-row sm:items-center">
       <p className="text-xs text-muted-foreground">
         Designed &amp; built by{" "}
-        <a
-          href={config.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="link-underline text-foreground"
-        >
+        <a href="#hero" className="link-underline text-foreground">
           {config.name}
         </a>
       </p>
