@@ -13,8 +13,8 @@ export default function GitHubStatsDisplay({
     { value: stats.followers, label: "followers" },
     { value: stats.publicRepos, label: "repos" },
     { value: stats.totalStars, label: "stars" },
-    ...(stats.contributionStreak > 0
-      ? [{ value: stats.contributionStreak, label: "days active" }]
+    ...(stats.totalContributions > 0
+      ? [{ value: stats.totalContributions, label: "contributions" }]
       : []),
   ];
 

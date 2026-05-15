@@ -75,33 +75,39 @@ async function fetchGitHubStats() {
         (365.25 * 24 * 60 * 60 * 1000)
     );
 
-    // Fetch recent events to calculate activity
-    const eventsRes = await fetch(
-      `https://api.github.com/users/${GITHUB_USERNAME}/events/public?per_page=100`,
-      { headers }
-    );
-
-    let contributionStreak = 0;
-    if (eventsRes.ok) {
-      const events = await eventsRes.json();
-      const now = new Date();
-      const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-
-      const activeDays = new Set();
-      events.forEach((event) => {
-        const eventDate = new Date(event.created_at);
-        if (eventDate > sevenDaysAgo) {
-          activeDays.add(eventDate.toDateString());
-        }
+    // Total contributions in the past year (includes private contributions
+    // when "Include private contributions on my profile" is enabled in GitHub
+    // settings — counts the aggregate only, never the repo names).
+    let totalContributions = 0;
+    if (process.env.GITHUB_TOKEN) {
+      const gqlRes = await fetch("https://api.github.com/graphql", {
+        method: "POST",
+        headers: { ...headers, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          query: `query($login: String!) {
+            user(login: $login) {
+              contributionsCollection {
+                contributionCalendar { totalContributions }
+              }
+            }
+          }`,
+          variables: { login: GITHUB_USERNAME },
+        }),
       });
-
-      contributionStreak = activeDays.size;
+      if (gqlRes.ok) {
+        const { data } = await gqlRes.json();
+        totalContributions =
+          data?.user?.contributionsCollection?.contributionCalendar
+            ?.totalContributions || 0;
+      } else {
+        console.error("GraphQL error:", gqlRes.status);
+      }
     }
 
     const stats = {
       followers: userData.followers,
       publicRepos: userData.public_repos,
-      contributionStreak,
+      totalContributions,
       totalStars,
       yearsOnGitHub,
       topLanguages,

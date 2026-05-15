@@ -1,7 +1,7 @@
 export interface GitHubStats {
   followers: number;
   publicRepos: number;
-  contributionStreak: number;
+  totalContributions: number;
   totalStars: number;
   yearsOnGitHub: number;
   topLanguages: string[];
@@ -71,37 +71,37 @@ export async function fetchGitHubStats(): Promise<GitHubStats | null> {
         (365.25 * 24 * 60 * 60 * 1000)
     );
 
-    // Fetch recent contributions (approximation via events)
-    const eventsRes = await fetch(
-      `https://api.github.com/users/${username}/events/public?per_page=100`,
-      {
-        headers,
-        next: { revalidate: 3600 }, // Cache for 1 hour
-      }
-    );
-
-    let contributionStreak = 0;
-    if (eventsRes.ok) {
-      const events = await eventsRes.json();
-      // Count unique days with activity in last 7 days
-      const now = new Date();
-      const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-
-      const activeDays = new Set<string>();
-      events.forEach((event: { created_at: string }) => {
-        const eventDate = new Date(event.created_at);
-        if (eventDate > sevenDaysAgo) {
-          activeDays.add(eventDate.toDateString());
-        }
+    // Total contributions in the past year (private-inclusive aggregate
+    // when the profile setting is enabled — no repo names exposed).
+    let totalContributions = 0;
+    if (process.env.GITHUB_TOKEN) {
+      const gqlRes = await fetch("https://api.github.com/graphql", {
+        method: "POST",
+        headers: { ...headers, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          query: `query($login: String!) {
+            user(login: $login) {
+              contributionsCollection {
+                contributionCalendar { totalContributions }
+              }
+            }
+          }`,
+          variables: { login: username },
+        }),
+        next: { revalidate: 3600 },
       });
-
-      contributionStreak = activeDays.size;
+      if (gqlRes.ok) {
+        const { data } = await gqlRes.json();
+        totalContributions =
+          data?.user?.contributionsCollection?.contributionCalendar
+            ?.totalContributions || 0;
+      }
     }
 
     return {
       followers: userData.followers,
       publicRepos: userData.public_repos,
-      contributionStreak,
+      totalContributions,
       totalStars,
       yearsOnGitHub,
       topLanguages,
