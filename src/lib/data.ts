@@ -59,9 +59,9 @@ export const experience = [
   {
     company: "Ancileo",
     url: "https://ancileo.com",
-    role: "Senior AI Engineer",
+    role: "AI Engineer",
     location: "Singapore (Remote)",
-    range: "February 2024 — Present",
+    range: "July 2024 — Present",
     start: 2024,
     end: null,
     description: [
