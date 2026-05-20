@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { ArrowDownRight } from "lucide-react";
 import type { PointerEvent, ReactNode } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -84,17 +83,6 @@ export default function Hero() {
         </h1>
       </Magnetic>
 
-      {/* role */}
-      <motion.h2
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: EASE, delay: 0.5 }}
-        className="mt-6 max-w-lg text-lg font-light leading-relaxed text-muted-foreground sm:text-xl"
-      >
-        AI Engineer shipping agentic systems to production — LangGraph, RAG,
-        Claude Code. Indie SaaS on the side.
-      </motion.h2>
-
       {/* CTAs */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
@@ -102,14 +90,6 @@ export default function Hero() {
         transition={{ duration: 0.7, ease: EASE, delay: 0.62 }}
         className="mt-8 flex flex-wrap items-center gap-2.5"
       >
-        <Button
-          size="lg"
-          render={
-            <a href="#products">
-              View work <ArrowDownRight data-icon="inline-end" />
-            </a>
-          }
-        />
         <Button
           size="lg"
           variant="ghost"

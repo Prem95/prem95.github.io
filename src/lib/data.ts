@@ -13,43 +13,8 @@ export const config = {
 
 export const about = {
   bio: [
-    "Senior AI Engineer with 8 years building AI agents, multi-agent orchestration, and agentic pipelines for enterprise and B2B clients in insurance and finance. Strong in LangGraph orchestration, RAG, tool-use, and Claude Code-driven development. Shipped agentic systems from prototype to 24/7 production.",
+    "Engineer with 8 years building AI agents, multi-agent orchestration, and agentic pipelines for enterprise and B2B clients in insurance and finance.",
     "On the side I ship my own products. Hiregents is an AI agent marketplace for Telegram. Paste your keys, an agent boots on a private VPS in about five minutes. SaaSClips turns a URL into a launch video in sixty seconds. I like systems that are boring to operate.",
-  ],
-  skills: [
-    { name: "Python" },
-    { name: "LangChain" },
-    { name: "LangGraph" },
-    { name: "LlamaIndex" },
-    { name: "OpenAI API" },
-    { name: "TypeScript" },
-    { name: "Next.js" },
-    { name: "Node.js" },
-    { name: "PostgreSQL" },
-    { name: "Supabase" },
-    { name: "Docker" },
-    { name: "AWS / Azure" },
-    { name: "Kubernetes" },
-    {
-      name: "Claude Code",
-      href: "https://code.claude.com/",
-      tooltip: "Anthropic's official agentic CLI. The foundation these frameworks build on.",
-    },
-    {
-      name: "Openclaw",
-      href: "https://openclaw.ai/",
-      tooltip: "Open-source autonomous agent framework. 163k stars, skill marketplace, runs on any LLM.",
-    },
-    {
-      name: "Nanoclaw",
-      href: "https://nanoclaw.dev/",
-      tooltip: "Container-isolated agent built on the Claude Agent SDK. 15 files, fully auditable.",
-    },
-    {
-      name: "skills.md",
-      href: "https://code.claude.com/docs/en/skills",
-      tooltip: "The open skill format for extending any coding agent: YAML frontmatter plus markdown instructions.",
-    },
   ],
 };
 
