@@ -1,11 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FileText } from "lucide-react";
 import { Github, Linkedin, Twitter } from "@/components/BrandIcons";
-import { Button } from "@/components/ui/button";
 import { Kbd, KbdGroup } from "@/components/ui/kbd";
-import ResumeDrawer from "@/components/ResumeDrawer";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { config } from "@/lib/data";
 
@@ -81,17 +78,6 @@ export default function SideRail() {
             })}
           </ul>
         </nav>
-
-        <div className="mt-9">
-          <ResumeDrawer
-            trigger={
-              <Button variant="outline" size="sm">
-                <FileText data-icon="inline-start" />
-                Résumé
-              </Button>
-            }
-          />
-        </div>
       </div>
 
       <div className="flex flex-col gap-5">

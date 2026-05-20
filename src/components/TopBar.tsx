@@ -1,10 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { FileText } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import ResumeDrawer from "@/components/ResumeDrawer";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 
 const navItems = [
@@ -105,16 +102,6 @@ export default function TopBar() {
                 </span>
               </motion.button>
             ))}
-            <div className="mt-8">
-              <ResumeDrawer
-                trigger={
-                  <Button variant="outline" size="lg">
-                    <FileText data-icon="inline-start" />
-                    View résumé
-                  </Button>
-                }
-              />
-            </div>
           </motion.div>
         )}
       </AnimatePresence>

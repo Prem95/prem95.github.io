@@ -4,7 +4,6 @@ import {
   ArrowUpRight,
   AtSign,
   CornerDownLeft,
-  FileText,
   User,
 } from "lucide-react";
 import { Fragment, useEffect, useState, type ComponentType } from "react";
@@ -71,12 +70,6 @@ export default function CommandMenu() {
     {
       value: "Actions",
       items: [
-        {
-          value: "resume",
-          label: "Open résumé",
-          icon: FileText,
-          run: () => { window.open(config.resume, "_blank"); close(); },
-        },
         {
           value: "copy-email",
           label: "Copy email address",

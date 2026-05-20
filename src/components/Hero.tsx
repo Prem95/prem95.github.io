@@ -1,11 +1,10 @@
 "use client";
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { ArrowDownRight, FileText } from "lucide-react";
+import { ArrowDownRight } from "lucide-react";
 import type { PointerEvent, ReactNode } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import ResumeDrawer from "@/components/ResumeDrawer";
 import { config } from "@/lib/data";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -109,14 +108,6 @@ export default function Hero() {
             <a href="#products">
               View work <ArrowDownRight data-icon="inline-end" />
             </a>
-          }
-        />
-        <ResumeDrawer
-          trigger={
-            <Button size="lg" variant="outline">
-              <FileText data-icon="inline-start" />
-              Résumé
-            </Button>
           }
         />
         <Button

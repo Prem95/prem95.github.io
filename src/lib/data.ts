@@ -8,8 +8,6 @@ export const config = {
   github: "https://github.com/Prem95",
   twitter: "https://x.com/premstroke",
   linkedin: "https://www.linkedin.com/in/premstrk/",
-  resume: "/resume.pdf",
-  resumeUpdated: "2026",
   availability: "Open to consulting & partnerships",
 };
 
