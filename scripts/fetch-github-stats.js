@@ -79,6 +79,10 @@ async function fetchGitHubStats() {
     // when "Include private contributions on my profile" is enabled in GitHub
     // settings — counts the aggregate only, never the repo names).
     let totalContributions = 0;
+    let totalCommits = 0;
+    let totalPRs = 0;
+    let totalReviews = 0;
+    let calendar = [];
     if (process.env.GITHUB_TOKEN) {
       const gqlRes = await fetch("https://api.github.com/graphql", {
         method: "POST",
@@ -87,7 +91,14 @@ async function fetchGitHubStats() {
           query: `query($login: String!) {
             user(login: $login) {
               contributionsCollection {
-                contributionCalendar { totalContributions }
+                totalCommitContributions
+                totalPullRequestContributions
+                totalPullRequestReviewContributions
+                restrictedContributionsCount
+                contributionCalendar {
+                  totalContributions
+                  weeks { contributionDays { contributionCount } }
+                }
               }
             }
           }`,
@@ -96,9 +107,17 @@ async function fetchGitHubStats() {
       });
       if (gqlRes.ok) {
         const { data } = await gqlRes.json();
-        totalContributions =
-          data?.user?.contributionsCollection?.contributionCalendar
-            ?.totalContributions || 0;
+        const cc = data?.user?.contributionsCollection;
+        totalContributions = cc?.contributionCalendar?.totalContributions || 0;
+        totalCommits =
+          (cc?.totalCommitContributions || 0) +
+          (cc?.restrictedContributionsCount || 0);
+        totalPRs = cc?.totalPullRequestContributions || 0;
+        totalReviews = cc?.totalPullRequestReviewContributions || 0;
+        // Compact 52-week calendar: array of weeks, each an array of day counts
+        calendar = (cc?.contributionCalendar?.weeks || []).map((w) =>
+          w.contributionDays.map((d) => d.contributionCount)
+        );
       } else {
         console.error("GraphQL error:", gqlRes.status);
       }
@@ -108,11 +127,30 @@ async function fetchGitHubStats() {
       followers: userData.followers,
       publicRepos: userData.public_repos,
       totalContributions,
+      totalCommits,
+      totalPRs,
+      totalReviews,
+      calendar,
       totalStars,
       yearsOnGitHub,
       topLanguages,
       lastUpdated: new Date().toISOString(),
     };
+
+    // No token → GraphQL fields are unavailable; keep the previously
+    // published values instead of wiping them from the JSON.
+    if (!process.env.GITHUB_TOKEN) {
+      try {
+        const prev = JSON.parse(fs.readFileSync(OUTPUT_FILE, "utf8"));
+        stats.totalContributions = prev.totalContributions || 0;
+        stats.totalCommits = prev.totalCommits || 0;
+        stats.totalPRs = prev.totalPRs || 0;
+        stats.totalReviews = prev.totalReviews || 0;
+        stats.calendar = prev.calendar || [];
+      } catch {
+        // no previous file — nothing to preserve
+      }
+    }
 
     // Write to file
     fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });

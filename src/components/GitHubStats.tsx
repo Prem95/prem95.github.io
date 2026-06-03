@@ -2,6 +2,15 @@ import { Github } from "@/components/BrandIcons";
 import type { GitHubStats } from "@/lib/github";
 import { config } from "@/lib/data";
 
+function level(count: number, max: number) {
+  if (count === 0) return "bg-secondary";
+  const r = count / max;
+  if (r > 0.6) return "bg-foreground";
+  if (r > 0.3) return "bg-foreground/60";
+  if (r > 0.12) return "bg-foreground/35";
+  return "bg-foreground/18";
+}
+
 export default function GitHubStatsDisplay({
   stats,
 }: {
@@ -10,47 +19,85 @@ export default function GitHubStatsDisplay({
   if (!stats) return null;
 
   const counts = [
-    { value: stats.followers, label: "followers" },
-    { value: stats.publicRepos, label: "repos" },
     { value: stats.totalStars, label: "stars" },
-    ...(stats.totalContributions > 0
-      ? [{ value: stats.totalContributions, label: "contributions" }]
-      : []),
+    { value: stats.publicRepos, label: "repos" },
+    { value: stats.followers, label: "followers" },
   ];
+
+  // last 26 weeks fit the panel width
+  const weeks = (stats.calendar ?? []).slice(-26);
+  const max = Math.max(1, ...weeks.flat());
 
   return (
     <a
       href={config.github}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex flex-col gap-3 border border-border bg-card p-4 transition-colors hover:border-foreground"
+      className="group flex flex-col gap-4 border border-border bg-card p-4 transition-colors hover:border-foreground"
     >
-      <div className="flex items-center gap-4">
+      <div className="flex items-center justify-between">
         <Github className="size-5 shrink-0 text-muted-foreground transition-colors group-hover:text-foreground" />
-        <div className="flex flex-wrap gap-x-4 gap-y-2">
-          {counts.map((it) => (
-            <div key={it.label}>
-              <span className="block text-base font-bold tabular-nums">
-                {it.value}
-              </span>
-              <span className="text-[0.7rem] text-muted-foreground">
-                {it.label}
-              </span>
-            </div>
-          ))}
-        </div>
+        <span className="eyebrow flex items-center gap-2">
+          <span className="relative flex size-1.5">
+            <span className="absolute inline-flex size-full animate-ping rounded-full bg-live opacity-70" />
+            <span className="relative inline-flex size-1.5 rounded-full bg-live" />
+          </span>
+          live · {stats.yearsOnGitHub} yrs on GitHub
+        </span>
       </div>
 
-      <div className="flex flex-col gap-1 border-t border-border pt-3">
-        <span className="text-[0.7rem] text-muted-foreground">
-          {stats.yearsOnGitHub} years on GitHub
-        </span>
-        {stats.topLanguages.length > 0 && (
-          <span className="font-mono text-[0.7rem] text-foreground">
-            {stats.topLanguages.join(" · ")}
+      {stats.totalContributions > 0 && (
+        <div>
+          <span className="display block text-3xl tabular-nums">
+            {stats.totalContributions.toLocaleString()}
           </span>
-        )}
+          <span className="text-[0.7rem] text-muted-foreground">
+            open-source contributions in the past year
+          </span>
+        </div>
+      )}
+
+      <div className="grid grid-cols-3 gap-x-3 border-t border-border pt-3">
+        {counts.map((it) => (
+          <div key={it.label}>
+            <span className="display block text-base tabular-nums">
+              {it.value.toLocaleString()}
+            </span>
+            <span className="text-[0.65rem] leading-tight text-muted-foreground">
+              {it.label}
+            </span>
+          </div>
+        ))}
       </div>
+
+      {weeks.length > 0 && (
+        <div className="flex gap-[3px] border-t border-border pt-4">
+          {weeks.map((week, wi) => {
+            const lastWeek = wi === weeks.length - 1;
+            return (
+              <div key={wi} className="flex flex-1 flex-col gap-[3px]">
+                {week.map((day, di) => {
+                  const isToday = lastWeek && di === week.length - 1;
+                  return (
+                    <span
+                      key={di}
+                      className={`aspect-square w-full rounded-[1.5px] ${
+                        isToday ? "animate-pulse bg-live" : level(day, max)
+                      }`}
+                    />
+                  );
+                })}
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {stats.topLanguages.length > 0 && (
+        <span className="font-mono text-[0.65rem] uppercase tracking-[0.12em] text-muted-foreground">
+          {stats.topLanguages.join(" · ")}
+        </span>
+      )}
     </a>
   );
 }

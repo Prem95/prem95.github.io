@@ -2,6 +2,12 @@ export interface GitHubStats {
   followers: number;
   publicRepos: number;
   totalContributions: number;
+  /** Commit contributions in the past year, private-inclusive */
+  totalCommits?: number;
+  totalPRs?: number;
+  totalReviews?: number;
+  /** 52 weeks of daily contribution counts, oldest week first */
+  calendar?: number[][];
   totalStars: number;
   yearsOnGitHub: number;
   topLanguages: string[];
