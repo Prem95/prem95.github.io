@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowUpRight } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import { Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { experience } from "@/lib/data";
@@ -58,9 +59,7 @@ export default function Experience() {
                         className="link-underline"
                       >
                         {job.company}
-                        <span className="ml-1 inline-block text-xs transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
-                          ↗
-                        </span>
+                        <ArrowUpRight className="ml-0.5 inline-block size-3.5 align-[-0.12em] transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                       </a>
                     </span>
                   </h3>
