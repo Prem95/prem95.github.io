@@ -25,7 +25,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="scroll-mt-20 border-t border-border py-16 sm:py-24"
+      className="scroll-mt-20 border-t border-border py-12 sm:py-16"
     >
       <SectionHeading
         num="04"

@@ -6,7 +6,7 @@ import type { GitHubStats } from "@/lib/github";
 
 export default function About({ stats }: { stats: GitHubStats | null }) {
   return (
-    <section id="about" className="scroll-mt-20 border-t border-border py-16 sm:py-24">
+    <section id="about" className="scroll-mt-20 border-t border-border py-12 sm:py-16">
       <SectionHeading
         num="01"
         label="About"

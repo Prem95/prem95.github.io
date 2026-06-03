@@ -3,7 +3,7 @@ export const config = {
   role: "AI Engineer & Builder",
   siteUrl: "https://premkumar95.com",
   tagline:
-    "AI Engineer building agentic AI for insurance — LangGraph, RAG, multi-agent orchestration. Indie builder shipping the Simpler SaaS suite.",
+    "AI Engineer building agentic AI for insurance. Looking for agentic transformation roles and consultancy.",
   email: "premstroke95@gmail.com",
   github: "https://github.com/Prem95",
   twitter: "https://x.com/premstroke",
@@ -14,7 +14,6 @@ export const config = {
 export const about = {
   bio: [
     "Engineer with 8 years building AI agents, multi-agent orchestration, and agentic pipelines for enterprise and B2B clients in insurance and finance.",
-    "On the side I ship my own products. Hiregents is an AI agent marketplace for Telegram. Paste your keys, an agent boots on a private VPS in about five minutes. SaaSClips turns a URL into a launch video in sixty seconds. I like systems that are boring to operate.",
   ],
 };
 

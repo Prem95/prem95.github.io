@@ -13,7 +13,7 @@ export default function Products() {
   return (
     <section
       id="products"
-      className="scroll-mt-20 border-t border-border py-16 sm:py-24"
+      className="scroll-mt-20 border-t border-border py-12 sm:py-16"
     >
       <SectionHeading
         num="03"
@@ -55,7 +55,7 @@ export default function Products() {
               {featured.description}
             </p>
           </div>
-          <div className="relative z-10 flex shrink-0 basis-44 flex-col justify-between gap-4">
+          <div className="relative z-10 flex basis-full flex-col justify-between gap-4 sm:shrink-0 sm:basis-44">
             <div className="flex flex-wrap gap-1.5">
               {featured.tech.map((t) => (
                 <Badge key={t} variant="secondary" size="sm" className="font-mono">
@@ -127,7 +127,7 @@ export default function Products() {
       {/* other projects */}
       <div className="mt-14">
         <Reveal>
-          <span className="eyebrow">Other noteworthy projects</span>
+          <span className="eyebrow">Side Projects</span>
         </Reveal>
         <Stagger className="mt-4" gap={0.05}>
           {otherProjects.map((proj) => (

@@ -13,10 +13,10 @@ export default function SectionHeading({
 }) {
   return (
     <Reveal>
-      <div className="relative mb-9 sm:mb-14">
+      <div className="relative mb-7 sm:mb-10">
         <span
           aria-hidden="true"
-          className="text-outline pointer-events-none absolute -top-4 right-0 select-none font-extrabold leading-none opacity-[0.08] text-[5.5rem] sm:text-[10rem]"
+          className="text-outline pointer-events-none absolute -top-4 right-0 select-none font-display font-extrabold leading-none opacity-[0.08] text-[5.5rem] sm:text-[10rem]"
         >
           {num}
         </span>
