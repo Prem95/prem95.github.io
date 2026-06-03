@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Github, Linkedin, Twitter } from "@/components/BrandIcons";
 import { Kbd, KbdGroup } from "@/components/ui/kbd";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
@@ -31,12 +32,19 @@ export default function SideRail() {
         <a
           href="#hero"
           aria-label="Home"
-          className="mb-9 inline-flex size-10 items-center justify-center border border-foreground text-base font-extrabold transition-[background-color,color,transform] duration-200 hover:bg-foreground hover:text-background active:scale-[0.96]"
+          className="mb-9 inline-block transition-transform duration-200 active:scale-[0.96]"
         >
-          P
+          <Image
+            src="/prem.jpg"
+            alt="Prem Kumar"
+            width={64}
+            height={64}
+            priority
+            className="size-16 rounded-full border border-border object-cover"
+          />
         </a>
 
-        <p className="text-[1.35rem] font-extrabold leading-tight tracking-tight text-foreground">
+        <p className="font-display text-[1.35rem] font-extrabold leading-tight tracking-tight text-foreground">
           {config.name}
         </p>
         <p className="mt-1 text-sm font-medium text-muted-foreground">

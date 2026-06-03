@@ -21,7 +21,7 @@ export function Reveal({
       className={className}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: "0px 0px -48px 0px" }}
       transition={{ duration: 0.7, ease: EASE, delay }}
     >
       {children}
@@ -48,7 +48,7 @@ export function Stagger({
       className={className}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, margin: "0px 0px -48px 0px" }}
       variants={{ show: { transition: { staggerChildren: gap } } }}
     >
       {children}

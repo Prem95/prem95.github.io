@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 
@@ -31,9 +32,22 @@ export default function TopBar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur-md lg:hidden">
-      <div className="flex h-14 items-center justify-between px-5">
-        <a href="#hero" className="text-base font-extrabold tracking-tight">
+    // backdrop-blur lives on the inner bar — a filter on <header> would make
+    // it the containing block for the fixed drawer below
+    <header className="sticky top-0 z-50 border-b border-border lg:hidden">
+      <div className="flex h-14 items-center justify-between bg-background/85 px-5 backdrop-blur-md">
+        <a
+          href="#hero"
+          className="flex items-center gap-2.5 font-display text-base font-extrabold tracking-tight"
+        >
+          <Image
+            src="/prem.jpg"
+            alt="Prem Kumar"
+            width={28}
+            height={28}
+            priority
+            className="size-7 rounded-full border border-border object-cover"
+          />
           PK.
         </a>
 
