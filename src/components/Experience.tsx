@@ -43,25 +43,24 @@ export default function Experience() {
                       </span>
                     )}
                   </p>
+                  <p className="sm:mt-1.5">
+                    <a
+                      href={job.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-underline text-foreground"
+                    >
+                      {job.company}
+                      <ArrowUpRight className="ml-0.5 inline-block size-3 align-[-0.1em] transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </a>
+                  </p>
                   <p className="text-muted-foreground/70 sm:mt-1.5">{job.location}</p>
                 </div>
 
                 {/* content */}
                 <div className="min-w-0">
                   <h3 className="font-display text-lg font-bold tracking-tight">
-                    {job.role}{" "}
-                    <span className="text-sm font-medium text-muted-foreground">
-                      ·{" "}
-                      <a
-                        href={job.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="link-underline"
-                      >
-                        {job.company}
-                        <ArrowUpRight className="ml-0.5 inline-block size-3.5 align-[-0.12em] transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                      </a>
-                    </span>
+                    {job.role}
                   </h3>
 
                   <ul className="mt-3 flex flex-col gap-2">
