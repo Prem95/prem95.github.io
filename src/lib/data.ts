@@ -21,7 +21,7 @@ export const experience = [
   {
     company: "Ancileo",
     url: "https://ancileo.com",
-    role: "AI Engineer",
+    role: "Backend AI Engineer",
     location: "Singapore (Remote)",
     range: "July 2024 — Present",
     start: 2024,
