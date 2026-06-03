@@ -1,21 +1,31 @@
 import type { Metadata } from "next";
-import { Jost, DM_Mono } from "next/font/google";
+import {
+  Google_Sans,
+  Google_Sans_Flex,
+  Google_Sans_Code,
+} from "next/font/google";
 import "./globals.css";
 import { config } from "@/lib/data";
 
-// Jost — a geometric sans in the Futura lineage. Distinctive, not a default.
-const jost = Jost({
+// Display: Google Sans Flex — variable, carries the heavy 800 display weight.
+const googleSansFlex = Google_Sans_Flex({
+  variable: "--font-display",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+// Body: Google Sans.
+const googleSans = Google_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
 });
 
-const dmMono = DM_Mono({
+// Mono labels: Google Sans Code.
+const googleSansCode = Google_Sans_Code({
   variable: "--font-mono",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -58,7 +68,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${jost.variable} ${dmMono.variable}`}>
+    <html
+      lang="en"
+      className={`${googleSansFlex.variable} ${googleSans.variable} ${googleSansCode.variable}`}
+    >
       <body className="antialiased isolate relative">{children}</body>
     </html>
   );
