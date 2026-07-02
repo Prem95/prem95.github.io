@@ -59,7 +59,7 @@ export default function Hero() {
         className="dot-grid pointer-events-none absolute inset-x-0 top-0 h-[420px] [mask-image:radial-gradient(ellipse_80%_70%_at_70%_20%,#000_30%,transparent_70%)]"
       />
 
-      {/* status row */}
+      {/* availability */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}

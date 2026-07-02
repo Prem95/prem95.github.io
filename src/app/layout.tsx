@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${config.name} — AI Engineer`,
     description: config.tagline,
-    creator: "@premstroke",
+    creator: "@defichemist95",
   },
   robots: { index: true, follow: true },
 };

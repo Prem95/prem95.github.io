@@ -8,7 +8,6 @@ import About from "@/components/About";
 import Experience from "@/components/Experience";
 import Products from "@/components/Products";
 import Contact from "@/components/Contact";
-import SiteFooter from "@/components/SiteFooter";
 import { config } from "@/lib/data";
 import type { GitHubStats } from "@/lib/github";
 
@@ -70,7 +69,6 @@ export default function Home() {
             <Experience />
             <Products />
             <Contact />
-            <SiteFooter />
           </div>
         </main>
       </div>

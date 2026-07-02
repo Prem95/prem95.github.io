@@ -37,8 +37,9 @@ export default function Contact() {
       <Reveal>
         <div className="max-w-xl">
           <p className="leading-relaxed text-muted-foreground">
-            I&apos;m open to consulting and product partnerships. If you want to
-            talk about AI systems or a possible collaboration, send me a note.
+            I&apos;m looking for senior AI engineering roles, remote or hybrid,
+            building agentic systems in production. If that sounds like your
+            team, or you just want to talk shop, send a note.
           </p>
 
           <div className="mt-7 flex flex-wrap items-center gap-2.5">

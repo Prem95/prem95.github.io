@@ -50,14 +50,6 @@ export default function SideRail() {
           {config.role}
         </p>
 
-        <div className="mt-4 flex items-center gap-2">
-          <span className="relative flex size-1.5">
-            <span className="absolute inline-flex size-full animate-ping rounded-full bg-live opacity-70" />
-            <span className="relative inline-flex size-1.5 rounded-full bg-live" />
-          </span>
-          <span className="eyebrow">Open to consulting</span>
-        </div>
-
         <nav aria-label="Sections" className="mt-10">
           <ul className="flex flex-col gap-0.5">
             {navItems.map((item) => {

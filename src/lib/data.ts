@@ -3,27 +3,55 @@ export const config = {
   role: "Senior AI Engineer",
   siteUrl: "https://premkumar95.com",
   tagline:
-    "Senior AI Engineer building agentic applications for businesses and enterprises across insurance and fintech. Open to remote or hybrid Agentic Transformation roles working with AI agents.",
+    "Senior AI Engineer, 8 years building AI agents, multi-agent orchestration, and ML systems for enterprise clients across insurtech and Web3.",
   email: "premstroke95@gmail.com",
   github: "https://github.com/Prem95",
-  twitter: "https://x.com/premstroke",
+  twitter: "https://x.com/defichemist95",
   linkedin: "https://www.linkedin.com/in/premstrk/",
-  availability: "Open to consulting & partnerships",
+  availability: "Open to remote & hybrid roles",
 };
 
 export const about = {
   bio: [
-    "Engineer with 8 years building AI agents, multi-agent orchestration, and retrieval systems for enterprise and B2B clients across insurance and fintech.",
+    "Engineer with 8 years building AI agents, multi-agent orchestration, and retrieval systems for enterprise and B2B clients across insurtech and Web3.",
     "These days I'm at Ancileo, building the bridge between claimants and insurers with AI agents. On the side, I ship my own SaaS products. What I care about most is building agents that scale in production.",
   ],
   skills: [
     {
-      group: "AI & Agents",
-      items: ["LLM", "RAG", "Agent Orchestration", "Claude Code"],
+      group: "Agentic",
+      items: [
+        "LangGraph",
+        "LangChain",
+        "Claude Code",
+        "MCP",
+        "Multi-Agent Orchestration",
+        "RAG",
+        "Anthropic SDK",
+        "OpenAI SDK",
+        "OpenRouter",
+      ],
     },
     {
-      group: "Stack",
-      items: ["Python", "AWS", "Azure", "Docker"],
+      group: "LLM Ops & Eval",
+      items: ["LangSmith", "RAGAS", "Grafana", "Prometheus", "Jaeger"],
+    },
+    {
+      group: "Backend",
+      items: ["Python", "FastAPI", "Celery", "Async", "Redis", "PostgreSQL"],
+    },
+    {
+      group: "Infra",
+      items: ["Docker", "Kubernetes", "AWS", "Azure", "CI/CD"],
+    },
+    {
+      group: "Vector & ML",
+      items: [
+        "Pinecone",
+        "Embeddings",
+        "Hybrid Search",
+        "TensorFlow",
+        "Fine-tuning",
+      ],
     },
   ],
 };
