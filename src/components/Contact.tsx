@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Check, Copy, Mail } from "lucide-react";
+import { ArrowUpRight, Check, Copy, Download, Mail } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { toastManager } from "@/components/ui/toast";
@@ -59,6 +59,16 @@ export default function Contact() {
               )}
               {copied ? "Copied" : "Copy address"}
             </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              render={
+                <a href="/prem-kumar-resume.pdf" target="_blank" rel="noopener noreferrer">
+                  <Download data-icon="inline-start" />
+                  Résumé
+                </a>
+              }
+            />
             <Button
               size="lg"
               variant="ghost"

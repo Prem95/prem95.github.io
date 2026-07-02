@@ -3,15 +3,14 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Github, Linkedin, Twitter } from "@/components/BrandIcons";
-import { Kbd, KbdGroup } from "@/components/ui/kbd";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { config } from "@/lib/data";
 
 const navItems = [
-  { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
-  { id: "products", label: "Products" },
-  { id: "contact", label: "Contact" },
+  { id: "about", label: "About", num: "01" },
+  { id: "experience", label: "Experience", num: "02" },
+  { id: "products", label: "Products", num: "03" },
+  { id: "contact", label: "Contact", num: "04" },
 ];
 
 const socials = [
@@ -67,19 +66,37 @@ export default function SideRail() {
                 <li key={item.id}>
                   <a
                     href={`#${item.id}`}
-                    className="group flex items-center gap-3.5 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.22em] transition-colors"
-                    style={{
-                      color: active
-                        ? "var(--foreground)"
-                        : "var(--muted-foreground)",
-                    }}
+                    className="group flex items-center gap-3.5 py-2"
                   >
+                    <span
+                      className="font-mono text-[0.6rem] tabular-nums transition-colors duration-300"
+                      style={{
+                        color: active
+                          ? "var(--foreground)"
+                          : "var(--border)",
+                      }}
+                    >
+                      {item.num}
+                    </span>
                     <motion.span
-                      className="block h-px bg-current"
-                      animate={{ width: active ? 38 : 16 }}
+                      className="block h-px bg-foreground"
+                      initial={false}
+                      animate={{
+                        width: active ? 28 : 0,
+                        opacity: active ? 1 : 0,
+                      }}
                       transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
                     />
-                    {item.label}
+                    <span
+                      className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] transition-colors duration-200 group-hover:text-foreground"
+                      style={{
+                        color: active
+                          ? "var(--foreground)"
+                          : "var(--muted-foreground)",
+                      }}
+                    >
+                      {item.label}
+                    </span>
                   </a>
                 </li>
               );
@@ -103,11 +120,6 @@ export default function SideRail() {
             </a>
           ))}
         </div>
-        <KbdGroup className="text-muted-foreground">
-          <Kbd>⌘</Kbd>
-          <Kbd>K</Kbd>
-          <span className="text-xs">command menu</span>
-        </KbdGroup>
       </div>
     </aside>
   );

@@ -1,28 +1,17 @@
 import type { Metadata } from "next";
-import {
-  Google_Sans,
-  Google_Sans_Flex,
-  Google_Sans_Code,
-} from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { config } from "@/lib/data";
 
-// Display: Google Sans Flex — variable, carries the heavy 800 display weight.
-const googleSansFlex = Google_Sans_Flex({
-  variable: "--font-display",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-// Body: Google Sans.
-const googleSans = Google_Sans({
+// Body + display: Geist — clean, technical sans; carries the heavy 800 weight.
+const geistSans = Geist({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
 });
 
-// Mono labels: Google Sans Code.
-const googleSansCode = Google_Sans_Code({
+// Mono labels: Geist Mono.
+const geistMono = Geist_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   display: "swap",
@@ -70,7 +59,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${googleSansFlex.variable} ${googleSans.variable} ${googleSansCode.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable}`}
+      style={{ "--font-display": "var(--font-sans)" } as React.CSSProperties}
     >
       <body className="antialiased isolate relative">{children}</body>
     </html>

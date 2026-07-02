@@ -45,8 +45,6 @@ const liveCount = String(
 const stats = [
   { value: "08", label: "yrs building AI" },
   { value: liveCount, label: "products live" },
-  { value: "E2E", label: "agentic pipelines" },
-  { value: "24/7", label: "agents in prod" },
 ];
 
 export default function Hero() {
@@ -130,7 +128,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: EASE, delay: 0.68 }}
-        className="relative mt-9 grid grid-cols-2 border-y border-border sm:grid-cols-4"
+        className="relative mt-9 grid grid-cols-2 border-y border-border sm:grid-cols-2"
       >
         {stats.map((stat, i) => (
           <div

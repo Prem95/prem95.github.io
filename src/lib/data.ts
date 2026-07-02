@@ -1,9 +1,9 @@
 export const config = {
   name: "Prem Kumar",
-  role: "AI Engineer & Builder",
+  role: "Senior AI Engineer",
   siteUrl: "https://premkumar95.com",
   tagline:
-    "AI Engineer building agentic AI for insurance. Looking for agentic transformation roles and consultancy.",
+    "Senior AI Engineer building agentic applications for businesses and enterprises across insurance and fintech. Open to remote or hybrid Agentic Transformation roles working with AI agents.",
   email: "premstroke95@gmail.com",
   github: "https://github.com/Prem95",
   twitter: "https://x.com/premstroke",
@@ -13,7 +13,18 @@ export const config = {
 
 export const about = {
   bio: [
-    "Engineer with 8 years building AI agents, multi-agent orchestration, and agentic pipelines for enterprise and B2B clients in insurance and finance.",
+    "Engineer with 8 years building AI agents, multi-agent orchestration, and retrieval systems for enterprise and B2B clients across insurance and fintech.",
+    "These days I'm at Ancileo, building the bridge between claimants and insurers with AI agents. On the side, I ship my own SaaS products. What I care about most is building agents that scale in production.",
+  ],
+  skills: [
+    {
+      group: "AI & Agents",
+      items: ["LLM", "RAG", "Agent Orchestration", "Claude Code"],
+    },
+    {
+      group: "Stack",
+      items: ["Python", "AWS", "Azure", "Docker"],
+    },
   ],
 };
 
@@ -21,7 +32,7 @@ export const experience = [
   {
     company: "Ancileo",
     url: "https://ancileo.com",
-    role: "Backend AI Engineer",
+    role: "Senior AI Engineer",
     location: "Singapore (Remote)",
     range: "July 2024 — Present",
     start: 2024,
@@ -31,7 +42,6 @@ export const experience = [
       "Architected an agentic claims pipeline on LangGraph, deployed on Azure Kubernetes, with RAG for policy grounding.",
       "Designed multi-step agent workflows with stateful orchestration, tool-use, and human-in-the-loop checkpoints.",
     ],
-    tech: ["LangGraph", "RAG", "Azure Kubernetes", "Claude Code"],
   },
   {
     company: "Chromia",
@@ -47,7 +57,6 @@ export const experience = [
       "Kept services running and aligned to proper frameworks.",
       "Built quick proofs of concept and MVPs.",
     ],
-    tech: ["Web3", "Vector Database", "Rell"],
   },
   {
     company: "Azara AI",
@@ -63,7 +72,6 @@ export const experience = [
       "Built the agent observability stack on AWS with LangSmith, Grafana, Prometheus, and Jaeger.",
       "Ran RAGAS evaluations on synthetic data to refine agent output quality.",
     ],
-    tech: ["RAG", "LangSmith", "RAGAS", "AWS"],
   },
   {
     company: "WISE AI",
@@ -78,7 +86,19 @@ export const experience = [
       "Led data sourcing across 30+ global sources for training and fine-tuning.",
       "Drove the team to ISO 30107-3 certification. First company in Southeast Asia.",
     ],
-    tech: ["TensorFlow", "Computer Vision", "e-KYC"],
+  },
+  {
+    company: "Tekkis",
+    url: "#",
+    role: "Python Developer",
+    location: "Malaysia (Remote)",
+    range: "April 2019 — April 2020",
+    start: 2019,
+    end: 2020,
+    engagement: "Contract",
+    description: [
+      "Built backend services in Python for early-stage security and AI products.",
+    ],
   },
   {
     company: "Neofin",
@@ -91,7 +111,6 @@ export const experience = [
     description: [
       "Built Facial Recognition for Loan Origination, deployed across four US fintech and neo-banking partners.",
     ],
-    tech: ["Facial Recognition", "Python", "TensorFlow"],
   },
   {
     company: "Monash University",
@@ -104,7 +123,6 @@ export const experience = [
     description: [
       "CNN-based seed classification for an automated grading system.",
     ],
-    tech: ["CNN", "Computer Vision", "Python"],
   },
 ];
 

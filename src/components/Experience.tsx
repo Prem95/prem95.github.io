@@ -44,15 +44,25 @@ export default function Experience() {
                     )}
                   </p>
                   <p className="sm:mt-1.5">
-                    <a
-                      href={job.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link-underline text-foreground"
-                    >
-                      {job.company}
-                      <ArrowUpRight className="ml-0.5 inline-block size-3 align-[-0.1em] transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                    </a>
+                    {job.url && job.url !== "#" ? (
+                      <a
+                        href={job.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link-underline text-foreground"
+                      >
+                        {job.company}
+                        <ArrowUpRight className="ml-0.5 inline-block size-3 align-[-0.1em] transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                      </a>
+                    ) : (
+                      <span className="text-foreground">{job.company}</span>
+                    )}
+                    {job.engagement && (
+                      <span className="text-muted-foreground/70">
+                        {" · "}
+                        {job.engagement}
+                      </span>
+                    )}
                   </p>
                   <p className="text-muted-foreground/70 sm:mt-1.5">{job.location}</p>
                 </div>
@@ -78,10 +88,6 @@ export default function Experience() {
                       </li>
                     ))}
                   </ul>
-
-                  <p className="mt-4 font-mono text-[0.65rem] uppercase tracking-[0.15em] text-muted-foreground/80">
-                    {job.tech.join("  ·  ")}
-                  </p>
                 </div>
               </article>
             </StaggerItem>

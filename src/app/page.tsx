@@ -17,7 +17,7 @@ const personJsonLd = {
   "@type": "Person",
   name: config.name,
   url: config.siteUrl,
-  jobTitle: "AI Engineer",
+  jobTitle: "Senior AI Engineer",
   description: config.tagline,
   email: `mailto:${config.email}`,
   worksFor: {
