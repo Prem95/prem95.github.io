@@ -27,12 +27,7 @@ export default function Contact() {
       id="contact"
       className="scroll-mt-20 border-t border-border py-12 sm:py-16"
     >
-      <SectionHeading
-        num="04"
-        label="Contact"
-        title="Get in touch"
-        dim="let's build something"
-      />
+      <SectionHeading num="04" label="Contact" title="Get in touch" />
 
       <Reveal>
         <div className="max-w-xl">

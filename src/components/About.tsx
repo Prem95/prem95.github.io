@@ -7,12 +7,7 @@ import type { GitHubStats } from "@/lib/github";
 export default function About({ stats }: { stats: GitHubStats | null }) {
   return (
     <section id="about" className="scroll-mt-20 border-t border-border py-12 sm:py-16">
-      <SectionHeading
-        num="01"
-        label="About"
-        title="Who I am"
-        dim="and what I build"
-      />
+      <SectionHeading num="01" label="About" title="Who I am" />
 
       <div className="grid gap-10 sm:grid-cols-[1fr_280px] sm:gap-14">
         {/* bio */}

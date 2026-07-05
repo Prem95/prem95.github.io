@@ -15,12 +15,7 @@ export default function Products() {
       id="products"
       className="scroll-mt-20 border-t border-border py-12 sm:py-16"
     >
-      <SectionHeading
-        num="03"
-        label="Products"
-        title="Things I've built"
-        dim="and shipped to real users"
-      />
+      <SectionHeading num="03" label="Products" title="Things I've built" />
 
       {/* featured */}
       <Reveal>

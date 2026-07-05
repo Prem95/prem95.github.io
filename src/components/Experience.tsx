@@ -12,12 +12,7 @@ export default function Experience() {
       id="experience"
       className="scroll-mt-20 border-t border-border py-12 sm:py-16"
     >
-      <SectionHeading
-        num="02"
-        label="Experience"
-        title="Where I've worked"
-        dim="and what I shipped"
-      />
+      <SectionHeading num="02" label="Experience" title="Where I've worked" />
 
       <Stagger gap={0.07}>
         {experience.map((job, i) => {
