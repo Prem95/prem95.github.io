@@ -1,42 +1,11 @@
 "use client";
 
-import { motion, useMotionValue, useSpring } from "framer-motion";
-import type { PointerEvent, ReactNode } from "react";
+import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { config, products } from "@/lib/data";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
-
-function Magnetic({ children }: { children: ReactNode }) {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const sx = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
-  const sy = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
-
-  const onMove = (e: PointerEvent<HTMLDivElement>) => {
-    const r = e.currentTarget.getBoundingClientRect();
-    x.set((e.clientX - (r.left + r.width / 2)) * 0.12);
-    y.set((e.clientY - (r.top + r.height / 2)) * 0.18);
-  };
-  const reset = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  return (
-    <motion.div
-      onPointerMove={onMove}
-      onPointerLeave={reset}
-      style={{ x: sx, y: sy }}
-      className="w-fit"
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-const lines = ["Prem", "Kumar."];
 
 const liveCount = String(
   products.filter((p) => p.status === "Live").length,
@@ -78,26 +47,10 @@ export default function Hero() {
       </motion.div>
 
       {/* name */}
-      <Magnetic>
-        <h1 className="display relative mt-5 text-[clamp(3.2rem,12.5vw,8.75rem)]">
-          {lines.map((line, li) => (
-            <span key={line} className="block overflow-hidden">
-              <motion.span
-                className="block"
-                initial={{ y: "110%" }}
-                animate={{ y: 0 }}
-                transition={{
-                  duration: 0.9,
-                  ease: EASE,
-                  delay: 0.15 + li * 0.12,
-                }}
-              >
-                {line}
-              </motion.span>
-            </span>
-          ))}
-        </h1>
-      </Magnetic>
+      <h1 className="display relative mt-5 text-[clamp(3.2rem,12.5vw,8.75rem)]">
+        <span className="block">Prem</span>
+        <span className="block">Kumar</span>
+      </h1>
 
       {/* tagline + CTAs */}
       <motion.div
