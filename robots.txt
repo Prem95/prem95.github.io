@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://premkumar95.com
+Sitemap: https://premkumar95.com/sitemap.xml
