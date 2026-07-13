@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { Github, Linkedin, Twitter } from "@/components/BrandIcons";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
@@ -70,14 +69,9 @@ export default function SideRail() {
                     >
                       {item.num}
                     </span>
-                    <motion.span
-                      className="block h-px bg-foreground"
-                      initial={false}
-                      animate={{
-                        width: active ? 28 : 0,
-                        opacity: active ? 1 : 0,
-                      }}
-                      transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+                    <span
+                      className="block h-px bg-foreground transition-[width,opacity] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      style={{ width: active ? 28 : 0, opacity: active ? 1 : 0 }}
                     />
                     <span
                       className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] transition-colors duration-200 group-hover:text-foreground"

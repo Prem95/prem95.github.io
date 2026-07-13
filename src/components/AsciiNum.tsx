@@ -1,6 +1,5 @@
 "use client";
 
-import { useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 /**
@@ -56,9 +55,28 @@ function Sprite({ pose }: { pose: string[] }) {
 
 export default function AsciiNum({ num }: { num: string }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "0px 0px -48px 0px" });
-  const reduced = useReducedMotion();
+  const [inView, setInView] = useState(false);
+  const [reduced, setReduced] = useState(false);
   const [tick, setTick] = useState(-1); // -1 = not started
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setReduced(
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+          );
+          setInView(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -48px 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   // Start a beat after the section's Reveal fade-in
   useEffect(() => {

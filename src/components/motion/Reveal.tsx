@@ -1,9 +1,9 @@
-"use client";
+import type { CSSProperties, ReactNode } from "react";
 
-import { motion, type Variants } from "framer-motion";
-import type { ReactNode } from "react";
-
-const EASE = [0.16, 1, 0.3, 1] as const;
+/* Server-rendered reveal primitives. RevealObserver (mounted once in the
+   page) adds .inview on viewport entry; all motion lives in globals.css.
+   The observed element is always the unclipped wrapper — IntersectionObserver
+   never fires for elements fully hidden by ancestor overflow. */
 
 export function Reveal({
   children,
@@ -17,22 +17,37 @@ export function Reveal({
   className?: string;
 }) {
   return (
-    <motion.div
+    <div
+      data-reveal="up"
       className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "0px 0px -48px 0px" }}
-      transition={{ duration: 0.7, ease: EASE, delay }}
+      style={{ "--rv-d": `${delay}s`, "--rv-y": `${y}px` } as CSSProperties}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
-export const staggerItem: Variants = {
-  hidden: { opacity: 0, y: 18 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
-};
+/* Line-mask reveal — text slides up from an overflow-hidden mask.
+   Small bottom padding keeps descenders from clipping at tight line-heights. */
+export function LineMask({
+  children,
+  delay = 0,
+  className,
+}: {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  return (
+    <span
+      data-reveal="mask"
+      className="block overflow-hidden pb-[0.1em] -mb-[0.1em]"
+      style={{ "--rv-d": `${delay}s` } as CSSProperties}
+    >
+      <span className={`block ${className ?? ""}`}>{children}</span>
+    </span>
+  );
+}
 
 export function Stagger({
   children,
@@ -44,15 +59,13 @@ export function Stagger({
   gap?: number;
 }) {
   return (
-    <motion.div
+    <div
+      data-reveal="group"
       className={className}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "0px 0px -48px 0px" }}
-      variants={{ show: { transition: { staggerChildren: gap } } }}
+      style={{ "--rv-gap": `${gap}s` } as CSSProperties}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -63,9 +76,5 @@ export function StaggerItem({
   children: ReactNode;
   className?: string;
 }) {
-  return (
-    <motion.div className={className} variants={staggerItem}>
-      {children}
-    </motion.div>
-  );
+  return <div className={className}>{children}</div>;
 }

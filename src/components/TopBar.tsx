@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
@@ -82,43 +81,38 @@ export default function TopBar() {
         </button>
       </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.22 }}
-            className="fixed inset-0 top-14 z-40 flex flex-col bg-background px-6 pt-8"
+      <div
+        inert={!open}
+        className={`fixed inset-0 top-14 z-40 flex flex-col bg-background px-6 pt-8 transition-[opacity,visibility] duration-200 ${
+          open ? "visible opacity-100" : "invisible opacity-0"
+        }`}
+      >
+        {navItems.map((item, i) => (
+          <button
+            key={item.id}
+            onClick={() => go(item.id)}
+            className={`flex items-baseline gap-4 border-b border-border py-5 text-left transition-[opacity,transform] duration-300 ${
+              open ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+            }`}
+            style={{ transitionDelay: open ? `${0.05 + i * 0.06}s` : "0s" }}
           >
-            {navItems.map((item, i) => (
-              <motion.button
-                key={item.id}
-                onClick={() => go(item.id)}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.05 + i * 0.06 }}
-                className="flex items-baseline gap-4 border-b border-border py-5 text-left"
-              >
-                <span className="font-mono text-xs text-muted-foreground">
-                  0{i + 1}
-                </span>
-                <span
-                  className="display text-3xl"
-                  style={{
-                    color:
-                      activeId === item.id
-                        ? "var(--foreground)"
-                        : "var(--muted-foreground)",
-                  }}
-                >
-                  {item.label}
-                </span>
-              </motion.button>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <span className="font-mono text-xs text-muted-foreground">
+              0{i + 1}
+            </span>
+            <span
+              className="display text-3xl"
+              style={{
+                color:
+                  activeId === item.id
+                    ? "var(--foreground)"
+                    : "var(--muted-foreground)",
+              }}
+            >
+              {item.label}
+            </span>
+          </button>
+        ))}
+      </div>
     </header>
   );
 }

@@ -1,11 +1,7 @@
-"use client";
-
-import { motion } from "framer-motion";
+import type { CSSProperties } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { config, products } from "@/lib/data";
-
-const EASE = [0.16, 1, 0.3, 1] as const;
 
 const liveCount = String(
   products.filter((p) => p.status === "Live").length,
@@ -15,6 +11,8 @@ const stats = [
   { value: "08", label: "yrs building AI" },
   { value: liveCount, label: "products live" },
 ];
+
+const riseDelay = (s: number) => ({ "--rv-d": `${s}s` }) as CSSProperties;
 
 export default function Hero() {
   return (
@@ -29,12 +27,7 @@ export default function Hero() {
       />
 
       {/* availability */}
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: EASE }}
-        className="relative"
-      >
+      <div className="rise relative">
         <Badge variant="outline" size="lg" className="gap-2 bg-background font-mono">
           <span className="relative flex size-1.5">
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-live opacity-70" />
@@ -44,20 +37,18 @@ export default function Hero() {
             {config.availability}
           </span>
         </Badge>
-      </motion.div>
+      </div>
 
       {/* name */}
       <h1 className="display relative mt-5 text-[clamp(3.2rem,12.5vw,8.75rem)]">
-        <span className="block">Prem</span>
-        <span className="block">Kumar</span>
+        <span className="mask-line"><span>Prem</span></span>
+        <span className="mask-line"><span>Kumar</span></span>
       </h1>
 
       {/* tagline + CTAs */}
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: EASE, delay: 0.55 }}
-        className="relative mt-7 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between"
+      <div
+        className="rise relative mt-7 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between"
+        style={riseDelay(0.55)}
       >
         <p className="max-w-md text-[0.95rem] leading-relaxed text-muted-foreground">
           {config.tagline}
@@ -74,14 +65,12 @@ export default function Hero() {
             }
           />
         </div>
-      </motion.div>
+      </div>
 
       {/* stat strip */}
-      <motion.dl
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: EASE, delay: 0.68 }}
-        className="relative mt-9 grid grid-cols-2 border-y border-border sm:grid-cols-2"
+      <dl
+        className="rise relative mt-9 grid grid-cols-2 border-y border-border sm:grid-cols-2"
+        style={riseDelay(0.68)}
       >
         {stats.map((stat, i) => (
           <div
@@ -96,7 +85,7 @@ export default function Hero() {
             <dt className="eyebrow">{stat.label}</dt>
           </div>
         ))}
-      </motion.dl>
+      </dl>
     </section>
   );
 }

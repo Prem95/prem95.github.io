@@ -33,7 +33,7 @@ export default function Products() {
                 alt=""
                 fill
                 sizes="(max-width: 1024px) 100vw, 760px"
-                className="pointer-events-none object-cover opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100"
+                className="pointer-events-none object-cover opacity-0 [transition:opacity_0.5s_cubic-bezier(0.16,1,0.3,1),transform_0.8s_cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:opacity-100"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-card via-card/85 to-card/45 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
             </>
@@ -87,7 +87,7 @@ export default function Products() {
                     alt=""
                     fill
                     sizes="(max-width: 640px) 100vw, 50vw"
-                    className="pointer-events-none object-cover opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100"
+                    className="pointer-events-none object-cover opacity-0 [transition:opacity_0.5s_cubic-bezier(0.16,1,0.3,1),transform_0.8s_cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:opacity-100"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-card/85 to-card/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 </>
@@ -127,7 +127,7 @@ export default function Products() {
         <Stagger className="mt-4" gap={0.05}>
           {otherProjects.map((proj) => (
             <StaggerItem key={proj.name}>
-              <div className="group flex items-start justify-between gap-4 border-b border-border py-4">
+              <div className="group hover-indent flex items-start justify-between gap-4 border-b border-border py-4">
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-baseline gap-x-2">
                     <h4 className="text-sm font-semibold">{proj.name}</h4>

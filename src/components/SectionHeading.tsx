@@ -1,5 +1,5 @@
 import AsciiNum from "@/components/AsciiNum";
-import { Reveal } from "@/components/motion/Reveal";
+import { LineMask, Reveal } from "@/components/motion/Reveal";
 
 export default function SectionHeading({
   num,
@@ -11,14 +11,14 @@ export default function SectionHeading({
   title: string;
 }) {
   return (
-    <Reveal>
-      <div className="relative mb-7 sm:mb-10">
+    <div className="relative mb-7 sm:mb-10">
+      <Reveal>
         <AsciiNum num={num} />
         <span className="eyebrow">{label}</span>
-        <h2 className="section-title mt-3 text-[clamp(2rem,6vw,3.4rem)]">
-          {title}
-        </h2>
-      </div>
-    </Reveal>
+      </Reveal>
+      <h2 className="section-title mt-3 text-[clamp(2rem,6vw,3.4rem)]">
+        <LineMask delay={0.1}>{title}</LineMask>
+      </h2>
+    </div>
   );
 }

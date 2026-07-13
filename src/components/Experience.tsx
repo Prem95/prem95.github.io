@@ -21,7 +21,7 @@ export default function Experience() {
             <StaggerItem key={job.company}>
               <article
                 className={cn(
-                  "group grid gap-x-8 gap-y-3 border-t border-border py-7 sm:grid-cols-[8.5rem_1fr] sm:py-8",
+                  "group hover-indent grid gap-x-8 gap-y-3 border-t border-border py-7 sm:grid-cols-[8.5rem_1fr] sm:py-8",
                   i === 0 && "border-t-0 pt-0 sm:pt-0",
                 )}
               >
