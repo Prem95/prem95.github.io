@@ -5,10 +5,10 @@ import { config } from "@/lib/data";
 function level(count: number, max: number) {
   if (count === 0) return "bg-secondary";
   const r = count / max;
-  if (r > 0.6) return "bg-foreground";
-  if (r > 0.3) return "bg-foreground/60";
-  if (r > 0.12) return "bg-foreground/35";
-  return "bg-foreground/18";
+  if (r > 0.6) return "bg-live";
+  if (r > 0.3) return "bg-live/70";
+  if (r > 0.12) return "bg-live/45";
+  return "bg-live/25";
 }
 
 export default function GitHubStatsDisplay({
