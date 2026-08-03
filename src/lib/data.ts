@@ -72,21 +72,6 @@ export const experience = [
     ],
   },
   {
-    company: "Chromia",
-    url: "https://chromia.com",
-    role: "Lead AI Developer",
-    location: "Sweden (Remote)",
-    range: "November 2023 — February 2024",
-    start: 2023,
-    end: 2024,
-    description: [
-      "Designed and maintained Chromia's AI backend infrastructure across projects.",
-      "Set up backend servers, services, and open-source projects for AI and robotics work.",
-      "Kept services running and aligned to proper frameworks.",
-      "Built quick proofs of concept and MVPs.",
-    ],
-  },
-  {
     company: "Azara AI",
     url: "https://www.getorchestrator.com/",
     role: "Lead AI Engineer",
