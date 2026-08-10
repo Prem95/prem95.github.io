@@ -304,6 +304,27 @@
   background-size: 22px 22px;
 }
 
+/* Ambient drifting glow — used on the featured bento card */
+.bento-glow {
+  background-image: radial-gradient(
+    circle at center,
+    color-mix(in srgb, var(--live) 24%, transparent) 0%,
+    transparent 70%
+  );
+  background-size: 65% 65%;
+  background-repeat: no-repeat;
+  animation: bento-glow-drift 16s var(--ease-expo) infinite alternate;
+  will-change: background-position;
+}
+@keyframes bento-glow-drift {
+  0%   { background-position: -10% 120%; }
+  50%  { background-position: 65% -20%; }
+  100% { background-position: 120% 70%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bento-glow { animation: none; background-position: 30% 30%; }
+}
+
 /* Marquee row */
 .marquee-track {
   display: flex;

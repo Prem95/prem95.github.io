@@ -26,22 +26,6 @@ export default function About({ stats }: { stats: GitHubStats | null }) {
                 {para}
               </p>
             ))}
-
-            <dl className="mt-4 flex flex-col gap-4 border-t border-border pt-6">
-              {about.skills.map((cat) => (
-                <div
-                  key={cat.group}
-                  className="grid gap-1.5 sm:grid-cols-[7rem_1fr] sm:gap-4"
-                >
-                  <dt className="eyebrow pt-0.5">{cat.group}</dt>
-                  <dd className="flex flex-wrap gap-x-4 gap-y-1.5 text-sm text-foreground">
-                    {cat.items.map((item) => (
-                      <span key={item}>{item}</span>
-                    ))}
-                  </dd>
-                </div>
-              ))}
-            </dl>
           </div>
         </Reveal>
 

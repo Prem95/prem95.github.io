@@ -26,6 +26,7 @@ export default function Products() {
           className="group mb-4 flex-row flex-wrap gap-6 overflow-hidden p-6 transition-[transform,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-foreground sm:p-8"
         >
           <div className="dot-grid pointer-events-none absolute inset-0 opacity-40" />
+          <div className="bento-glow pointer-events-none absolute inset-0" aria-hidden="true" />
           {featured.image && (
             <>
               <Image
