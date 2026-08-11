@@ -5,7 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import SectionHeading from "@/components/SectionHeading";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
-import { products, otherProjects } from "@/lib/data";
+import { products, otherProjects, buildKit } from "@/lib/data";
+import { cn } from "@/lib/utils";
 
 export default function Products() {
   const [featured, ...rest] = products;
@@ -16,6 +17,37 @@ export default function Products() {
       className="scroll-mt-20 border-t border-border py-12 sm:py-16"
     >
       <SectionHeading num="03" label="Products" title="Things I've built" />
+
+      {/* what they're built with */}
+      <Reveal>
+        <dl className="mb-8 flex flex-col gap-3 border-y border-border py-5">
+          {buildKit.map((cat) => (
+            <div
+              key={cat.group}
+              className="grid gap-1.5 sm:grid-cols-[7rem_1fr] sm:gap-4"
+            >
+              <dt className="eyebrow pt-0.5">{cat.group}</dt>
+              <dd>
+                <span className="flex flex-wrap gap-x-4 gap-y-1.5 text-sm text-foreground">
+                  {cat.items.map((item) => (
+                    <span
+                      key={item}
+                      className={cn(item.startsWith("/") && "font-mono text-[0.8rem]")}
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </span>
+                {cat.note && (
+                  <span className="mt-1 block text-xs text-muted-foreground">
+                    {cat.note}
+                  </span>
+                )}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </Reveal>
 
       {/* featured */}
       <Reveal>

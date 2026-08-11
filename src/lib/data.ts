@@ -114,6 +114,20 @@ export const experience = [
   },
 ];
 
+/* How the products above get built — the stack, and the custom Claude Code
+   skills Prem wrote to ship them. */
+export const buildKit = [
+  {
+    group: "Tech Stack",
+    items: ["Claude Code", "Next.js / TS", "Stripe", "Supabase", "Vercel"],
+  },
+  {
+    group: "Skills Used",
+    items: ["/code-review", "/design-taste-frontend", "/ship-check"],
+    note: "Custom Claude Code skills I built",
+  },
+];
+
 export const products = [
   {
     name: "Decenchro",
