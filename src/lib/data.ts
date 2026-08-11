@@ -124,7 +124,6 @@ export const buildKit = [
   {
     group: "Skills Used",
     items: ["/code-review", "/design-taste-frontend", "/ship-check"],
-    note: "Custom Claude Code skills I built",
   },
 ];
 

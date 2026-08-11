@@ -27,22 +27,15 @@ export default function Products() {
               className="grid gap-1.5 sm:grid-cols-[7rem_1fr] sm:gap-4"
             >
               <dt className="eyebrow pt-0.5">{cat.group}</dt>
-              <dd>
-                <span className="flex flex-wrap gap-x-4 gap-y-1.5 text-sm text-foreground">
-                  {cat.items.map((item) => (
-                    <span
-                      key={item}
-                      className={cn(item.startsWith("/") && "font-mono text-[0.8rem]")}
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </span>
-                {cat.note && (
-                  <span className="mt-1 block text-xs text-muted-foreground">
-                    {cat.note}
+              <dd className="flex flex-wrap gap-x-4 gap-y-1.5 text-sm text-foreground">
+                {cat.items.map((item) => (
+                  <span
+                    key={item}
+                    className={cn(item.startsWith("/") && "font-mono text-[0.8rem]")}
+                  >
+                    {item}
                   </span>
-                )}
+                ))}
               </dd>
             </div>
           ))}
