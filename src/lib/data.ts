@@ -3,17 +3,17 @@ export const config = {
   role: "Senior AI Engineer",
   siteUrl: "https://premkumar95.com",
   tagline:
-    "Senior AI Engineer, 8 years building AI agents, multi-agent orchestration, and ML systems for enterprise clients across insurtech and Web3.",
+    "Senior AI Engineer, 8 years architecting agentic systems and multi-agent orchestration for enterprise clients across insurtech and Web3.",
   email: "premstroke95@gmail.com",
   github: "https://github.com/Prem95",
   twitter: "https://x.com/defichemist95",
   linkedin: "https://www.linkedin.com/in/premstrk/",
-  availability: "Open to remote & hybrid roles",
+  availability: "Open to remote roles across Southeast Asia",
 };
 
 export const about = {
   bio: [
-    "Engineer with 8 years building AI agents, multi-agent orchestration, and retrieval systems for enterprise and B2B clients across insurtech and Web3.",
+    "Senior AI engineer with 8 years architecting agentic systems for enterprise and B2B clients across insurtech and Web3, taking systems from first LangGraph node to multi-tenant production deployment.",
     "These days I'm at Ancileo, building the bridge between claimants and insurers with AI agents. On the side, I ship my own SaaS products. What I care about most is building agents that scale in production.",
   ],
 };
@@ -28,8 +28,8 @@ export const experience = [
     start: 2024,
     end: null,
     description: [
-      "Built an internal claims assessment engine on LangGraph, designing custom nodes per business rule and wiring the full decision flow end-to-end.",
-      "Built the foundation of our insurance conversational agent on AWS Strands and Bedrock AgentCore runtime, deployed via Terraform (IaC) across multiple tenants; agents communicate through MCP, hooks, and shared DBs.",
+      "Developed an internal claims-assessment AI engine built on LangGraph, the OpenAI SDK, and an in-house AI library. Runs end-to-end, assessing the peril for claim approval against policy.",
+      "Designed the foundation of a multi-tenant insurance conversational agent on AWS Strands and Bedrock AgentCore, provisioned via Terraform (IaC). Connected on WhatsApp via Twilio.",
       "Owned the Flowable BPM workflow manager automating claims assessment for the Ops and AI teams; led a cross-functional team of 3 engineers and QAs through to production.",
     ],
   },
@@ -42,10 +42,9 @@ export const experience = [
     start: 2023,
     end: 2023,
     description: [
-      "Built a drag-and-drop workflow modeller for composing multi-step agent pipelines, similar to n8n, powering task-based AI agents across WhatsApp and Gmail; lifted engagement by 35%.",
-      "Pioneered the company's first RAG pipeline, benchmarking indexers and retrieval strategies across frameworks to improve document retrieval, summarization, and citation quality.",
-      "Built the agent observability stack on AWS with LangSmith, Grafana, Prometheus, and Jaeger.",
-      "Ran RAGAS evaluations on synthetic data to refine agent output quality.",
+      "Designed and built a drag-and-drop workflow modeller for composing multi-step agent pipelines (n8n-style), powering production AI agents across WhatsApp and Gmail; lifted engagement 35%.",
+      "Pioneered the company's first RAG pipeline, benchmarking indexers and retrieval strategies.",
+      "Built the agent observability and evaluation stack on AWS with LangSmith, Grafana, Prometheus, and Jaeger.",
     ],
   },
   {
@@ -57,7 +56,7 @@ export const experience = [
     start: 2022,
     end: 2023,
     description: [
-      "Managed technical and business requirements from clients; ran sprint planning and prioritization.",
+      "Owned technical and business requirements gathering with clients; ran sprint planning and prioritization for the engineering team.",
     ],
   },
   {
@@ -69,10 +68,10 @@ export const experience = [
     start: 2019,
     end: 2022,
     description: [
-      "Shipped Liveness Detection and Facial Recognition for e-KYC. Deployed to private and government clients in Malaysia.",
-      "Developed a CNN extension for liveness detection, and modelled a hybrid CNN to detect 3D facial depth as an anti-spoofing experiment.",
-      "Led data sourcing across 30+ global sources, and ran additional data collection across multiple universities for model training and fine-tuning.",
-      "Drove the team to ISO 30107-3 certification. First company in Southeast Asia.",
+      "Shipped liveness detection and facial recognition for e-KYC, deployed to private and government clients across Malaysia.",
+      "Extended CNN architectures for liveness detection and prototyped a hybrid CNN for 3D facial-depth estimation as an anti-spoofing measure.",
+      "Directed data sourcing across 30+ global sources plus multi-university collection for model training and fine-tuning.",
+      "Drove the team to ISO 30107-3 certification, the first company in Southeast Asia to achieve it.",
     ],
   },
   {
@@ -97,9 +96,8 @@ export const experience = [
     start: 2018,
     end: 2019,
     description: [
-      "Built Facial Recognition for Loan Origination, deployed across four US fintech and neo-banking partners.",
-      "Built liveness detection into the digital onboarding flow, verifying real applicants before credit scoring and underwriting.",
-      "Integrated facial verification into the KYC pipeline to cut fraudulent applications during loan origination.",
+      "Built facial recognition for loan origination, deployed across four US fintech and neo-banking partners.",
+      "Embedded liveness detection and facial verification into the digital onboarding and KYC pipeline, blocking fraudulent applications ahead of credit scoring and underwriting.",
     ],
   },
   {
