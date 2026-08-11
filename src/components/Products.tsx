@@ -48,10 +48,9 @@ export default function Products() {
           render={
             <a href={featured.url} target="_blank" rel="noopener noreferrer" />
           }
-          className="group mb-4 flex-row flex-wrap gap-6 overflow-hidden p-6 transition-[transform,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-foreground sm:p-8"
+          className="group mb-4 flex-row flex-wrap gap-6 overflow-hidden p-6 transition-colors duration-300 hover:border-foreground sm:p-8"
         >
           <div className="dot-grid pointer-events-none absolute inset-0 opacity-40" />
-          <div className="bento-glow pointer-events-none absolute inset-0" aria-hidden="true" />
           {featured.image && (
             <>
               <Image
@@ -59,7 +58,7 @@ export default function Products() {
                 alt=""
                 fill
                 sizes="(max-width: 1024px) 100vw, 760px"
-                className="pointer-events-none object-cover opacity-0 [transition:opacity_0.5s_cubic-bezier(0.16,1,0.3,1),transform_0.8s_cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:opacity-100"
+                className="pointer-events-none object-cover opacity-0 [transition:opacity_0.5s_cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-card via-card/85 to-card/45 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
             </>
@@ -104,7 +103,7 @@ export default function Products() {
                   rel="noopener noreferrer"
                 />
               }
-              className="group h-full gap-0 overflow-hidden p-5 transition-[transform,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-foreground"
+              className="group h-full gap-0 overflow-hidden p-5 transition-colors duration-300 hover:border-foreground"
             >
               {product.image && (
                 <>
@@ -113,7 +112,7 @@ export default function Products() {
                     alt=""
                     fill
                     sizes="(max-width: 640px) 100vw, 50vw"
-                    className="pointer-events-none object-cover opacity-0 [transition:opacity_0.5s_cubic-bezier(0.16,1,0.3,1),transform_0.8s_cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:opacity-100"
+                    className="pointer-events-none object-cover opacity-0 [transition:opacity_0.5s_cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-card/85 to-card/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 </>

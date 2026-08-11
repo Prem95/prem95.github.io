@@ -105,12 +105,6 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-  --animate-marquee: marquee 38s linear infinite;
-
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
 }
 
 @layer base {
@@ -304,40 +298,6 @@
   background-size: 22px 22px;
 }
 
-/* Ambient drifting glow — used on the featured bento card */
-.bento-glow {
-  background-image: radial-gradient(
-    circle at center,
-    color-mix(in srgb, var(--live) 24%, transparent) 0%,
-    transparent 70%
-  );
-  background-size: 65% 65%;
-  background-repeat: no-repeat;
-  animation: bento-glow-drift 16s var(--ease-expo) infinite alternate;
-  will-change: background-position;
-}
-@keyframes bento-glow-drift {
-  0%   { background-position: -10% 120%; }
-  50%  { background-position: 65% -20%; }
-  100% { background-position: 120% 70%; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .bento-glow { animation: none; background-position: 30% 30%; }
-}
-
-/* Marquee row */
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: var(--animate-marquee);
-}
-.marquee-mask {
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-}
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
-}
 
 @supports (padding: env(safe-area-inset-bottom)) {
   body { padding-bottom: env(safe-area-inset-bottom); }

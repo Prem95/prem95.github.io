@@ -32,7 +32,6 @@ export default function Experience() {
 
       <Stagger gap={0.07}>
         {groups.map((group, i) => {
-          const isCurrent = group.roles.some((r) => r.end === null);
           const rangeStart = group.roles[group.roles.length - 1].start;
           const rangeEnd = group.roles[0].end;
           const grouped = group.roles.length > 1;
@@ -51,12 +50,6 @@ export default function Experience() {
                     <span className="tabular-nums">
                       {rangeStart} — {rangeEnd ?? "now"}
                     </span>
-                    {isCurrent && (
-                      <span className="relative flex size-1.5">
-                        <span className="absolute inline-flex size-full animate-ping rounded-full bg-live opacity-60" />
-                        <span className="relative inline-flex size-1.5 rounded-full bg-live" />
-                      </span>
-                    )}
                   </p>
                   <p className="sm:mt-1.5">
                     <span className="text-foreground">{group.company}</span>

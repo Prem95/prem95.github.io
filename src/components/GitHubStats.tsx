@@ -37,13 +37,7 @@ export default function GitHubStatsDisplay({
     >
       <div className="flex items-center justify-between">
         <Github className="size-5 shrink-0 text-muted-foreground transition-colors group-hover:text-foreground" />
-        <span className="eyebrow flex items-center gap-2">
-          <span className="relative flex size-1.5">
-            <span className="absolute inline-flex size-full animate-ping rounded-full bg-live opacity-70" />
-            <span className="relative inline-flex size-1.5 rounded-full bg-live" />
-          </span>
-          live · {stats.yearsOnGitHub} yrs on GitHub
-        </span>
+        <span className="eyebrow">{stats.yearsOnGitHub} yrs on GitHub</span>
       </div>
 
       {stats.totalContributions > 0 && (
@@ -82,7 +76,7 @@ export default function GitHubStatsDisplay({
                     <span
                       key={di}
                       className={`aspect-square w-full rounded-[1.5px] ${
-                        isToday ? "animate-pulse bg-live" : level(day, max)
+                        isToday ? "bg-live" : level(day, max)
                       }`}
                     />
                   );

@@ -29,10 +29,6 @@ export default function Hero() {
       {/* availability */}
       <div className="rise relative">
         <Badge variant="outline" size="lg" className="gap-2 bg-background font-mono">
-          <span className="relative flex size-1.5">
-            <span className="absolute inline-flex size-full animate-ping rounded-full bg-live opacity-70" />
-            <span className="relative inline-flex size-1.5 rounded-full bg-live" />
-          </span>
           <span className="tracking-[0.18em] uppercase text-[0.6rem]">
             {config.availability}
           </span>
