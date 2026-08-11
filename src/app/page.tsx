@@ -1,7 +1,6 @@
 import { readFileSync } from "fs";
 import { join } from "path";
 import Chrome from "@/components/Chrome";
-import RevealObserver from "@/components/motion/RevealObserver";
 import SideRail from "@/components/SideRail";
 import TopBar from "@/components/TopBar";
 import Hero from "@/components/Hero";
@@ -60,7 +59,6 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
       <Chrome />
-      <RevealObserver />
       <div className="mx-auto flex w-full max-w-[1200px]">
         <SideRail />
         <main className="min-w-0 flex-1 border-border lg:border-x">

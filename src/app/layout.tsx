@@ -1,19 +1,29 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Archivo, Bricolage_Grotesque, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { config } from "@/lib/data";
 
-// Body + display: Geist — clean, technical sans; carries the heavy 800 weight.
-const geistSans = Geist({
+// Body: Archivo — a grotesque with squared-off terminals that stays even at
+// small sizes. Deliberately not Inter/Geist, which every generated site ships.
+const archivo = Archivo({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
 });
 
-// Mono labels: Geist Mono.
-const geistMono = Geist_Mono({
+// Display: Bricolage Grotesque — slightly irregular widths give the headings
+// a voice the body face doesn't have, and it stays tight at weight 800.
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-display",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+// Mono labels and figures: IBM Plex Mono.
+const plexMono = IBM_Plex_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
@@ -59,8 +69,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable}`}
-      style={{ "--font-display": "var(--font-sans)" } as React.CSSProperties}
+      className={`${archivo.variable} ${bricolage.variable} ${plexMono.variable}`}
     >
       <body className="antialiased isolate relative">{children}</body>
     </html>

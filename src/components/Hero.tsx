@@ -26,10 +26,15 @@ export default function Hero() {
         className="dot-grid pointer-events-none absolute inset-x-0 top-0 h-[420px] [mask-image:radial-gradient(ellipse_80%_70%_at_70%_20%,#000_30%,transparent_70%)]"
       />
 
-      {/* availability */}
+      {/* availability — the label is long, so the badge has to be allowed to
+          wrap; Badge's base style is whitespace-nowrap and overflows on phones */}
       <div className="rise relative">
-        <Badge variant="outline" size="lg" className="gap-2 bg-background font-mono">
-          <span className="tracking-[0.18em] uppercase text-[0.6rem]">
+        <Badge
+          variant="outline"
+          size="lg"
+          className="max-w-full whitespace-normal bg-background font-mono"
+        >
+          <span className="text-[0.6rem] uppercase tracking-[0.14em] sm:tracking-[0.18em]">
             {config.availability}
           </span>
         </Badge>

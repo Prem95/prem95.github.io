@@ -205,53 +205,6 @@
   to   { transform: none; }
 }
 
-/* ── Scroll reveals — RevealObserver adds .inview via one IntersectionObserver.
-   Observed element is always the unclipped wrapper (IO never fires for
-   elements fully hidden by ancestor overflow). ── */
-[data-reveal="up"] {
-  opacity: 0;
-  transform: translateY(var(--rv-y, 24px));
-  transition:
-    opacity 0.7s var(--ease-expo) var(--rv-d, 0s),
-    transform 0.7s var(--ease-expo) var(--rv-d, 0s);
-}
-[data-reveal="up"].inview {
-  opacity: 1;
-  transform: none;
-}
-
-[data-reveal="mask"] > span {
-  transform: translateY(110%);
-  transition: transform 0.9s var(--ease-expo) var(--rv-d, 0s);
-}
-[data-reveal="mask"].inview > span {
-  transform: none;
-}
-
-[data-reveal="group"] > * {
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 0.55s var(--ease-expo) calc(var(--rv-i, 0) * var(--rv-gap, 0.07s)),
-    transform 0.55s var(--ease-expo) calc(var(--rv-i, 0) * var(--rv-gap, 0.07s));
-}
-[data-reveal="group"].inview > * {
-  opacity: 1;
-  transform: none;
-}
-[data-reveal="group"] > :nth-child(1)  { --rv-i: 0; }
-[data-reveal="group"] > :nth-child(2)  { --rv-i: 1; }
-[data-reveal="group"] > :nth-child(3)  { --rv-i: 2; }
-[data-reveal="group"] > :nth-child(4)  { --rv-i: 3; }
-[data-reveal="group"] > :nth-child(5)  { --rv-i: 4; }
-[data-reveal="group"] > :nth-child(6)  { --rv-i: 5; }
-[data-reveal="group"] > :nth-child(7)  { --rv-i: 6; }
-[data-reveal="group"] > :nth-child(8)  { --rv-i: 7; }
-[data-reveal="group"] > :nth-child(9)  { --rv-i: 8; }
-[data-reveal="group"] > :nth-child(10) { --rv-i: 9; }
-[data-reveal="group"] > :nth-child(11) { --rv-i: 10; }
-[data-reveal="group"] > :nth-child(12) { --rv-i: 11; }
-
 /* On-load entrance (hero) — pure CSS, no observer needed */
 .rise {
   animation: rise 0.7s var(--ease-expo) both;
@@ -276,16 +229,6 @@
   .mask-line > span { animation: none; }
   .hover-indent { transition: none; }
   .rise { animation: none; }
-  [data-reveal="up"],
-  [data-reveal="group"] > * {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-  [data-reveal="mask"] > span {
-    transform: none;
-    transition: none;
-  }
 }
 
 /* Hide scrollbar */

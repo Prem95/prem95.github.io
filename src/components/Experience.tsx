@@ -1,20 +1,29 @@
 "use client";
 
 import SectionHeading from "@/components/SectionHeading";
-import { Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { experience } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 type Job = (typeof experience)[number];
 
 function groupByCompany(jobs: Job[]) {
-  const groups: { company: string; url: string; location: string; roles: Job[] }[] = [];
+  const groups: {
+    company: string;
+    url: string;
+    location: string;
+    roles: Job[];
+  }[] = [];
   for (const job of jobs) {
     const last = groups[groups.length - 1];
     if (last && last.company === job.company) {
       last.roles.push(job);
     } else {
-      groups.push({ company: job.company, url: job.url, location: job.location, roles: [job] });
+      groups.push({
+        company: job.company,
+        url: job.url,
+        location: job.location,
+        roles: [job],
+      });
     }
   }
   return groups;
@@ -30,14 +39,14 @@ export default function Experience() {
     >
       <SectionHeading num="02" label="Experience" title="Where I've worked" />
 
-      <Stagger gap={0.07}>
+      <div>
         {groups.map((group, i) => {
           const rangeStart = group.roles[group.roles.length - 1].start;
           const rangeEnd = group.roles[0].end;
           const grouped = group.roles.length > 1;
 
           return (
-            <StaggerItem key={group.company}>
+            <div key={group.company}>
               <article
                 className={cn(
                   "group hover-indent grid gap-x-8 gap-y-3 border-t border-border py-7 sm:grid-cols-[8.5rem_1fr] sm:py-8",
@@ -54,7 +63,9 @@ export default function Experience() {
                   <p className="sm:mt-1.5">
                     <span className="text-foreground">{group.company}</span>
                   </p>
-                  <p className="text-muted-foreground/70 sm:mt-1.5">{group.location}</p>
+                  <p className="text-muted-foreground/70 sm:mt-1.5">
+                    {group.location}
+                  </p>
                 </div>
 
                 {/* content — one block per role, connected with a rail when a company has several */}
@@ -108,10 +119,10 @@ export default function Experience() {
                   ))}
                 </div>
               </article>
-            </StaggerItem>
+            </div>
           );
         })}
-      </Stagger>
+      </div>
     </section>
   );
 }

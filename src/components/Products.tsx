@@ -4,7 +4,6 @@ import { Github } from "@/components/BrandIcons";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import SectionHeading from "@/components/SectionHeading";
-import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { products, otherProjects, buildKit } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -19,82 +18,85 @@ export default function Products() {
       <SectionHeading num="03" label="Products" title="Things I've built" />
 
       {/* what they're built with */}
-      <Reveal>
-        <dl className="mb-8 flex flex-col gap-3 border-y border-border py-5">
-          {buildKit.map((cat) => (
-            <div
-              key={cat.group}
-              className="grid gap-1.5 sm:grid-cols-[7rem_1fr] sm:gap-4"
-            >
-              <dt className="eyebrow pt-0.5">{cat.group}</dt>
-              <dd className="flex flex-wrap gap-x-4 gap-y-1.5 text-sm text-foreground">
-                {cat.items.map((item) => (
-                  <span
-                    key={item}
-                    className={cn(item.startsWith("/") && "font-mono text-[0.8rem]")}
-                  >
-                    {item}
-                  </span>
-                ))}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </Reveal>
+      <dl className="mb-8 flex flex-col gap-3 border-y border-border py-5">
+        {buildKit.map((cat) => (
+          <div
+            key={cat.group}
+            className="grid gap-1.5 sm:grid-cols-[7rem_1fr] sm:gap-4"
+          >
+            <dt className="eyebrow pt-0.5">{cat.group}</dt>
+            <dd className="flex flex-wrap gap-x-4 gap-y-1.5 text-sm text-foreground">
+              {cat.items.map((item) => (
+                <span
+                  key={item}
+                  className={cn(
+                    item.startsWith("/") && "font-mono text-[0.8rem]",
+                  )}
+                >
+                  {item}
+                </span>
+              ))}
+            </dd>
+          </div>
+        ))}
+      </dl>
 
       {/* featured */}
-      <Reveal>
-        <Card
-          render={
-            <a href={featured.url} target="_blank" rel="noopener noreferrer" />
-          }
-          className="group mb-4 flex-row flex-wrap gap-6 overflow-hidden p-6 transition-colors duration-300 hover:border-foreground sm:p-8"
-        >
-          <div className="dot-grid pointer-events-none absolute inset-0 opacity-40" />
-          {featured.image && (
-            <>
-              <Image
-                src={featured.image}
-                alt=""
-                fill
-                sizes="(max-width: 1024px) 100vw, 760px"
-                className="pointer-events-none object-cover opacity-0 [transition:opacity_0.5s_cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-card via-card/85 to-card/45 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-            </>
-          )}
-          <div className="relative z-10 flex-1 basis-72">
-            <div className="flex items-center gap-2.5">
-              <Badge size="sm">{featured.status}</Badge>
-              <span className="eyebrow">Featured</span>
-            </div>
-            <h3 className="display mt-3 text-[clamp(1.5rem,3.5vw,2.2rem)]">
-              {featured.name}
-            </h3>
-            <p className="mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
-              {featured.description}
-            </p>
+      <Card
+        render={
+          <a href={featured.url} target="_blank" rel="noopener noreferrer" />
+        }
+        className="group mb-4 flex-row flex-wrap gap-6 overflow-hidden p-6 transition-colors duration-300 hover:border-foreground sm:p-8"
+      >
+        <div className="dot-grid pointer-events-none absolute inset-0 opacity-40" />
+        {featured.image && (
+          <>
+            <Image
+              src={featured.image}
+              alt=""
+              fill
+              sizes="(max-width: 1024px) 100vw, 760px"
+              className="pointer-events-none object-cover opacity-0 [transition:opacity_0.5s_cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-card via-card/85 to-card/45 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+          </>
+        )}
+        <div className="relative z-10 flex-1 basis-72">
+          <div className="flex items-center gap-2.5">
+            <Badge size="sm">{featured.status}</Badge>
+            <span className="eyebrow">Featured</span>
           </div>
-          <div className="relative z-10 flex basis-full flex-col justify-between gap-4 sm:shrink-0 sm:basis-44">
-            <div className="flex flex-wrap gap-1.5">
-              {featured.tech.map((t) => (
-                <Badge key={t} variant="secondary" size="sm" className="font-mono">
-                  {t}
-                </Badge>
-              ))}
-            </div>
-            <span className="inline-flex items-center gap-1 text-sm font-semibold">
-              Visit site
-              <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </span>
+          <h3 className="display mt-3 text-[clamp(1.5rem,3.5vw,2.2rem)]">
+            {featured.name}
+          </h3>
+          <p className="mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
+            {featured.description}
+          </p>
+        </div>
+        <div className="relative z-10 flex basis-full flex-col justify-between gap-4 sm:shrink-0 sm:basis-44">
+          <div className="flex flex-wrap gap-1.5">
+            {featured.tech.map((t) => (
+              <Badge
+                key={t}
+                variant="secondary"
+                size="sm"
+                className="font-mono"
+              >
+                {t}
+              </Badge>
+            ))}
           </div>
-        </Card>
-      </Reveal>
+          <span className="inline-flex items-center gap-1 text-sm font-semibold">
+            Visit site
+            <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </span>
+        </div>
+      </Card>
 
       {/* secondary grid */}
-      <Stagger className="grid gap-4 sm:grid-cols-2" gap={0.06}>
+      <div className="grid gap-4 sm:grid-cols-2">
         {rest.map((product) => (
-          <StaggerItem key={product.name}>
+          <div key={product.name}>
             <Card
               render={
                 <a
@@ -140,18 +142,16 @@ export default function Products() {
                 </div>
               </div>
             </Card>
-          </StaggerItem>
+          </div>
         ))}
-      </Stagger>
+      </div>
 
       {/* other projects */}
       <div className="mt-14">
-        <Reveal>
-          <span className="eyebrow">Side Projects</span>
-        </Reveal>
-        <Stagger className="mt-4" gap={0.05}>
+        <span className="eyebrow">Side Projects</span>
+        <div className="mt-4">
           {otherProjects.map((proj) => (
-            <StaggerItem key={proj.name}>
+            <div key={proj.name}>
               <div className="group hover-indent flex items-start justify-between gap-4 border-b border-border py-4">
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-baseline gap-x-2">
@@ -183,9 +183,9 @@ export default function Products() {
                   </a>
                 )}
               </div>
-            </StaggerItem>
+            </div>
           ))}
-        </Stagger>
+        </div>
       </div>
     </section>
   );
