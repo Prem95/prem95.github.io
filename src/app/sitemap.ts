@@ -15,12 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${config.siteUrl}/build-your-own/`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
       url: `${config.siteUrl}/blog/`,
       lastModified: posts[0] ? new Date(`${posts[0].date}T00:00:00Z`) : new Date(),
       changeFrequency: "daily",
