@@ -20,11 +20,15 @@ npm run build
 
 echo "→ publishing $SRC to $TARGET"
 rsync -a --delete --exclude '.git' --exclude 'CNAME' --exclude '.nojekyll' \
-  "$SRC/" "$TARGET/"
+  --exclude 'vercel.json' "$SRC/" "$TARGET/"
 
 # GitHub Pages needs both of these, and neither comes out of the build.
 echo "premkumar95.com" > "$TARGET/CNAME"
 touch "$TARGET/.nojekyll"
+
+# Vercel also watches this branch and would try to `next build` a folder of
+# static HTML. exit 0 tells its ignore step to skip the branch entirely.
+echo '{ "ignoreCommand": "exit 0" }' > "$TARGET/vercel.json"
 
 cd "$TARGET"
 git add -A
