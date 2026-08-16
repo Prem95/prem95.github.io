@@ -4,6 +4,7 @@ import {
   ArrowUpRight,
   AtSign,
   CornerDownLeft,
+  NotebookPen,
   User,
 } from "lucide-react";
 import { Fragment, useEffect, useState, type ComponentType } from "react";
@@ -65,6 +66,7 @@ export default function CommandMenu() {
         { value: "experience", label: "Experience", icon: User, run: () => { scrollTo("experience"); close(); } },
         { value: "products", label: "Products", icon: User, run: () => { scrollTo("products"); close(); } },
         { value: "contact", label: "Contact", icon: User, run: () => { scrollTo("contact"); close(); } },
+        { value: "notes", label: "Notes", icon: NotebookPen, run: () => { window.location.href = "/blog"; close(); } },
       ],
     },
     {

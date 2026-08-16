@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 
@@ -112,6 +113,22 @@ export default function TopBar() {
             </span>
           </button>
         ))}
+
+        <Link
+          href="/blog"
+          onClick={() => setOpen(false)}
+          className={`flex items-baseline gap-4 border-b border-border py-5 transition-[opacity,transform] duration-300 ${
+            open ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+          }`}
+          style={{
+            transitionDelay: open ? `${0.05 + navItems.length * 0.06}s` : "0s",
+          }}
+        >
+          <span className="font-mono text-xs text-muted-foreground">
+            0{navItems.length + 1}
+          </span>
+          <span className="display text-3xl text-muted-foreground">Notes</span>
+        </Link>
       </div>
     </header>
   );

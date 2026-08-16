@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { Github, Linkedin, Twitter } from "@/components/BrandIcons";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { config } from "@/lib/data";
@@ -87,6 +89,18 @@ export default function SideRail() {
                 </li>
               );
             })}
+            <li className="mt-1 border-t border-border pt-2">
+              <Link href="/blog" className="group flex items-center gap-3.5 py-2">
+                <span className="font-mono text-[0.6rem] tabular-nums text-border">
+                  05
+                </span>
+                <span className="block h-px w-0 bg-foreground" />
+                <span className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground transition-colors group-hover:text-foreground">
+                  Notes
+                </span>
+                <ArrowUpRight className="size-3 text-border transition-colors group-hover:text-foreground" />
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

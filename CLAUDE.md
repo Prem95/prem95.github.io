@@ -50,11 +50,19 @@ Every major section uses this exact 3-part structure:
 
 ### Commands
 ```bash
-npm run dev       # Next.js dev server
-npm run build     # Static export build
-npm run lint      # ESLint
-vercel --prod     # Deploy
+npm run dev              # Next.js dev server
+npm run build            # Static export build
+npm run post "Title"     # Scaffold a note in content/posts/
+npm run deploy           # Build + publish out/ to the gh-pages worktree
+npm run lint             # ESLint
 ```
+
+### Notes (/blog)
+- Source of truth is `content/posts/*.md`, named `YYYY-MM-DD-slug.md`, parsed at build time by `src/lib/posts.ts` (gray-matter + marked, `breaks: true`).
+- Frontmatter: `title`, `date`, `summary` (optional), `draft` (optional), `slug` (optional override).
+- `draft: true` renders in `next dev` only — never in a build.
+- Images live in `public/blog/` and are referenced as `/blog/name.png`.
+- Index groups entries by month; each note gets `/blog/<slug>/`. Markdown is styled by `.prose` in `globals.css`.
 
 ### Key Files
 - `app/page.tsx` — Landing with all sections

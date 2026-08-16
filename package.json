@@ -6,13 +6,17 @@
     "dev": "next dev",
     "build": "node scripts/fetch-github-stats.js && next build",
     "start": "next start",
+    "post": "node scripts/new-post.js",
+    "deploy": "bash scripts/deploy.sh",
     "lint": "eslint"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "gray-matter": "^4.0.3",
     "lucide-react": "^1.16.0",
+    "marked": "^18.0.9",
     "next": "16.1.7",
     "react": "19.2.3",
     "react-dom": "19.2.3",
