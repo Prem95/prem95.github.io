@@ -358,24 +358,48 @@
 }
 
 /* ───────────────────────────────────────────
-   Streak ground — agentica.my's product-card backdrop. Long flat ellipses
-   over a dark base, blurred together so they read as light caught mid-pan.
-   One hue per card (--h, an oklch angle); the ±25° neighbours keep it from
-   looking flat. Film grain sits on top.
+   Streak grounds — agentica.my's motion-blur backdrop. Long flat ellipses
+   blurred together read as light caught mid-pan; film grain sits on top.
    ─────────────────────────────────────────── */
-.streak-field {
+
+/* Agentica's own hero: lime and greens over deep forest, one warm and one
+   cool note (after .blur-field in the agentica codebase). */
+.streak-forest {
+  position: absolute;
+  inset: -12%;
+  pointer-events: none;
+  filter: blur(20px);
+  background:
+    radial-gradient(55% 11% at 70% 22%, rgb(186 236 120 / 0.75), transparent 70%),
+    radial-gradient(42% 9% at 30% 30%, rgb(14 122 74 / 0.7), transparent 70%),
+    radial-gradient(50% 12% at 62% 50%, rgb(150 220 160 / 0.55), transparent 70%),
+    radial-gradient(36% 8% at 88% 64%, rgb(246 170 92 / 0.45), transparent 70%),
+    radial-gradient(40% 10% at 18% 70%, rgb(128 182 228 / 0.35), transparent 70%),
+    radial-gradient(60% 14% at 50% 86%, rgb(30 140 90 / 0.55), transparent 70%),
+    linear-gradient(160deg, #1f5038 0%, #0f2e20 50%, #07170f 100%);
+}
+/* Darkens the copy side so white text holds its contrast on the streaks */
+.streak-forest-veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgb(4 16 10 / 0.72) 0%, rgb(4 16 10 / 0.35) 55%, rgb(4 16 10 / 0) 85%);
+}
+
+/* Product tiles: the same streaks in pastel, one hue per card (--h, an
+   oklch angle); the ±40° neighbours keep a single hue from looking flat. */
+.streak-light {
   position: absolute;
   inset: -14%;
   pointer-events: none;
-  filter: blur(18px);
+  filter: blur(16px);
   background:
-    radial-gradient(60% 9% at 30% 20%, oklch(0.97 0.035 var(--h) / 0.9), transparent 70%),
-    radial-gradient(45% 8% at 78% 30%, oklch(0.86 0.08 calc(var(--h) + 25) / 0.85), transparent 70%),
-    radial-gradient(70% 12% at 40% 46%, oklch(0.8 0.08 var(--h) / 0.85), transparent 70%),
-    radial-gradient(40% 7% at 86% 56%, oklch(0.92 0.05 calc(var(--h) - 25) / 0.7), transparent 70%),
-    radial-gradient(55% 10% at 18% 66%, oklch(0.72 0.08 var(--h) / 0.7), transparent 70%),
-    radial-gradient(80% 16% at 60% 88%, oklch(0.45 0.05 var(--h) / 0.8), transparent 75%),
-    linear-gradient(180deg, oklch(0.9 0.045 var(--h)) 0%, oklch(0.8 0.06 var(--h)) 50%, oklch(0.42 0.04 var(--h)) 100%);
+    radial-gradient(60% 9% at 24% 14%, oklch(0.88 0.1 var(--h) / 0.9), transparent 70%),
+    radial-gradient(44% 8% at 76% 24%, oklch(0.85 0.11 calc(var(--h) + 40) / 0.75), transparent 70%),
+    radial-gradient(70% 12% at 46% 40%, oklch(0.92 0.08 var(--h) / 1), transparent 70%),
+    radial-gradient(38% 7% at 88% 56%, oklch(0.9 0.08 calc(var(--h) - 40) / 0.6), transparent 70%),
+    radial-gradient(55% 10% at 16% 72%, oklch(0.93 0.06 var(--h) / 0.7), transparent 70%),
+    linear-gradient(180deg, oklch(0.95 0.045 var(--h)) 0%, oklch(0.975 0.02 var(--h)) 55%, oklch(0.99 0.008 var(--h)) 100%);
 }
 .streak-grain {
   position: absolute;

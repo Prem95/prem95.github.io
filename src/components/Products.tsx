@@ -1,8 +1,6 @@
 import type { CSSProperties } from "react";
 import { ArrowUpRight, Check } from "lucide-react";
-import AgenticaFlow from "@/components/AgenticaFlow";
 import { Github } from "@/components/BrandIcons";
-import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import SectionHeading from "@/components/SectionHeading";
 import { products, otherProjects, buildKit } from "@/lib/data";
@@ -42,117 +40,112 @@ export default function Products() {
         ))}
       </dl>
 
-      {/* featured — inverted, with agentica.my's sale → ERP → AI flow */}
+      {/* featured — on agentica.my's green hero */}
       <Card
         render={
           <a href={featured.url} target="_blank" rel="noopener noreferrer" />
         }
-        className="group mb-4 flex-col gap-6 overflow-hidden border-foreground bg-foreground p-5 text-background sm:p-6 md:flex-row md:items-center md:justify-between"
+        className="group mb-4 flex-col gap-6 overflow-hidden border-[#0f2e20] bg-[#0f2e20] p-5 text-white sm:p-6 md:flex-row md:items-center md:justify-between"
       >
+        <span aria-hidden="true" className="streak-forest" />
+        <span aria-hidden="true" className="streak-grain" />
+        <span aria-hidden="true" className="streak-forest-veil" />
         <div className="relative z-10 min-w-0 flex-1">
           <div className="flex items-center gap-2.5">
-            <Badge
-              size="sm"
-              className="border-background/30 bg-transparent text-background"
-            >
-              {featured.status}
-            </Badge>
-            <span className="eyebrow text-background/55">Featured</span>
+            <span className="eyebrow text-white/60">Featured</span>
           </div>
           <h3 className="display mt-2.5 text-[clamp(1.5rem,3vw,2rem)]">
             {featured.name}
           </h3>
-          <p className="mt-1.5 max-w-sm text-sm leading-relaxed text-background/65">
+          <p className="mt-1.5 max-w-md text-sm leading-relaxed text-white/75">
             {featured.description}
           </p>
 
           {featured.highlights && (
-            <ul className="mt-4 flex flex-col gap-1 text-[0.8rem]">
-              {featured.highlights.map(([module, line]) => (
-                <li key={module} className="flex items-center gap-2">
-                  <Check className="size-3.5 shrink-0 text-background/45" />
+            <ul className="mt-4 flex flex-col gap-1.5 text-[0.85rem]">
+              {featured.highlights.map(([module, line, detail]) => (
+                <li key={module} className="flex gap-2">
+                  <Check className="mt-0.5 size-3.5 shrink-0 text-[rgb(186_236_120)]" />
                   <span>
                     <span className="font-semibold">{module}</span>
-                    <span className="text-background/65"> · {line}</span>
+                    <span className="text-white/70"> · {line}</span>
+                    {detail && (
+                      <span className="block text-white/55">{detail}</span>
+                    )}
                   </span>
                 </li>
               ))}
             </ul>
           )}
 
-          <div className="mt-4 flex flex-wrap gap-x-3 gap-y-1">
-            {featured.tech.map((t) => (
-              <span
-                key={t}
-                className="font-mono text-[0.65rem] text-background/50"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
 
-          <span className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-background px-3.5 py-1.5 text-[0.8rem] font-medium text-foreground transition-opacity group-hover:opacity-90">
+          <span className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-[0.8rem] font-medium text-[#0f2e20] transition-opacity group-hover:opacity-90">
             {featured.status === "Waitlist" ? "Join the waitlist" : "Visit site"}
             <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </span>
         </div>
-
-        <div className="relative z-10 flex justify-center md:shrink-0 md:justify-end">
-          <AgenticaFlow />
-        </div>
       </Card>
 
-      {/* secondary grid — agentica.my-style tiles: streak band, checklist */}
+      {/* secondary grid — light tiles, each tinted in its product's hue */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {rest.map((product, i) => (
-          <a
-            key={product.name}
-            href={product.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(
-              "group relative flex flex-col overflow-hidden rounded-2xl bg-[#121212] text-white",
-              rest.length % 2 === 1 && i === rest.length - 1 && "sm:col-span-2 lg:col-span-1",
-            )}
-          >
-            <div
-              className="relative h-32 overflow-hidden"
-              style={{ "--h": product.hue } as CSSProperties}
+        {rest.map((product, i) => {
+          const tint = (l: number, c: number) =>
+            `oklch(${l} ${c} ${product.hue})`;
+          return (
+            <a
+              key={product.name}
+              href={product.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={
+                {
+                  "--h": product.hue,
+                  borderColor: tint(0.88, 0.05),
+                } as CSSProperties
+              }
+              className={cn(
+                "group relative flex flex-col overflow-hidden rounded-2xl border p-5 text-foreground transition-colors duration-300 hover:!border-foreground sm:p-6",
+                rest.length % 2 === 1 &&
+                  i === rest.length - 1 &&
+                  "sm:col-span-2 lg:col-span-1",
+              )}
             >
-              <span aria-hidden="true" className="streak-field" />
+              <span aria-hidden="true" className="streak-light" />
               <span aria-hidden="true" className="streak-grain" />
-              <span
-                aria-hidden="true"
-                className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-b from-transparent to-[#121212]"
-              />
-            </div>
 
-            <div className="flex flex-1 flex-col px-5 pt-2 pb-5 sm:px-6 sm:pb-6">
-              <div className="flex items-center gap-2.5">
-                <h3 className="font-sans text-2xl font-light tracking-tight">
+              <div className="relative z-10 flex flex-1 flex-col">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="font-mono text-[0.68rem] text-foreground/55">
+                    {product.url.replace(/^https?:\/\//, "")}
+                  </span>
+                </div>
+
+                <h3 className="mt-10 font-sans text-[1.7rem] font-light leading-none tracking-[-0.03em]">
                   {product.name}
                 </h3>
-                <span className="rounded-full border border-white/25 px-2 py-px text-[0.65rem] text-white/70">
-                  {product.status}
+
+                {product.points && (
+                  <ul className="mt-4 flex flex-1 flex-col gap-2 text-sm text-foreground/75">
+                    {product.points.map((point) => (
+                      <li key={point} className="flex gap-2.5">
+                        <Check
+                          className="mt-0.5 size-4 shrink-0"
+                          style={{ color: tint(0.55, 0.13) }}
+                        />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                <span className="mt-6 inline-flex items-center gap-1.5 self-start rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background">
+                  Visit site
+                  <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
               </div>
-              {product.points && (
-                <ul className="mt-4 flex flex-1 flex-col gap-2 text-sm text-white/80">
-                  {product.points.map((point) => (
-                    <li key={point} className="flex gap-2.5">
-                      <Check className="mt-0.5 size-4 shrink-0 text-white/45" />
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-              )}
-              <span className="mt-6 inline-flex items-center gap-1.5 self-start rounded-full bg-white px-4 py-2 text-sm font-medium text-[#121212] transition-opacity group-hover:opacity-90">
-                Visit site
-                <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </span>
-            </div>
-          </a>
-        ))}
+            </a>
+          );
+        })}
       </div>
 
       {/* other projects */}

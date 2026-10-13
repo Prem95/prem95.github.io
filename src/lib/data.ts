@@ -131,12 +131,11 @@ export const products = [
   {
     name: "Agentica",
     url: "https://agentica.my",
-    description:
-      "POS, ERP and a Telegram AI assistant on one set of records, built for Malaysian SMEs.",
+    description: "All-In-One POS, ERP and AI for your Business Operations",
     highlights: [
-      ["agenticaPOS", "Works offline, DuitNow QR"],
-      ["agenticaERP", "Stock, invoices, payroll"],
-      ["agenticaAI", "Asks before it acts"],
+      ["agenticaPOS", "Customisable POS for your business"],
+      ["agenticaERP", "Handles stock, invoices, receipts, payroll, staffing and more", "EPF, SOCSO, EIS and PCB"],
+      ["agenticaAI", "24/7 AI assistant that monitors your business"],
     ],
     tech: ["Next.js", "Supabase", "Prisma", "Telegram Bot API"],
     status: "Waitlist",
