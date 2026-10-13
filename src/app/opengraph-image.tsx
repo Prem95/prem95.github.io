@@ -78,7 +78,7 @@ export default function OpengraphImage() {
           }}
         >
           <span>premkumar95.com</span>
-          <span>Ancileo · Simpler suite</span>
+          <span>Ancileo · Agentica</span>
         </div>
       </div>
     ),

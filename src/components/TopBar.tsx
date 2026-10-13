@@ -38,7 +38,7 @@ export default function TopBar() {
       <div className="flex h-14 items-center justify-between bg-background/85 px-5 backdrop-blur-md">
         <a
           href="#hero"
-          className="flex items-center gap-2.5 font-display text-base font-extrabold tracking-tight"
+          className="flex items-center gap-2.5 font-display text-base font-semibold tracking-tight"
         >
           <Image
             src="/prem.jpg"

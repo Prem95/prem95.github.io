@@ -44,7 +44,7 @@ export default function SideRail() {
           />
         </a>
 
-        <p className="font-display text-[1.35rem] font-extrabold leading-tight tracking-tight text-foreground">
+        <p className="font-display text-[1.35rem] font-light leading-tight tracking-[-0.03em] text-foreground">
           {config.name}
         </p>
         <p className="mt-1 text-sm font-medium text-muted-foreground">

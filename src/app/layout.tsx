@@ -1,26 +1,20 @@
 import type { Metadata } from "next";
-import { Archivo, Bricolage_Grotesque, IBM_Plex_Mono } from "next/font/google";
+import { Google_Sans_Code, Inter } from "next/font/google";
 import "./globals.css";
 import { config } from "@/lib/data";
 
-// Body: Archivo — a grotesque with squared-off terminals that stays even at
-// small sizes. Deliberately not Inter/Geist, which every generated site ships.
-const archivo = Archivo({
+// Same pairing as agentica.my. Inter (variable, with the optical-size axis,
+// so headings render in Inter Display) sets every word; light weights and
+// tight tracking carry the hierarchy.
+const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
+  axes: ["opsz"],
 });
 
-// Display: Bricolage Grotesque — slightly irregular widths give the headings
-// a voice the body face doesn't have, and it stays tight at weight 800.
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-display",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-// Mono labels and figures: IBM Plex Mono.
-const plexMono = IBM_Plex_Mono({
+// Google Sans Code for labels, figures and anything the page counts.
+const googleSansCode = Google_Sans_Code({
   variable: "--font-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
@@ -69,7 +63,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${archivo.variable} ${bricolage.variable} ${plexMono.variable}`}
+      className={`${inter.variable} ${googleSansCode.variable}`}
     >
       <body className="antialiased isolate relative">{children}</body>
     </html>

@@ -129,14 +129,36 @@ export const buildKit = [
 
 export const products = [
   {
+    name: "Agentica",
+    url: "https://agentica.my",
+    description:
+      "POS, ERP and a Telegram AI assistant on one set of records, built for Malaysian SMEs.",
+    highlights: [
+      ["agenticaPOS", "Works offline, DuitNow QR"],
+      ["agenticaERP", "Stock, invoices, payroll"],
+      ["agenticaAI", "Asks before it acts"],
+    ],
+    tech: ["Next.js", "Supabase", "Prisma", "Telegram Bot API"],
+    status: "Waitlist",
+    featured: true,
+    image: null,
+    hue: 150,
+  },
+  {
     name: "Decenchro",
     url: "https://decenchro.com",
     description:
       "Deploy secure, auditable AI agents that run 24/7 on your own private servers. Every action is logged immutably, with rule-based guards that pause risky operations for approval.",
     tech: ["OpenRouter", "Self-hosted"],
     status: "Live",
-    featured: true,
+    featured: false,
     image: null,
+    hue: 160,
+    points: [
+      "AI agents running 24/7 on your own servers",
+      "Every action logged immutably",
+      "Rule-based guards pause risky operations",
+    ],
   },
   {
     name: "Hiregents",
@@ -147,6 +169,12 @@ export const products = [
     status: "Live",
     featured: false,
     image: "/og/hiregents.png",
+    hue: 20,
+    points: [
+      "Pick an agent, connect your Telegram bot",
+      "Runs on its own private server",
+      "Live in minutes",
+    ],
   },
   {
     name: "SaaSClips",
@@ -157,46 +185,12 @@ export const products = [
     status: "Live",
     featured: false,
     image: "/og/saasclips.png",
-  },
-  {
-    name: "Simpler Invoices",
-    url: "https://simplerinvoices.com",
-    description:
-      "Invoicing for freelancers who don't want to think about invoicing. Generate, send, and track. The whole thing takes under a minute.",
-    tech: ["Next.js", "Supabase", "Stripe", "Resend"],
-    status: "Live",
-    featured: false,
-    image: "/og/simpler-invoices.png",
-  },
-  {
-    name: "Simpler Infographics",
-    url: "https://simplerinfographics.com",
-    description:
-      "Drop in a PDF, get a print-ready infographic. Three output styles. Pick the one that fits the audience.",
-    tech: ["Next.js", "OpenAI", "Vercel"],
-    status: "Live",
-    featured: false,
-    image: null,
-  },
-  {
-    name: "Simpler Outreach",
-    url: "https://simpleroutreach.com",
-    description:
-      "Cold email that doesn't read like cold email. Personalised at scale using Claude Haiku, fast enough to not be annoying.",
-    tech: ["Node.js", "OpenRouter", "Resend", "Stripe"],
-    status: "Live",
-    featured: false,
-    image: "/og/simpler-outreach.png",
-  },
-  {
-    name: "Simpler Disputes",
-    url: "https://simplerdisputes.com",
-    description:
-      "Chargeback dispute letters, generated. The process is tedious by design. This makes it take two minutes instead of two hours.",
-    tech: ["HTML", "Vercel", "Stripe"],
-    status: "Live",
-    featured: false,
-    image: "/og/simpler-disputes.png",
+    hue: 95,
+    points: [
+      "Paste a URL, get a launch video",
+      "Square MP4 in about sixty seconds",
+      "AI voiceover built in",
+    ],
   },
 ];
 

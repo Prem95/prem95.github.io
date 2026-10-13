@@ -1,5 +1,6 @@
-import { ArrowUpRight } from "lucide-react";
-import Image from "next/image";
+import type { CSSProperties } from "react";
+import { ArrowUpRight, Check } from "lucide-react";
+import AgenticaFlow from "@/components/AgenticaFlow";
 import { Github } from "@/components/BrandIcons";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -41,108 +42,116 @@ export default function Products() {
         ))}
       </dl>
 
-      {/* featured */}
+      {/* featured — inverted, with agentica.my's sale → ERP → AI flow */}
       <Card
         render={
           <a href={featured.url} target="_blank" rel="noopener noreferrer" />
         }
-        className="group mb-4 flex-row flex-wrap gap-6 overflow-hidden p-6 transition-colors duration-300 hover:border-foreground sm:p-8"
+        className="group mb-4 flex-col gap-6 overflow-hidden border-foreground bg-foreground p-5 text-background sm:p-6 md:flex-row md:items-center md:justify-between"
       >
-        <div className="dot-grid pointer-events-none absolute inset-0 opacity-40" />
-        {featured.image && (
-          <>
-            <Image
-              src={featured.image}
-              alt=""
-              fill
-              sizes="(max-width: 1024px) 100vw, 760px"
-              className="pointer-events-none object-cover opacity-0 [transition:opacity_0.5s_cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-card via-card/85 to-card/45 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-          </>
-        )}
-        <div className="relative z-10 flex-1 basis-72">
+        <div className="relative z-10 min-w-0 flex-1">
           <div className="flex items-center gap-2.5">
-            <Badge size="sm">{featured.status}</Badge>
-            <span className="eyebrow">Featured</span>
+            <Badge
+              size="sm"
+              className="border-background/30 bg-transparent text-background"
+            >
+              {featured.status}
+            </Badge>
+            <span className="eyebrow text-background/55">Featured</span>
           </div>
-          <h3 className="display mt-3 text-[clamp(1.5rem,3.5vw,2.2rem)]">
+          <h3 className="display mt-2.5 text-[clamp(1.5rem,3vw,2rem)]">
             {featured.name}
           </h3>
-          <p className="mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-1.5 max-w-sm text-sm leading-relaxed text-background/65">
             {featured.description}
           </p>
-        </div>
-        <div className="relative z-10 flex basis-full flex-col justify-between gap-4 sm:shrink-0 sm:basis-44">
-          <div className="flex flex-wrap gap-1.5">
+
+          {featured.highlights && (
+            <ul className="mt-4 flex flex-col gap-1 text-[0.8rem]">
+              {featured.highlights.map(([module, line]) => (
+                <li key={module} className="flex items-center gap-2">
+                  <Check className="size-3.5 shrink-0 text-background/45" />
+                  <span>
+                    <span className="font-semibold">{module}</span>
+                    <span className="text-background/65"> · {line}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <div className="mt-4 flex flex-wrap gap-x-3 gap-y-1">
             {featured.tech.map((t) => (
-              <Badge
+              <span
                 key={t}
-                variant="secondary"
-                size="sm"
-                className="font-mono"
+                className="font-mono text-[0.65rem] text-background/50"
               >
                 {t}
-              </Badge>
+              </span>
             ))}
           </div>
-          <span className="inline-flex items-center gap-1 text-sm font-semibold">
-            Visit site
+
+          <span className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-background px-3.5 py-1.5 text-[0.8rem] font-medium text-foreground transition-opacity group-hover:opacity-90">
+            {featured.status === "Waitlist" ? "Join the waitlist" : "Visit site"}
             <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </span>
         </div>
+
+        <div className="relative z-10 flex justify-center md:shrink-0 md:justify-end">
+          <AgenticaFlow />
+        </div>
       </Card>
 
-      {/* secondary grid */}
-      <div className="grid gap-4 sm:grid-cols-2">
-        {rest.map((product) => (
-          <div key={product.name}>
-            <Card
-              render={
-                <a
-                  href={product.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                />
-              }
-              className="group h-full gap-0 overflow-hidden p-5 transition-colors duration-300 hover:border-foreground"
+      {/* secondary grid — agentica.my-style tiles: streak band, checklist */}
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {rest.map((product, i) => (
+          <a
+            key={product.name}
+            href={product.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(
+              "group relative flex flex-col overflow-hidden rounded-2xl bg-[#121212] text-white",
+              rest.length % 2 === 1 && i === rest.length - 1 && "sm:col-span-2 lg:col-span-1",
+            )}
+          >
+            <div
+              className="relative h-32 overflow-hidden"
+              style={{ "--h": product.hue } as CSSProperties}
             >
-              {product.image && (
-                <>
-                  <Image
-                    src={product.image}
-                    alt=""
-                    fill
-                    sizes="(max-width: 640px) 100vw, 50vw"
-                    className="pointer-events-none object-cover opacity-0 [transition:opacity_0.5s_cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-card/85 to-card/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                </>
-              )}
-              <div className="relative z-10 flex h-full flex-col">
-                <div className="flex items-start justify-between">
-                  <Badge size="sm">{product.status}</Badge>
-                  <ArrowUpRight className="size-4 text-muted-foreground transition-colors group-hover:text-foreground" />
-                </div>
-                <h3 className="mt-3 text-base font-bold tracking-tight">
+              <span aria-hidden="true" className="streak-field" />
+              <span aria-hidden="true" className="streak-grain" />
+              <span
+                aria-hidden="true"
+                className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-b from-transparent to-[#121212]"
+              />
+            </div>
+
+            <div className="flex flex-1 flex-col px-5 pt-2 pb-5 sm:px-6 sm:pb-6">
+              <div className="flex items-center gap-2.5">
+                <h3 className="font-sans text-2xl font-light tracking-tight">
                   {product.name}
                 </h3>
-                <p className="mt-1.5 flex-1 text-sm leading-relaxed text-muted-foreground">
-                  {product.description}
-                </p>
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {product.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="font-mono text-[0.65rem] text-muted-foreground"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
+                <span className="rounded-full border border-white/25 px-2 py-px text-[0.65rem] text-white/70">
+                  {product.status}
+                </span>
               </div>
-            </Card>
-          </div>
+              {product.points && (
+                <ul className="mt-4 flex flex-1 flex-col gap-2 text-sm text-white/80">
+                  {product.points.map((point) => (
+                    <li key={point} className="flex gap-2.5">
+                      <Check className="mt-0.5 size-4 shrink-0 text-white/45" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <span className="mt-6 inline-flex items-center gap-1.5 self-start rounded-full bg-white px-4 py-2 text-sm font-medium text-[#121212] transition-opacity group-hover:opacity-90">
+                Visit site
+                <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </span>
+            </div>
+          </a>
         ))}
       </div>
 
