@@ -46,7 +46,7 @@ export default function GitHubStatsDisplay({
             {stats.totalContributions.toLocaleString()}
           </span>
           <span className="text-[0.7rem] text-muted-foreground">
-            open-source contributions in the past year
+            contributions in the past year
           </span>
         </div>
       )}
