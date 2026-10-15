@@ -36,7 +36,7 @@ export const experience = [
   {
     company: "Azara AI",
     url: "https://www.getorchestrator.com/",
-    role: "Lead AI Engineer",
+    role: "AI Engineer",
     location: "United States (Remote)",
     range: "February 2023 — November 2023",
     start: 2023,
