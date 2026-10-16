@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { config } from "@/lib/data";
 
 export const dynamic = "force-static";
-export const alt = `${config.name} — AI Engineer`;
+export const alt = `${config.name} — Forward Deployed Engineer`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -41,7 +41,7 @@ export default function OpengraphImage() {
               backgroundColor: "#1f9d57",
             }}
           />
-          AI Engineer · Builder
+          Forward Deployed Engineer
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -64,8 +64,8 @@ export default function OpengraphImage() {
               lineHeight: 1.35,
             }}
           >
-            Agentic AI systems in production — LangGraph, RAG, Claude Code. Indie
-            SaaS on the side.
+            Applications, SaaS and production AI systems for startups and
+            organisations.
           </div>
         </div>
 

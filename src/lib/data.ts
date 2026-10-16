@@ -1,20 +1,19 @@
 export const config = {
   name: "Prem Kumar",
-  role: "Senior AI Engineer",
+  role: "Forward Deployed Engineer",
   siteUrl: "https://premkumar95.com",
   tagline:
-    "Senior AI Engineer, 8 years architecting agentic systems and multi-agent orchestration for enterprise clients across insurtech and Web3.",
+    "Forward Deployed Engineer building applications, SaaS products and production AI systems for startups and organisations, from first prototype to live deployment.",
   email: "premstroke95@gmail.com",
   github: "https://github.com/Prem95",
   twitter: "https://x.com/defichemist95",
   linkedin: "https://www.linkedin.com/in/premstrk/",
-  availability: "Open to remote roles across Southeast Asia",
+  availability: "Open to Forward Deployed Engineer roles · Remote / SEA",
 };
 
 export const about = {
   bio: [
-    "Senior AI engineer with 8 years architecting agentic systems for enterprise and B2B clients across insurtech and Web3, taking systems from first LangGraph node to multi-tenant production deployment.",
-    "These days I'm at Ancileo, building the bridge between claimants and insurers with AI agents. On the side, I ship my own SaaS products. What I care about most is building agents that scale in production.",
+    "Forward deployed engineer with 8 years building applications, SaaS products and production systems for startups and organisations. I work close to the people using the software: scoping the problem with them, building it end to end, and staying with it until it runs in production.",
   ],
 };
 

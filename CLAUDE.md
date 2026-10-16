@@ -6,6 +6,10 @@ Recruiters, potential clients, collaborators, and fellow engineers who land on t
 ### Brand Personality
 **Sharp / Technical / Ambitious** — Prem is a Senior AI Engineer at Ancileo building agentic insurance products, and an indie builder shipping real products (Agentica, Decenchro, Hiregents, SaaSClips). The site should feel like it was built by someone who cares about craft: precise, confident, and forward-looking. Not flashy. Not safe. Distinctively clean.
 
+### Positioning & search
+- **Headline role / target keyword: Forward Deployed Engineer** — building applications, SaaS products and production systems for startups and organisations. It leads the `<title>`, meta description (`config.tagline`), OG/Twitter titles, share image, JSON-LD `jobTitle`/`hasOccupation`, the hero tagline, the availability badge and the first bio paragraph.
+- Experience entries keep the real job titles (e.g. Senior AI Engineer at Ancileo); never rewrite past titles to match the keyword.
+
 ### Aesthetic Direction
 - **Theme**: Light mode — off-white (#FAFAFA) background, near-black (#18181B) text/accent
 - **Typography**: Inter (variable, `opsz` axis) for all text and Google Sans Code for labels and figures, the same pairing as agentica.my. Headings are light (300) with tight tracking; hierarchy comes from size and weight, not a second display face
