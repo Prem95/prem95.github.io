@@ -8,24 +8,43 @@ export const config = {
   github: "https://github.com/Prem95",
   twitter: "https://x.com/defichemist95",
   linkedin: "https://www.linkedin.com/in/premstrk/",
+  booking: "https://cal.com/prem-kumar-95/30min",
   availability: "Open to Forward Deployed Engineer roles · Remote / SEA",
 };
 
 export const about = {
+  // First line is the lead; the rest render as supporting paragraphs
   bio: [
-    "Forward deployed engineer with 8 years building applications, SaaS products and production systems for startups and organisations. I work close to the people using the software: scoping the problem with them, building it end to end, and staying with it until it runs in production.",
+    "Forward deployed engineer with 8 years building applications, SaaS products and production systems for startups and organisations.",
+    "Most of my work now is agentic development: AI agents, RAG pipelines and multi-agent workflows on LangGraph, OpenAI and AWS Bedrock.",
+    "I work close to the people using the software: scoping the problem with them, building it full stack, and handling the deployment, infrastructure and monitoring until it runs in production.",
   ],
 };
 
 export const experience = [
   {
+    company: "Chromia",
+    url: "https://chromia.com",
+    role: "Forward Deployed Engineer",
+    location: "Sweden (Remote)",
+    range: "2026 — Present",
+    start: 2026,
+    end: null,
+    description: [
+      "Lead architect for the Chromia AI backend across AI and robotics projects: designing and running its servers, services and open-source stacks, and keeping them on the right frameworks.",
+      "Managing Chromia's AI Labs, including the Eval Engine.",
+      "Building Web3 agent applications focused on security, data and privacy, with Atbash and Decenchro integrations.",
+      "Hybrid developer relations role: building tools for developers, such as a vector DB research agent, and shipping quick proofs of concept and MVPs.",
+    ],
+  },
+  {
     company: "Ancileo",
     url: "https://ancileo.com",
     role: "Senior AI Engineer",
     location: "Singapore (Remote)",
-    range: "July 2024 — Present",
+    range: "July 2024 — 2026",
     start: 2024,
-    end: null,
+    end: 2026,
     description: [
       "Developed an internal claims-assessment AI engine built on LangGraph, the OpenAI SDK, and an in-house AI library. Runs end-to-end, assessing the peril for claim approval against policy.",
       "Designed the foundation of a multi-tenant insurance conversational agent on AWS Strands and Bedrock AgentCore, provisioned via Terraform (IaC). Connected on WhatsApp via Twilio.",
@@ -81,9 +100,9 @@ export const experience = [
     range: "April 2019 — April 2020",
     start: 2019,
     end: 2020,
-    engagement: "Contract",
     description: [
-      "Built backend services in Python for early-stage security and AI products.",
+      "Consulted the CEO on eKYC architecture for payments and BNPL, turning market demands into technical requirements, project plans and deadlines.",
+      "Built a complete machine learning pipeline (data collection, model training and evaluation) for the existing system, and set up the AI training servers on AWS and on-premise.",
     ],
   },
   {
@@ -110,19 +129,6 @@ export const experience = [
     description: [
       "CNN-based seed classification for an automated grading system.",
     ],
-  },
-];
-
-/* How the products above get built — the stack, and the custom Claude Code
-   skills Prem wrote to ship them. */
-export const buildKit = [
-  {
-    group: "Tech Stack",
-    items: ["Claude Code", "Next.js / TS", "Stripe", "Supabase", "Vercel"],
-  },
-  {
-    group: "Skills Used",
-    items: ["/code-review", "/design-taste-frontend", "/ship-check"],
   },
 ];
 
@@ -156,6 +162,22 @@ export const products = [
       "AI agents running 24/7 on your own servers",
       "Every action logged immutably",
       "Rule-based guards pause risky operations",
+    ],
+  },
+  {
+    name: "Thirdspace",
+    url: "https://thirdspace.my",
+    description:
+      "An iPhone app for Malaysia that turns cafés' quiet hours into event space.",
+    tech: ["Expo", "React Native", "Supabase"],
+    status: "Live",
+    featured: false,
+    image: null,
+    hue: 10,
+    points: [
+      "Cafés open slots in their quiet hours",
+      "Organisers request a slot and publish an event page",
+      "Visitors find events nearby and join them",
     ],
   },
   {
@@ -224,5 +246,36 @@ export const otherProjects = [
     tech: ["LangChain", "OpenAI", "React", "Node.js"],
     github: null,
     external: null,
+  },
+];
+
+export const references = [
+  {
+    name: "Alex Kshutashvili",
+    position: "CTO & Co-Founder",
+    company: "Neofin",
+    location: "United States",
+    email: "oleksandr@neofin.global",
+  },
+  {
+    name: "Chern Loon Lim",
+    position: "Tech Lead",
+    company: "WISE AI",
+    location: "Malaysia",
+    email: "chernloon@wise.ai",
+  },
+  {
+    name: "Shahid",
+    position: "COO / Finance",
+    company: "Azara AI",
+    location: "United States",
+    email: "shahid@raising1bn.com",
+  },
+  {
+    name: "Joshua Smith",
+    position: "CEO",
+    company: "Tekkis",
+    location: "Malaysia",
+    email: "joshsmith.htp@gmail.com",
   },
 ];

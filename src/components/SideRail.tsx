@@ -37,10 +37,10 @@ export default function SideRail() {
           <Image
             src="/prem.jpg"
             alt="Prem Kumar"
-            width={64}
-            height={64}
+            width={96}
+            height={96}
             priority
-            className="size-16 rounded-full border border-border object-cover"
+            className="size-24 rounded-full border border-border object-cover"
           />
         </a>
 

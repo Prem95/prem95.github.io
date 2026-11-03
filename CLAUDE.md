@@ -4,11 +4,11 @@
 Recruiters, potential clients, collaborators, and fellow engineers who land on the site to quickly assess Prem's background, credibility, and work. They scan fast — they want to know who he is, what he builds, and how to reach him. Context: desktop and mobile, often via a shared link or Google search.
 
 ### Brand Personality
-**Sharp / Technical / Ambitious** — Prem is a Senior AI Engineer at Ancileo building agentic insurance products, and an indie builder shipping real products (Agentica, Decenchro, Hiregents, SaaSClips). The site should feel like it was built by someone who cares about craft: precise, confident, and forward-looking. Not flashy. Not safe. Distinctively clean.
+**Sharp / Technical / Ambitious** — Prem is a Forward Deployed Engineer at Chromia (AI and robotics backend, Web3), previously Senior AI Engineer at Ancileo building agentic insurance products, and an indie builder shipping real products (Agentica, Decenchro, Thirdspace, Hiregents, SaaSClips). The site should feel like it was built by someone who cares about craft: precise, confident, and forward-looking. Not flashy. Not safe. Distinctively clean.
 
 ### Positioning & search
 - **Headline role / target keyword: Forward Deployed Engineer** — building applications, SaaS products and production systems for startups and organisations. It leads the `<title>`, meta description (`config.tagline`), OG/Twitter titles, share image, JSON-LD `jobTitle`/`hasOccupation`, the hero tagline, the availability badge and the first bio paragraph.
-- Experience entries keep the real job titles (e.g. Senior AI Engineer at Ancileo); never rewrite past titles to match the keyword.
+- Experience entries keep the real job titles (e.g. Forward Deployed Engineer at Chromia, Senior AI Engineer at Ancileo); never rewrite past titles to match the keyword.
 
 ### Aesthetic Direction
 - **Theme**: Light mode — off-white (#FAFAFA) background, near-black (#18181B) text/accent
@@ -81,7 +81,7 @@ npm run lint             # ESLint
 
 ### Sections
 1. **Hero** — name, role, tagline, two CTAs
-2. **About** — bio (Senior AI Engineer @ Ancileo, agentic insurance, indie builder), GitHub stats card
-3. **Experience** — tabbed: Ancileo + prior roles
-4. **Products** — Agentica featured (green ground, waitlist), then tiles for Decenchro, Hiregents, SaaSClips; side projects list below
+2. **About** — bio (forward deployed engineer, agentic development, indie builder), GitHub stats card
+3. **Experience** — tabbed: Chromia (current), Ancileo + prior roles
+4. **Products** — Agentica featured (green ground, waitlist), then tiles for Decenchro, Thirdspace, Hiregents, SaaSClips (2×2 grid; three columns only when the tile count divides by 3); side projects list below
 5. **Contact** — minimal, email + socials

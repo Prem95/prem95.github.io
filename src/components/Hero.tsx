@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { CalendarDays } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { config, products } from "@/lib/data";
@@ -54,17 +55,32 @@ export default function Hero() {
         <p className="max-w-md text-[0.95rem] leading-relaxed text-muted-foreground">
           {config.tagline}
         </p>
-        <div className="flex shrink-0 items-center gap-2.5">
-          <Button size="lg" render={<a href="#contact">Contact</a>} />
+        <div className="flex shrink-0 flex-wrap items-center gap-2.5">
+          <Button
+            size="lg"
+            render={
+              <a
+                href={config.booking}
+                target="_blank"
+                rel="noopener noreferrer"
+              />
+            }
+          >
+            <CalendarDays />
+            Book a call
+          </Button>
+          <Button size="lg" variant="outline" render={<a href="#contact" />}>
+            Contact
+          </Button>
           <Button
             size="lg"
             variant="outline"
             render={
-              <a href={config.github} target="_blank" rel="noreferrer">
-                GitHub
-              </a>
+              <a href={config.github} target="_blank" rel="noreferrer" />
             }
-          />
+          >
+            GitHub
+          </Button>
         </div>
       </div>
 

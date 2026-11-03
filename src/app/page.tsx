@@ -27,8 +27,8 @@ const personJsonLd = {
   email: `mailto:${config.email}`,
   worksFor: {
     "@type": "Organization",
-    name: "Ancileo",
-    url: "https://ancileo.com",
+    name: "Chromia",
+    url: "https://chromia.com",
   },
   alumniOf: {
     "@type": "CollegeOrUniversity",
@@ -36,6 +36,8 @@ const personJsonLd = {
   },
   knowsAbout: [
     "Forward Deployed Engineering",
+    "Agentic Development",
+    "AI Agent Deployment",
     "SaaS Development",
     "Production Systems",
     "Full-Stack Development",

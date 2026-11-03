@@ -3,7 +3,7 @@ import { ArrowUpRight, Check } from "lucide-react";
 import { Github } from "@/components/BrandIcons";
 import { Card } from "@/components/ui/card";
 import SectionHeading from "@/components/SectionHeading";
-import { products, otherProjects, buildKit } from "@/lib/data";
+import { products, otherProjects } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 export default function Products() {
@@ -15,30 +15,6 @@ export default function Products() {
       className="scroll-mt-20 border-t border-border py-12 sm:py-16"
     >
       <SectionHeading num="03" label="Products" title="Things I've built" />
-
-      {/* what they're built with */}
-      <dl className="mb-8 flex flex-col gap-3 border-y border-border py-5">
-        {buildKit.map((cat) => (
-          <div
-            key={cat.group}
-            className="grid gap-1.5 sm:grid-cols-[7rem_1fr] sm:gap-4"
-          >
-            <dt className="eyebrow pt-0.5">{cat.group}</dt>
-            <dd className="flex flex-wrap gap-x-4 gap-y-1.5 text-sm text-foreground">
-              {cat.items.map((item) => (
-                <span
-                  key={item}
-                  className={cn(
-                    item.startsWith("/") && "font-mono text-[0.8rem]",
-                  )}
-                >
-                  {item}
-                </span>
-              ))}
-            </dd>
-          </div>
-        ))}
-      </dl>
 
       {/* featured — on agentica.my's green hero */}
       <Card
@@ -78,16 +54,22 @@ export default function Products() {
             </ul>
           )}
 
-
           <span className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-[0.8rem] font-medium text-[#0f2e20] transition-opacity group-hover:opacity-90">
-            {featured.status === "Waitlist" ? "Join the waitlist" : "Visit site"}
+            {featured.status === "Waitlist"
+              ? "Join the waitlist"
+              : "Visit site"}
             <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </span>
         </div>
       </Card>
 
       {/* secondary grid — light tiles, each tinted in its product's hue */}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        className={cn(
+          "grid gap-4 sm:grid-cols-2",
+          rest.length % 3 === 0 && "lg:grid-cols-3",
+        )}
+      >
         {rest.map((product, i) => {
           const tint = (l: number, c: number) =>
             `oklch(${l} ${c} ${product.hue})`;

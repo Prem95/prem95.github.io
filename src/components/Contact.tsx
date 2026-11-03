@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { toastManager } from "@/components/ui/toast";
 import SectionHeading from "@/components/SectionHeading";
-import { config } from "@/lib/data";
+import { config, references } from "@/lib/data";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -68,6 +68,37 @@ export default function Contact() {
             }
           />
         </div>
+      </div>
+
+      {/* references */}
+      <div className="mt-14">
+        <span className="eyebrow">References</span>
+        <ul className="mt-4">
+          {references.map((ref) => (
+            <li
+              key={ref.email}
+              className="flex flex-col gap-1 border-b border-border py-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+            >
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-baseline gap-x-2">
+                  <h4 className="text-sm font-semibold">{ref.name}</h4>
+                  <span className="font-mono text-[0.65rem] text-muted-foreground">
+                    {ref.location}
+                  </span>
+                </div>
+                <p className="mt-0.5 text-xs text-muted-foreground">
+                  {ref.position}, {ref.company}
+                </p>
+              </div>
+              <a
+                href={`mailto:${ref.email}`}
+                className="link-underline shrink-0 font-mono text-[0.75rem] text-foreground"
+              >
+                {ref.email}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

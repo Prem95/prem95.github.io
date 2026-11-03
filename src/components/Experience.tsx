@@ -87,17 +87,11 @@ export default function Experience() {
                       {grouped && (
                         <p className="mb-1 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted-foreground/70">
                           {job.start} — {job.end ?? "now"}
-                          {job.engagement && ` · ${job.engagement}`}
                         </p>
                       )}
 
                       <h3 className="font-display text-lg font-bold tracking-tight">
                         {job.role}
-                        {!grouped && job.engagement && (
-                          <span className="ml-2 font-mono text-[0.65rem] font-normal uppercase tracking-[0.14em] text-muted-foreground/70">
-                            {job.engagement}
-                          </span>
-                        )}
                       </h3>
 
                       <ul className="mt-3 flex flex-col gap-2">

@@ -33,7 +33,7 @@ export default function GitHubStatsDisplay({
       href={config.github}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex flex-col gap-4 border border-border bg-card p-4 transition-colors hover:border-foreground"
+      className="group flex flex-col gap-4 rounded-xl border border-border bg-card p-5 transition-colors hover:border-foreground"
     >
       <div className="flex items-center justify-between">
         <Github className="size-5 shrink-0 text-muted-foreground transition-colors group-hover:text-foreground" />
