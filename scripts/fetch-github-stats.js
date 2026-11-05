@@ -9,6 +9,11 @@ const fs = require("fs");
 const path = require("path");
 
 const GITHUB_USERNAME = "Prem95";
+// A second account of mine, whose repos are all private. Reading them needs
+// GITHUB_TOKEN_SECONDARY, a token for that account.
+const SECONDARY_USERNAME = "agenticatechnology";
+// GitHub draws the calendar in my timezone (Malaysia, UTC+8).
+const CALENDAR_UTC_OFFSET_HOURS = 8;
 const OUTPUT_FILE = path.join(__dirname, "../public/github-stats.json");
 
 // This script runs before `next build`, so it loads .env.local itself.
@@ -31,6 +36,79 @@ const headers = {
     ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
     : {}),
 };
+
+// All pages of a GitHub list endpoint. Throws on failure so a partial count
+// never gets published. An empty repo's commit list answers 409.
+async function fetchAllPages(url, requestHeaders) {
+  const items = [];
+  for (let page = 1; ; page++) {
+    const res = await fetch(`${url}?per_page=100&page=${page}`, {
+      headers: requestHeaders,
+    });
+    if (res.status === 409) return items;
+    if (!res.ok) throw new Error(`${res.status} from ${url}`);
+    const batch = await res.json();
+    items.push(...batch);
+    if (batch.length < 100) return items;
+  }
+}
+
+// Daily count ({ "YYYY-MM-DD": n }) of commits in the second account's repos
+// that the main account's calendar doesn't already include. GitHub credits a
+// commit to whichever account owns its email, and only if that account can
+// access the repo, so we count:
+//   - commits authored as the second account, and
+//   - commits authored as the main account, in repos it isn't a collaborator on.
+// Returns null when the commits can't be read, so the caller keeps saved values.
+async function fetchSecondaryCommitsByDate() {
+  const token = process.env.GITHUB_TOKEN_SECONDARY;
+  if (!token) return null;
+
+  const requestHeaders = {
+    Accept: "application/vnd.github.v3+json",
+    Authorization: `Bearer ${token}`,
+  };
+  const api = "https://api.github.com";
+  const sameUser = (a, b) => a?.toLowerCase() === b.toLowerCase();
+
+  try {
+    const repos = await fetchAllPages(
+      `${api}/user/repos`,
+      requestHeaders
+    );
+    const byDate = {};
+    for (const repo of repos) {
+      if (repo.fork || !sameUser(repo.owner?.login, SECONDARY_USERNAME)) continue;
+      const repoUrl = `${api}/repos/${repo.full_name}`;
+      const collaborators = await fetchAllPages(
+        `${repoUrl}/collaborators`,
+        requestHeaders
+      );
+      const mainHasAccess = collaborators.some((c) =>
+        sameUser(c.login, GITHUB_USERNAME)
+      );
+      const commits = await fetchAllPages(`${repoUrl}/commits`, requestHeaders);
+      for (const commit of commits) {
+        const author = commit.author?.login;
+        const missing =
+          sameUser(author, SECONDARY_USERNAME) ||
+          (sameUser(author, GITHUB_USERNAME) && !mainHasAccess);
+        if (!missing) continue;
+        const day = new Date(
+          new Date(commit.commit.author.date).getTime() +
+            CALENDAR_UTC_OFFSET_HOURS * 60 * 60 * 1000
+        )
+          .toISOString()
+          .slice(0, 10);
+        byDate[day] = (byDate[day] || 0) + 1;
+      }
+    }
+    return byDate;
+  } catch (error) {
+    console.error("Could not read secondary account:", error.message);
+    return null;
+  }
+}
 
 async function fetchGitHubStats() {
   try {
@@ -83,7 +161,21 @@ async function fetchGitHubStats() {
     let totalPRs = 0;
     let totalReviews = 0;
     let calendar = [];
+    let secondaryContributions = {};
     if (process.env.GITHUB_TOKEN) {
+      // A build without the second token (e.g. on Vercel) reuses the saved
+      // counts instead of dropping them from the totals.
+      secondaryContributions = await fetchSecondaryCommitsByDate();
+      if (!secondaryContributions) {
+        try {
+          secondaryContributions =
+            JSON.parse(fs.readFileSync(OUTPUT_FILE, "utf8"))
+              .secondaryContributions || {};
+        } catch {
+          secondaryContributions = {};
+        }
+      }
+
       const gqlRes = await fetch("https://api.github.com/graphql", {
         method: "POST",
         headers: { ...headers, "Content-Type": "application/json" },
@@ -97,7 +189,7 @@ async function fetchGitHubStats() {
                 restrictedContributionsCount
                 contributionCalendar {
                   totalContributions
-                  weeks { contributionDays { contributionCount } }
+                  weeks { contributionDays { date contributionCount } }
                 }
               }
             }
@@ -115,9 +207,16 @@ async function fetchGitHubStats() {
         totalPRs = cc?.totalPullRequestContributions || 0;
         totalReviews = cc?.totalPullRequestReviewContributions || 0;
         // Compact 52-week calendar: array of weeks, each an array of day counts
+        let secondaryTotal = 0;
         calendar = (cc?.contributionCalendar?.weeks || []).map((w) =>
-          w.contributionDays.map((d) => d.contributionCount)
+          w.contributionDays.map((d) => {
+            const extra = secondaryContributions[d.date] || 0;
+            secondaryTotal += extra;
+            return d.contributionCount + extra;
+          })
         );
+        totalContributions += secondaryTotal;
+        totalCommits += secondaryTotal;
       } else {
         console.error("GraphQL error:", gqlRes.status);
       }
@@ -131,6 +230,7 @@ async function fetchGitHubStats() {
       totalPRs,
       totalReviews,
       calendar,
+      secondaryContributions,
       totalStars,
       yearsOnGitHub,
       topLanguages,
@@ -147,6 +247,7 @@ async function fetchGitHubStats() {
         stats.totalPRs = prev.totalPRs || 0;
         stats.totalReviews = prev.totalReviews || 0;
         stats.calendar = prev.calendar || [];
+        stats.secondaryContributions = prev.secondaryContributions || {};
       } catch {
         // no previous file — nothing to preserve
       }

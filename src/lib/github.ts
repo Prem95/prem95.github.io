@@ -8,6 +8,8 @@ export interface GitHubStats {
   totalReviews?: number;
   /** 52 weeks of daily contribution counts, oldest week first */
   calendar?: number[][];
+  /** Daily commits from the second GitHub account, already included in the totals and calendar */
+  secondaryContributions?: Record<string, number>;
   totalStars: number;
   yearsOnGitHub: number;
   topLanguages: string[];

@@ -73,7 +73,7 @@ npm run lint             # ESLint
 - `src/app/layout.tsx` — Fonts, metadata
 - `src/components/` — Section components (`Products.tsx` holds the featured card and tiles)
 - `src/lib/data.ts` — All copy: roles, products (`hue`, `points`, `highlights`), side projects
-- `public/github-stats.json` — Written by `scripts/fetch-github-stats.js` before each build; needs `GITHUB_TOKEN` for contributions and the calendar
+- `public/github-stats.json` — Written by `scripts/fetch-github-stats.js` before each build; needs `GITHUB_TOKEN` for contributions and the calendar; `GITHUB_TOKEN_SECONDARY` (a token for `agenticatechnology`) also adds that account's commits that Prem95's calendar doesn't include, and builds without it reuse the saved counts
 
 ### Repo layout
 - This folder is the `main` worktree of `/Users/prem/Projects/prem95.github.io`, which is checked out on `gh-pages` and is the deploy target

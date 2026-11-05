@@ -31,10 +31,10 @@ export const experience = [
     start: 2026,
     end: null,
     description: [
-      "Lead architect for the Chromia AI backend across AI and robotics projects: designing and running its servers, services and open-source stacks, and keeping them on the right frameworks.",
-      "Managing Chromia's AI Labs, including the Eval Engine.",
-      "Building Web3 agent applications focused on security, data and privacy, with Atbash and Decenchro integrations.",
-      "Hybrid developer relations role: building tools for developers, such as a vector DB research agent, and shipping quick proofs of concept and MVPs.",
+      "Architect and deploy the Chromia AI backend for AI and robotics projects, taking servers, services and open-source AI stacks from prototype to production.",
+      "Run Chromia's AI Labs, including the Eval Engine for evaluating AI models and agents.",
+      "Build secure Web3 AI agent applications focused on data and privacy, integrating Atbash tool-call guards and Decenchro's self-hosted, auditable agents.",
+      "Embed with developers and teams building on Chromia: scope their problems with them, then ship proofs of concept, MVPs and developer tools such as a vector database research agent.",
     ],
   },
   {
