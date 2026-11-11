@@ -176,7 +176,7 @@ export const products = [
     status: "Live",
     featured: false,
     image: null,
-    hue: 10,
+    hue: 125,
     points: [
       "Cafés open slots in their quiet hours",
       "Organisers request a slot and publish an event page",
