@@ -1,6 +1,6 @@
 "use client";
 
-import SectionHeading from "@/components/SectionHeading";
+import Section from "@/components/Section";
 import { experience } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -33,12 +33,12 @@ export default function Experience() {
   const groups = groupByCompany(experience);
 
   return (
-    <section
+    <Section
       id="experience"
-      className="scroll-mt-20 border-t border-border py-12 sm:py-16"
+      num="02"
+      label="Experience"
+      title="Where I've worked"
     >
-      <SectionHeading num="02" label="Experience" title="Where I've worked" />
-
       <div>
         {groups.map((group, i) => {
           const rangeStart = group.roles[group.roles.length - 1].start;
@@ -117,6 +117,6 @@ export default function Experience() {
           );
         })}
       </div>
-    </section>
+    </Section>
   );
 }

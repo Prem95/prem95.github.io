@@ -135,6 +135,7 @@ export const experience = [
 export const products = [
   {
     name: "Agentica",
+    shot: "/products/agentica.jpg",
     url: "https://agentica.my",
     description: "All-In-One POS, ERP and AI for your Business Operations",
     highlights: [
@@ -150,6 +151,7 @@ export const products = [
   },
   {
     name: "Decenchro",
+    shot: "/products/decenchro.jpg",
     url: "https://decenchro.com",
     description:
       "Deploy secure, auditable AI agents that run 24/7 on your own private servers. Every action is logged immutably, with rule-based guards that pause risky operations for approval.",
@@ -157,7 +159,7 @@ export const products = [
     status: "Live",
     featured: false,
     image: null,
-    hue: 160,
+    hue: 178,
     points: [
       "AI agents running 24/7 on your own servers",
       "Every action logged immutably",
@@ -166,6 +168,7 @@ export const products = [
   },
   {
     name: "Thirdspace",
+    shot: "/products/thirdspace.jpg",
     url: "https://thirdspace.my",
     description:
       "An iPhone app for Malaysia that turns cafés' quiet hours into event space.",
@@ -182,6 +185,7 @@ export const products = [
   },
   {
     name: "Hiregents",
+    shot: "/products/hiregents.jpg",
     url: "https://hiregents.com",
     description:
       "Pick an agent. Connect your Telegram bot. Agent is live and running on its own private server in minutes.",
@@ -189,7 +193,7 @@ export const products = [
     status: "Live",
     featured: false,
     image: "/og/hiregents.png",
-    hue: 20,
+    hue: 25,
     points: [
       "Pick an agent, connect your Telegram bot",
       "Runs on its own private server",
@@ -198,6 +202,7 @@ export const products = [
   },
   {
     name: "SaaSClips",
+    shot: "/products/saasclips.jpg",
     url: "https://saasclips.com",
     description:
       "Launch-video generator for SaaS founders. Paste a URL, get a square MP4 in sixty seconds.",
@@ -205,7 +210,7 @@ export const products = [
     status: "Live",
     featured: false,
     image: "/og/saasclips.png",
-    hue: 95,
+    hue: 320,
     points: [
       "Paste a URL, get a launch video",
       "Square MP4 in about sixty seconds",

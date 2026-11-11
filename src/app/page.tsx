@@ -1,13 +1,13 @@
 import { readFileSync } from "fs";
 import { join } from "path";
 import Chrome from "@/components/Chrome";
-import SideRail from "@/components/SideRail";
 import TopBar from "@/components/TopBar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
 import Products from "@/components/Products";
 import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 import { config } from "@/lib/data";
 import type { GitHubStats } from "@/lib/github";
 
@@ -71,17 +71,16 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
       <Chrome />
-      <div className="mx-auto flex w-full max-w-[1200px]">
-        <SideRail />
-        <main className="min-w-0 flex-1 border-border lg:border-x">
-          <TopBar />
-          <div className="px-5 sm:px-9 lg:px-14">
-            <Hero />
-            <About stats={stats} />
-            <Experience />
-            <Products />
-            <Contact />
-          </div>
+      {/* one ruled column: the top bar, then each section as a band */}
+      <div className="mx-auto w-full max-w-[1200px] border-border min-[1200px]:border-x">
+        <TopBar />
+        <main className="px-5 sm:px-9 lg:px-14">
+          <Hero />
+          <About stats={stats} />
+          <Experience />
+          <Products />
+          <Contact />
+          <Footer />
         </main>
       </div>
     </>

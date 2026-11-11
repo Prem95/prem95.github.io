@@ -14,10 +14,13 @@ Recruiters, potential clients, collaborators, and fellow engineers who land on t
 - **Theme**: Light mode — off-white (#FAFAFA) background, near-black (#18181B) text/accent
 - **Typography**: Inter (variable, `opsz` axis) for all text and Google Sans Code for labels and figures, the same pairing as agentica.my. Headings are light (300) with tight tracking; hierarchy comes from size and weight, not a second display face
 - **Palette**: `--bg: #FAFAFA` · `--surface: #F4F4F5` · `--border: #E4E4E7` · `--text: #18181B` · `--muted: #71717A` · `--accent: #18181B`
-- **Colour**: the page stays monochrome; colour lives only in the Products section. Agentica's card sits on its own green streak ground (`.streak-forest`), and each product tile gets a pastel streak (`.streak-light`) tinted by its `hue` in `data.ts`
-- **Anti-references**: No dark navy/green page chrome (old site), no heavy drop shadows, no busy animations, no product-tile animation
+- **Colour**: the page chrome is black and white, and colour is spent in exactly two places, both of them things Prem has made. (1) Products: Agentica's card sits on its own green streak ground (`.streak-forest`), each product tile gets a pastel streak (`.streak-light`) tinted by its `hue` in `data.ts`, and the screenshots (`public/products/*.jpg`, the `shot` field) are shown in full colour. Each `hue` is measured off that product's live site, so the ground echoes the screenshot; re-measure it if a product rebrands. (2) The GitHub calendar, which runs the `--live` green as a scale with a Less/More key. `--live` is also the dot beside a product's "Live" status and the robot's antenna. Nothing else takes colour: the portrait is greyscale (`.shot`) and buttons stay ink
+- **Anti-references**: No dark navy/green page chrome (old site), no heavy drop shadows, no busy animations, no product-tile animation. A redesign round in Nov 2026 also ruled out serif type, a dark default theme and heavy condensed display type: evolve this language, don't replace it
 - **Reference feel**: Editorial / typographic-first — think Stripe Docs meets a personal portfolio
 - **Motion**: Subtle — fade-up on scroll (IntersectionObserver + CSS), hover underlines, no distracting motion
+
+### Layout
+One ruled column, max 1200px, with `TopBar` as the only chrome (identity, numbered nav with scroll spy, Book a call; a full-screen numbered menu below `lg`). There is no side rail. Each section is a `Section` band: from `lg` its heading pins in a 232px left column while the content scrolls beside it; below `lg` it stacks, heading first. `Footer` carries the socials.
 
 ### Section Heading Pattern (extracted from Hiregents/Synapse)
 Every major section uses this exact 3-part structure:
@@ -57,9 +60,14 @@ Every major section uses this exact 3-part structure:
 npm run dev              # Next.js dev server
 npm run build            # Static export build
 npm run post "Title"     # Scaffold a note in content/posts/
-npm run deploy           # Build + publish out/ to the gh-pages worktree
+npm run deploy           # Build + publish out/ to the gh-pages mirror (NOT the live site, see below)
 npm run lint             # ESLint
 ```
+
+### Going live
+- **premkumar95.com is served by Vercel, built from pushes to `main`.** DNS points at Vercel, and `vercel.json` skips every other branch. A change is live only once it is committed and pushed to `main`.
+- `npm run deploy` only refreshes the `gh-pages` mirror on GitHub Pages. `prem95.github.io` redirects to the custom domain, so nobody is served that copy, and the script's closing "live at premkumar95.com" line is out of date.
+- Pushes to this repo must go out as the `Prem95` GitHub account. `gh` on this machine is often switched to `agenticatechnology`, which gets a 403.
 
 ### Notes (/blog)
 - Source of truth is `content/posts/*.md`, named `YYYY-MM-DD-slug.md`, parsed at build time by `src/lib/posts.ts` (gray-matter + marked, `breaks: true`).
@@ -71,7 +79,7 @@ npm run lint             # ESLint
 ### Key Files
 - `src/app/page.tsx` — Landing with all sections
 - `src/app/layout.tsx` — Fonts, metadata
-- `src/components/` — Section components (`Products.tsx` holds the featured card and tiles)
+- `src/components/` — Section components (`Section.tsx` is the band wrapper every section uses, `SectionHeading.tsx` + `AsciiNum.tsx` the heading and its watermark numeral, `Products.tsx` the featured card and tiles)
 - `src/lib/data.ts` — All copy: roles, products (`hue`, `points`, `highlights`), side projects
 - `public/github-stats.json` — Written by `scripts/fetch-github-stats.js` before each build; needs `GITHUB_TOKEN` for contributions and the calendar; `GITHUB_TOKEN_SECONDARY` (a token for `agenticatechnology`) also adds that account's commits that Prem95's calendar doesn't include, and builds without it reuse the saved counts
 
@@ -80,8 +88,8 @@ npm run lint             # ESLint
 - `layout-templates` is a local-only branch holding five layout studies; never merge it into `main` (everything under `src/app/` gets deployed)
 
 ### Sections
-1. **Hero** — name, role, tagline, two CTAs
-2. **About** — bio (forward deployed engineer, agentic development, indie builder), GitHub stats card
+1. **Hero** — availability badge, name on one line (sized from the column on phones so it runs edge to edge), tagline, three CTAs, stat strip (years, products live, current team)
+2. **About** — bio (forward deployed engineer, agentic development, indie builder), then a wide GitHub card (stats left, green contribution calendar right; stacked on phones)
 3. **Experience** — tabbed: Chromia (current), Ancileo + prior roles
-4. **Products** — Agentica featured (green ground, waitlist), then tiles for Decenchro, Thirdspace, Hiregents, SaaSClips (2×2 grid; three columns only when the tile count divides by 3); side projects list below
+4. **Products** — Agentica featured (green ground, screenshot in the corner, waitlist), then hue-tinted screenshot tiles for Decenchro, Thirdspace, Hiregents, SaaSClips (2×2 grid; three columns only when the tile count divides by 3); side projects list below
 5. **Contact** — minimal, email + socials

@@ -48,7 +48,7 @@
   --sidebar-border:        oklch(0.90 0 0);
   --sidebar-ring:          oklch(0.13 0 0);
 
-  /* Single earned accent — "live / current" status only */
+  /* Single earned accent — "live" status and GitHub activity only */
   --live:                  oklch(0.58 0.15 150);
 
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -342,6 +342,10 @@
   font-weight: 400;
 }
 
+/* The portrait sits in the same black and white as the page. Product
+   screenshots do not use this: they keep their own colour. */
+.shot { filter: grayscale(1) contrast(1.05); }
+
 /* Hide scrollbar */
 .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -360,6 +364,8 @@
 /* ───────────────────────────────────────────
    Streak grounds — agentica.my's motion-blur backdrop. Long flat ellipses
    blurred together read as light caught mid-pan; film grain sits on top.
+   The page itself is black and white; these are where colour is allowed,
+   because each one is a product's own colour.
    ─────────────────────────────────────────── */
 
 /* Agentica's own hero: lime and greens over deep forest, one warm and one

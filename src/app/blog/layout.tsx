@@ -20,7 +20,7 @@ export default function NotesLayout({
               width={28}
               height={28}
               priority
-              className="size-7 rounded-full border border-border object-cover"
+              className="shot size-7 rounded-full border border-border object-cover"
             />
             PK.
           </Link>

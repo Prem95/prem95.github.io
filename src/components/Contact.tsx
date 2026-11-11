@@ -4,7 +4,7 @@ import { ArrowUpRight, Check, Copy, Mail } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { toastManager } from "@/components/ui/toast";
-import SectionHeading from "@/components/SectionHeading";
+import Section from "@/components/Section";
 import { config, references } from "@/lib/data";
 
 export default function Contact() {
@@ -22,22 +22,20 @@ export default function Contact() {
   };
 
   return (
-    <section
-      id="contact"
-      className="scroll-mt-20 border-t border-border py-12 sm:py-16"
-    >
-      <SectionHeading num="04" label="Contact" title="Get in touch" />
-
+    <Section id="contact" num="04" label="Contact" title="Get in touch">
       <div className="max-w-xl">
         <p className="leading-relaxed text-muted-foreground">
-          I&apos;m looking for senior AI engineering roles, remote or hybrid,
-          building agentic systems in production. If that sounds like your team,
-          or you just want to talk shop, send a note.
+          I&apos;m looking for Forward Deployed Engineer roles, remote or in
+          Southeast Asia, taking AI systems and SaaS products from first
+          prototype to production. If that sounds like your team, or you just
+          want to talk shop, send a note.
         </p>
 
-        <div className="mt-7 flex flex-wrap items-center gap-2.5">
+        {/* phones: the email button takes the full row, the other two split the next */}
+        <div className="mt-7 grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:items-center">
           <Button
             size="lg"
+            className="col-span-2"
             render={
               <a href={`mailto:${config.email}`}>
                 <Mail data-icon="inline-start" />
@@ -56,6 +54,7 @@ export default function Contact() {
           <Button
             size="lg"
             variant="ghost"
+            className="max-sm:border-input max-sm:bg-popover max-sm:shadow-xs/5"
             render={
               <a
                 href={config.twitter}
@@ -77,7 +76,7 @@ export default function Contact() {
           {references.map((ref) => (
             <li
               key={ref.email}
-              className="flex flex-col gap-1 border-b border-border py-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+              className="flex flex-col gap-1 border-b border-border py-4 last:border-b-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
             >
               <div className="min-w-0">
                 <div className="flex flex-wrap items-baseline gap-x-2">
@@ -100,6 +99,6 @@ export default function Contact() {
           ))}
         </ul>
       </div>
-    </section>
+    </Section>
   );
 }

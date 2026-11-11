@@ -39,7 +39,7 @@ function Sprite({ pose }: { pose: string[] }) {
           {ri === 0
             ? row.split("").map((ch, ci) =>
                 ch === "o" ? (
-                  <span key={ci} style={{ color: "var(--live)" }}>
+                  <span key={ci} className="text-live">
                     o
                   </span>
                 ) : (
@@ -106,20 +106,25 @@ export default function AsciiNum({ num }: { num: string }) {
     <span
       ref={ref}
       aria-hidden="true"
-      className="pointer-events-none absolute -top-4 right-0 select-none leading-none text-[5.5rem] sm:text-[10rem]"
+      // Stacked layouts park the numeral top-right and the robot shoves it in
+      // from the left. In the desktop heading column it sits flush left, so
+      // --ascii-dir flips the whole routine: the digits arrive from the right
+      // and the robot works (and leaves) on that side, inside the column.
+      className="pointer-events-none absolute -top-4 right-0 select-none leading-none text-[5.5rem] max-[359px]:text-[4.5rem] sm:text-[10rem] lg:relative lg:top-0 lg:mb-5 lg:block lg:w-fit lg:text-[6.5rem] lg:[--ascii-dir:-1]"
     >
       <span
         className="text-outline inline-block font-display font-extrabold leading-none opacity-[0.08]"
-        style={{ transform: `translateX(${numOffset}em)` }}
+        style={{
+          transform: `translateX(calc(${numOffset}em * var(--ascii-dir, 1)))`,
+        }}
       >
         {num}
       </span>
       {playing && (
         <span
-          className="absolute bottom-[0.03em] text-foreground/45"
+          className="absolute right-[calc(100%+0.03em)] bottom-[0.03em] text-foreground/45 lg:right-auto lg:left-[calc(100%+0.03em)]"
           style={{
-            right: "calc(100% + 0.03em)",
-            transform: `translate(${spriteX}em, ${spriteY}em)`,
+            transform: `translate(calc(${spriteX}em * var(--ascii-dir, 1)), ${spriteY}em) scaleX(var(--ascii-dir, 1))`,
             opacity: spriteOpacity,
           }}
         >
