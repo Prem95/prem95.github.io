@@ -22,7 +22,7 @@ export default function Section({
   return (
     <section
       id={id}
-      className="scroll-mt-14 border-t border-border py-12 sm:py-16 lg:grid lg:grid-cols-[232px_minmax(0,1fr)] lg:items-start lg:gap-16 lg:py-[4.5rem]"
+      className="scroll-mt-14 border-t border-border py-10 sm:py-16 lg:grid lg:grid-cols-[232px_minmax(0,1fr)] lg:items-start lg:gap-16 lg:py-[4.5rem]"
     >
       <SectionHeading num={num} label={label} title={title} />
       <div className="min-w-0">{children}</div>

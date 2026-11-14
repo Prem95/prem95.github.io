@@ -106,11 +106,12 @@ export default function AsciiNum({ num }: { num: string }) {
     <span
       ref={ref}
       aria-hidden="true"
-      // Stacked layouts park the numeral top-right and the robot shoves it in
+      // Phones skip the watermark (SectionHeading puts the number in the
+      // eyebrow). Stacked layouts park the numeral top-right and the robot shoves it in
       // from the left. In the desktop heading column it sits flush left, so
       // --ascii-dir flips the whole routine: the digits arrive from the right
       // and the robot works (and leaves) on that side, inside the column.
-      className="pointer-events-none absolute -top-4 right-0 select-none leading-none text-[5.5rem] max-[359px]:text-[4.5rem] sm:text-[10rem] lg:relative lg:top-0 lg:mb-5 lg:block lg:w-fit lg:text-[6.5rem] lg:[--ascii-dir:-1]"
+      className="pointer-events-none absolute -top-4 right-0 select-none leading-none max-sm:hidden sm:text-[10rem] lg:relative lg:top-0 lg:mb-5 lg:block lg:w-fit lg:text-[6.5rem] lg:[--ascii-dir:-1]"
     >
       <span
         className="text-outline inline-block font-display font-extrabold leading-none opacity-[0.08]"

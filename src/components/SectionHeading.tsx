@@ -3,7 +3,9 @@ import AsciiNum from "@/components/AsciiNum";
 /**
  * Eyebrow, light title and the outlined watermark numeral. Stacked layouts
  * tuck the numeral into the top-right corner; the desktop column sets it
- * above the label and pins the whole block under the top bar.
+ * above the label and pins the whole block under the top bar. A phone has no
+ * room for the watermark beside the title, so there the number leads the
+ * eyebrow instead ("02 · Experience").
  */
 export default function SectionHeading({
   num,
@@ -15,9 +17,15 @@ export default function SectionHeading({
   title: string;
 }) {
   return (
-    <div className="relative mb-7 sm:mb-10 lg:sticky lg:top-24 lg:mb-0">
+    <div className="relative mb-6 sm:mb-10 lg:sticky lg:top-24 lg:mb-0">
       <AsciiNum num={num} />
-      <span className="eyebrow">{label}</span>
+      <span className="eyebrow">
+        <span className="tabular-nums text-foreground sm:hidden">
+          {num}
+          <span aria-hidden="true"> · </span>
+        </span>
+        {label}
+      </span>
       <h2 className="section-title mt-3 text-[clamp(2rem,6vw,3.4rem)] lg:text-[clamp(1.7rem,2.5vw,2.15rem)]">
         <span className="brushed-ink">{title}</span>
       </h2>

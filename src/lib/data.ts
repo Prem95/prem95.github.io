@@ -16,8 +16,8 @@ export const about = {
   // First line is the lead; the rest render as supporting paragraphs
   bio: [
     "Lead AI Engineer with 8 years building applications, SaaS products and production systems for startups and organisations.",
-    "Most of my work now is agentic development: AI agents, RAG pipelines and multi-agent workflows on LangGraph, OpenAI and AWS Bedrock, with Claude Code subagents for accelerated agentic development.",
-    "I work close to the people using the software: scoping the problem with them, building it full stack, and handling the deployment, infrastructure and monitoring until it runs in production.",
+    "Most of my work now is agentic development: AI agents, RAG pipelines and multi-agent workflows, built with Claude Code subagents.",
+    "I scope the problem with the people using the software, build it full stack, and handle deployment and monitoring until it runs in production.",
   ],
 };
 

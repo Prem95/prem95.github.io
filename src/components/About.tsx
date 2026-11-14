@@ -27,19 +27,8 @@ const tile = "rounded-2xl bg-card p-5 sm:p-6";
 // The words a skimmer should catch in each tile
 const keys = {
   lead: ["Lead AI Engineer", "8 years", "production systems"],
-  approach: [
-    "close to the people using the software",
-    "full stack",
-    "deployment, infrastructure and monitoring",
-    "runs in production",
-  ],
-  focus: [
-    "agentic development",
-    "AI agents",
-    "RAG pipelines",
-    "multi-agent workflows",
-    "Claude Code subagents",
-  ],
+  approach: ["full stack", "runs in production"],
+  focus: ["agentic development", "Claude Code subagents"],
 };
 
 export default function About({ stats }: { stats: GitHubStats | null }) {
@@ -53,7 +42,7 @@ export default function About({ stats }: { stats: GitHubStats | null }) {
       <div className="@container rounded-[1.4rem] bg-secondary p-1.5 sm:p-2">
         <div className="grid grid-cols-1 gap-1.5 sm:gap-2 @[40rem]:grid-cols-6">
           {/* lead — the brushed graphite tile, copy set low on the darkest part */}
-          <div className="brushed-graphite relative flex min-h-[17rem] flex-col justify-end overflow-hidden rounded-2xl p-5 text-white sm:min-h-[19rem] sm:p-7 @[40rem]:col-span-6 @[48rem]:col-span-4">
+          <div className="brushed-graphite relative flex min-h-[13.5rem] flex-col justify-end overflow-hidden rounded-2xl p-5 text-white sm:min-h-[19rem] sm:p-7 @[40rem]:col-span-6 @[48rem]:col-span-4">
             <p className="max-w-[26ch] text-[clamp(1.35rem,2.5vw,1.95rem)] font-light leading-[1.2] tracking-[-0.025em] text-white/65 [text-wrap:balance]">
               <Highlight
                 text={lead}
@@ -70,7 +59,7 @@ export default function About({ stats }: { stats: GitHubStats | null }) {
             <h3 className="text-[1.15rem] font-normal tracking-[-0.02em]">
               How I work
             </h3>
-            <p className="text-[0.95rem] leading-[1.7] text-muted-foreground">
+            <p className="text-[0.95rem] leading-[1.6] text-muted-foreground sm:leading-[1.7]">
               <Highlight text={approach} phrases={keys.approach} />
             </p>
           </div>
@@ -83,7 +72,7 @@ export default function About({ stats }: { stats: GitHubStats | null }) {
               <h3 className="text-[1.15rem] font-normal tracking-[-0.02em]">
                 Stack
               </h3>
-              <p className="max-w-[52ch] text-[0.95rem] leading-[1.7] text-muted-foreground">
+              <p className="max-w-[52ch] text-[0.95rem] leading-[1.6] text-muted-foreground sm:leading-[1.7]">
                 <Highlight text={focus} phrases={keys.focus} />
               </p>
             </div>

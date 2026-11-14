@@ -9,12 +9,13 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex flex-col pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pt-[3.75rem]"
+      className="relative flex flex-col pt-9 pb-9 sm:pt-14 sm:pb-16 lg:pt-[3.75rem]"
     >
-      {/* dot-grid backdrop, faded toward the name */}
+      {/* dot-grid backdrop, faded toward the name. Left off phones, where the
+          name fills the column and the dots would run through its letters */}
       <div
         aria-hidden="true"
-        className="dot-grid pointer-events-none absolute inset-x-0 top-0 h-[380px] [mask-image:radial-gradient(ellipse_70%_80%_at_85%_10%,#000_25%,transparent_70%)]"
+        className="dot-grid pointer-events-none absolute max-sm:hidden inset-x-0 top-0 h-[380px] [mask-image:radial-gradient(ellipse_70%_80%_at_85%_10%,#000_25%,transparent_70%)]"
       />
 
       {/* name — one line. "Prem Kumar" sets 4.77em wide, so on phones the
@@ -30,7 +31,7 @@ export default function Hero() {
       {/* one primary action, two plain links. Phones: the button takes the
           full row and the links sit under it */}
       <div
-        className="rise relative mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:items-center sm:gap-7"
+        className="rise relative mt-7 flex flex-col gap-2.5 sm:mt-10 sm:flex-row sm:items-center sm:gap-7"
         style={{ "--rv-d": "0.45s" } as React.CSSProperties}
       >
         <Button

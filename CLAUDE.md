@@ -22,6 +22,12 @@ Recruiters, potential clients, collaborators, and fellow engineers who land on t
 ### Layout
 One ruled column, max 1200px, with `TopBar` as the only chrome (identity, numbered nav with scroll spy, Book a call; a full-screen numbered menu below `lg`). There is no side rail. Each section is a `Section` band: from `lg` its heading pins in a 232px left column while the content scrolls beside it; below `lg` it stacks, heading first. `Footer` carries the socials.
 
+### Phones (below `sm`, 640px)
+- The watermark numeral and its robot are hidden; the number leads the eyebrow instead ("02 · Experience").
+- Display type keeps the ink-to-grey ramp but drops the brush texture (`--brush-type: none`); the About lead tile and product grounds keep it. The hero has no dot grid.
+- Experience shows two result lines for the current company and one for earlier ones, with a "Show N more" toggle per role (`PHONE_LINES_*` in `Experience.tsx`). Every line is still in the HTML, and all of them show from `sm`.
+- The inverted `::selection` applies to mouse browsers only: iOS takes just its text colour, which made selected copy vanish.
+
 ### Section Heading Pattern (extracted from Hiregents/Synapse)
 Every major section uses this exact 3-part structure:
 ```
