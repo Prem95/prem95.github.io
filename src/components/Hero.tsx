@@ -6,6 +6,11 @@ const link =
 
 /** The name and one way to reach out. Everything else lives further down. */
 export default function Hero() {
+  // "Prem" and "Kumar" as separate spans: where the gradient fill is not
+  // safe to use (iOS, see .brushed-name) the second word goes solid grey
+  const [first, ...others] = config.name.split(" ");
+  const rest = others.join(" ");
+
   return (
     <section
       id="hero"
@@ -24,7 +29,10 @@ export default function Hero() {
           leaves the dot grid some air */}
       <h1 className="display relative whitespace-nowrap text-[length:calc((100vw_-_2.5rem)_/_4.84)] sm:text-[length:clamp(3rem,15.2vw,12.3rem)]">
         <span className="mask-line">
-          <span className="brushed-name">{config.name}</span>
+          <span className="brushed-name">
+            {first}
+            {rest && <span className="name-rest"> {rest}</span>}
+          </span>
         </span>
       </h1>
 

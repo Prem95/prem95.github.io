@@ -27,8 +27,19 @@ const tile = "rounded-2xl bg-card p-5 sm:p-6";
 // The words a skimmer should catch in each tile
 const keys = {
   lead: ["Lead AI Engineer", "8 years", "production systems"],
-  approach: ["full stack", "runs in production"],
-  focus: ["agentic development", "Claude Code subagents"],
+  approach: [
+    "close to the people using the software",
+    "full stack",
+    "deployment, infrastructure and monitoring",
+    "runs in production",
+  ],
+  focus: [
+    "agentic development",
+    "AI agents",
+    "RAG pipelines",
+    "multi-agent workflows",
+    "Claude Code subagents",
+  ],
 };
 
 export default function About({ stats }: { stats: GitHubStats | null }) {

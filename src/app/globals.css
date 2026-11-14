@@ -428,6 +428,30 @@
   box-decoration-break: clone;
 }
 
+/* Phones carry no texture, so there is nothing to blend */
+@media (max-width: 639px) {
+  .brushed-name,
+  .brushed-ink { background-blend-mode: normal; }
+}
+
+/* iOS (every browser there is WebKit): a blended background clipped to text
+   leaves its paint state behind, and whatever text is drawn next comes out
+   almost invisible. It showed as a missing first bullet under a section
+   title and missing points and button labels under each product name. So
+   iOS gets no clipped fill at all: display type is solid ink, and the name
+   keeps its two tones as two solid colours. */
+@supports (-webkit-touch-callout: none) {
+  .brushed-name,
+  .brushed-ink {
+    color: var(--foreground);
+    background-image: none;
+    background-blend-mode: normal;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+  }
+  .brushed-name .name-rest { color: oklch(0.54 0 0); }
+}
+
 /* About lead tile: brushed graphite, the name's material at tile scale.
    Light sheen top-right, deepening to near-black bottom-left where the
    white copy sits. */
