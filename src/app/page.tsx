@@ -16,12 +16,12 @@ const personJsonLd = {
   "@type": "Person",
   name: config.name,
   url: config.siteUrl,
-  jobTitle: "Forward Deployed Engineer",
+  jobTitle: config.role,
   hasOccupation: {
     "@type": "Occupation",
-    name: "Forward Deployed Engineer",
+    name: "Lead AI Engineer",
     description:
-      "Builds applications, SaaS products and production AI systems with startups and organisations, from prototype to deployment.",
+      "Leads the design and deployment of AI agents, SaaS products and production AI systems with startups and organisations, from prototype to deployment.",
   },
   description: config.tagline,
   email: `mailto:${config.email}`,
@@ -35,6 +35,7 @@ const personJsonLd = {
     name: "Monash University",
   },
   knowsAbout: [
+    "AI Agents",
     "Forward Deployed Engineering",
     "Agentic Development",
     "AI Agent Deployment",

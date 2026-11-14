@@ -52,13 +52,20 @@
   --live:                  oklch(0.58 0.15 150);
 
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Code blocks in notes, and the robot's box-drawing sprite, need a true
+     monospace; the system one is enough and costs no download */
+  --font-code: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 @theme inline {
   --font-sans:    var(--font-sans);
   --font-display: var(--font-sans);
   --font-heading: var(--font-sans);
-  --font-mono:    var(--font-mono);
+  /* One family for the whole page, the same Inter as the name. Labels,
+     dates and figures that used to sit in a monospace now use Inter too
+     (with tabular numerals where they count). Real code keeps --font-code. */
+  --font-mono:    var(--font-sans);
   --color-sidebar-ring:               var(--sidebar-ring);
   --color-sidebar-border:             var(--sidebar-border);
   --color-sidebar-accent-foreground:  var(--sidebar-accent-foreground);
@@ -141,9 +148,9 @@
    Editorial utilities — black & white texture
    ─────────────────────────────────────────── */
 
-/* Mono eyebrow label */
+/* Eyebrow label — small spaced capitals in the page's one family */
 .eyebrow {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.625rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -280,7 +287,7 @@
 }
 
 .prose code {
-  font-family: var(--font-mono);
+  font-family: var(--font-code);
   font-size: 0.85em;
   background: var(--muted);
   border: 1px solid var(--border);
@@ -288,7 +295,7 @@
   padding: 0.12em 0.36em;
 }
 .prose pre {
-  font-family: var(--font-mono);
+  font-family: var(--font-code);
   font-size: 0.82rem;
   line-height: 1.65;
   background: var(--muted);
@@ -334,7 +341,7 @@
   text-align: left;
 }
 .prose th {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -342,9 +349,86 @@
   font-weight: 400;
 }
 
-/* The portrait sits in the same black and white as the page. Product
-   screenshots do not use this: they keep their own colour. */
+/* Greyscale utility, kept for any image that should sit in the page's
+   black and white. The portrait and product screenshots show their real
+   colour and do not use it. */
 .shot { filter: grayscale(1) contrast(1.05); }
+
+/* ───────────────────────────────────────────
+   Brushed material — after the brushed-gradient fills on quiver.ai. A field
+   of anisotropic noise (long along x, fine along y), turned diagonal, laid
+   over colour with soft-light so it reads as fine brush strokes catching
+   light. Used on the hero name and display type (black and grey), the About
+   lead tile (graphite) and, lightly, the product grounds.
+   ─────────────────────────────────────────── */
+:root {
+  --brush: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='700'%3E%3Cfilter id='b' x='0' y='0' width='1' height='1'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.0045 0.42' numOctaves='3' seed='11'/%3E%3CfeColorMatrix values='1.35 0 0 0 -0.18 1.35 0 0 0 -0.18 1.35 0 0 0 -0.18 0 0 0 0 1'/%3E%3C/filter%3E%3Cg transform='rotate(-27 700 350)'%3E%3Crect x='-800' y='-900' width='3000' height='2500' filter='url(%23b)'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* An overlay layer for any coloured ground */
+.brush {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--brush);
+  background-size: 1400px auto;
+  background-position: center;
+  mix-blend-mode: soft-light;
+}
+
+/* The name in black and grey: "Prem" in ink, "Kumar" in grey, the same
+   ink-then-grey rhythm as the tagline beneath it. The tone turns inside the
+   word space. Two faint sheens and the brush give it the material without
+   colour. The grey stays at L 0.56 or darker for 3:1 against the page. */
+.brushed-name {
+  color: transparent;
+  background-image:
+    var(--brush),
+    radial-gradient(30% 80% at 20% 25%, oklch(0.42 0 0 / 0.55), transparent 70%),
+    radial-gradient(28% 80% at 80% 30%, oklch(0.72 0 0 / 0.45), transparent 70%),
+    linear-gradient(100deg, oklch(0.13 0 0) 0%, oklch(0.2 0 0) 41%, oklch(0.52 0 0) 47%, oklch(0.56 0 0) 100%);
+  background-size: 1400px auto, 100% 100%, 100% 100%, 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: soft-light, normal, normal, normal;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Every other display item takes the same material as the name: ink
+   easing into grey across the word, under the brush. Set it on an inline
+   span (not the block) so the ramp spans the text, and each wrapped line
+   gets its own ramp. */
+.brushed-ink {
+  color: transparent;
+  background-image:
+    var(--brush),
+    radial-gradient(40% 90% at 78% 30%, oklch(0.7 0 0 / 0.35), transparent 70%),
+    linear-gradient(100deg, oklch(0.13 0 0) 0%, oklch(0.22 0 0) 45%, oklch(0.46 0 0) 100%);
+  background-size: 1400px auto, 100% 100%, 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: soft-light, normal, normal;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* About lead tile: brushed graphite, the name's material at tile scale.
+   Light sheen top-right, deepening to near-black bottom-left where the
+   white copy sits. */
+.brushed-graphite {
+  background-image:
+    var(--brush),
+    radial-gradient(55% 70% at 80% 16%, oklch(0.66 0 0 / 0.85), transparent 70%),
+    radial-gradient(45% 55% at 34% 32%, oklch(0.46 0 0 / 0.7), transparent 70%),
+    linear-gradient(155deg, oklch(0.4 0 0) 0%, oklch(0.24 0 0) 55%, oklch(0.12 0 0) 100%);
+  background-size: 1400px auto, 100% 100%, 100% 100%, 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: soft-light, normal, normal, normal;
+}
 
 /* Hide scrollbar */
 .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }

@@ -1,22 +1,22 @@
 export const config = {
   name: "Prem Kumar",
-  role: "Forward Deployed Engineer",
+  role: "Lead AI Engineer",
   siteUrl: "https://premkumar95.com",
   tagline:
-    "Forward Deployed Engineer building applications, SaaS products and production AI systems for startups and organisations, from first prototype to live deployment.",
+    "Lead AI Engineer building applications, SaaS products and production AI systems for startups and organisations, from first prototype to live deployment.",
   email: "premstroke95@gmail.com",
   github: "https://github.com/Prem95",
   twitter: "https://x.com/defichemist95",
   linkedin: "https://www.linkedin.com/in/premstrk/",
   booking: "https://cal.com/prem-kumar-95/30min",
-  availability: "Open to Forward Deployed Engineer roles · Remote / SEA",
+  availability: "Open to Lead AI Engineer roles · Remote / SEA",
 };
 
 export const about = {
   // First line is the lead; the rest render as supporting paragraphs
   bio: [
-    "Forward deployed engineer with 8 years building applications, SaaS products and production systems for startups and organisations.",
-    "Most of my work now is agentic development: AI agents, RAG pipelines and multi-agent workflows on LangGraph, OpenAI and AWS Bedrock.",
+    "Lead AI Engineer with 8 years building applications, SaaS products and production systems for startups and organisations.",
+    "Most of my work now is agentic development: AI agents, RAG pipelines and multi-agent workflows on LangGraph, OpenAI and AWS Bedrock, with Claude Code subagents for accelerated agentic development.",
     "I work close to the people using the software: scoping the problem with them, building it full stack, and handling the deployment, infrastructure and monitoring until it runs in production.",
   ],
 };
@@ -26,7 +26,7 @@ export const experience = [
     company: "Chromia",
     url: "https://chromia.com",
     role: "Forward Deployed Engineer",
-    location: "Sweden (Remote)",
+    location: "Freelance/Contract",
     range: "2026 — Present",
     start: 2026,
     end: null,

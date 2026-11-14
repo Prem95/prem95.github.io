@@ -19,7 +19,7 @@ export default function SectionHeading({
       <AsciiNum num={num} />
       <span className="eyebrow">{label}</span>
       <h2 className="section-title mt-3 text-[clamp(2rem,6vw,3.4rem)] lg:text-[clamp(1.7rem,2.5vw,2.15rem)]">
-        {title}
+        <span className="brushed-ink">{title}</span>
       </h2>
     </div>
   );

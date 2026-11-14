@@ -1,6 +1,7 @@
 import { Github } from "@/components/BrandIcons";
 import type { GitHubStats } from "@/lib/github";
 import { config } from "@/lib/data";
+import { cn } from "@/lib/utils";
 
 // The one place the page's green accent runs as a scale: empty days sit on
 // the surface tint, busy days climb to the full --live green (GitHub's own
@@ -20,8 +21,10 @@ const NARROW_WEEKS = 26;
 
 export default function GitHubStatsDisplay({
   stats,
+  className,
 }: {
   stats: GitHubStats | null;
+  className?: string;
 }) {
   if (!stats) return null;
 
@@ -39,7 +42,10 @@ export default function GitHubStatsDisplay({
       href={config.github}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex flex-col gap-4 rounded-xl border border-border bg-card p-5 transition-colors hover:border-foreground sm:grid sm:grid-cols-[minmax(0,190px)_minmax(0,1fr)] sm:gap-7"
+      className={cn(
+        "group flex flex-col gap-4 rounded-xl border border-border bg-card p-5 transition-colors hover:border-foreground sm:grid sm:grid-cols-[minmax(0,190px)_minmax(0,1fr)] sm:gap-7",
+        className,
+      )}
     >
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between gap-3">
@@ -49,7 +55,7 @@ export default function GitHubStatsDisplay({
 
         {stats.totalContributions > 0 && (
           <div>
-            <span className="display block text-3xl tabular-nums">
+            <span className="display brushed-ink block w-fit text-3xl tabular-nums">
               {stats.totalContributions.toLocaleString()}
             </span>
             <span className="text-[0.7rem] text-muted-foreground">

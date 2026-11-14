@@ -4,17 +4,17 @@
 Recruiters, potential clients, collaborators, and fellow engineers who land on the site to quickly assess Prem's background, credibility, and work. They scan fast — they want to know who he is, what he builds, and how to reach him. Context: desktop and mobile, often via a shared link or Google search.
 
 ### Brand Personality
-**Sharp / Technical / Ambitious** — Prem is a Forward Deployed Engineer at Chromia (AI and robotics backend, Web3), previously Senior AI Engineer at Ancileo building agentic insurance products, and an indie builder shipping real products (Agentica, Decenchro, Thirdspace, Hiregents, SaaSClips). The site should feel like it was built by someone who cares about craft: precise, confident, and forward-looking. Not flashy. Not safe. Distinctively clean.
+**Sharp / Technical / Ambitious** — Prem positions himself as a Lead AI Engineer; he is currently a Forward Deployed Engineer at Chromia (AI and robotics backend, Web3), previously Senior AI Engineer at Ancileo building agentic insurance products, and an indie builder shipping real products (Agentica, Decenchro, Thirdspace, Hiregents, SaaSClips). The site should feel like it was built by someone who cares about craft: precise, confident, and forward-looking. Not flashy. Not safe. Distinctively clean.
 
 ### Positioning & search
-- **Headline role / target keyword: Forward Deployed Engineer** — building applications, SaaS products and production systems for startups and organisations. It leads the `<title>`, meta description (`config.tagline`), OG/Twitter titles, share image, JSON-LD `jobTitle`/`hasOccupation`, the hero tagline, the availability badge and the first bio paragraph.
+- **Headline role / target keyword: Lead AI Engineer** (changed from Forward Deployed Engineer in Nov 2026) — building applications, SaaS products and production AI systems for startups and organisations. It lives in `config.role` and leads the `<title>`, meta description (`config.tagline`), OG/Twitter titles, share image, JSON-LD `jobTitle`/`hasOccupation`, the first bio paragraph (the About lead tile) and the contact line. The hero no longer shows a tagline or badge.
 - Experience entries keep the real job titles (e.g. Forward Deployed Engineer at Chromia, Senior AI Engineer at Ancileo); never rewrite past titles to match the keyword.
 
 ### Aesthetic Direction
 - **Theme**: Light mode — off-white (#FAFAFA) background, near-black (#18181B) text/accent
-- **Typography**: Inter (variable, `opsz` axis) for all text and Google Sans Code for labels and figures, the same pairing as agentica.my. Headings are light (300) with tight tracking; hierarchy comes from size and weight, not a second display face
+- **Typography**: Inter (variable, `opsz` axis) for every word on the page, labels and figures included; there is no second family (the `font-mono` utility maps to Inter, with tabular numerals where numbers line up). Only real code (notes' code blocks, the AsciiNum sprite) uses `--font-code`, the system monospace. Headings are light (300) with tight tracking; hierarchy comes from size and weight. The name and display type carry a brushed black-to-grey fill (`.brushed-name`, `.brushed-ink`)
 - **Palette**: `--bg: #FAFAFA` · `--surface: #F4F4F5` · `--border: #E4E4E7` · `--text: #18181B` · `--muted: #71717A` · `--accent: #18181B`
-- **Colour**: the page chrome is black and white, and colour is spent in exactly two places, both of them things Prem has made. (1) Products: Agentica's card sits on its own green streak ground (`.streak-forest`), each product tile gets a pastel streak (`.streak-light`) tinted by its `hue` in `data.ts`, and the screenshots (`public/products/*.jpg`, the `shot` field) are shown in full colour. Each `hue` is measured off that product's live site, so the ground echoes the screenshot; re-measure it if a product rebrands. (2) The GitHub calendar, which runs the `--live` green as a scale with a Less/More key. `--live` is also the dot beside a product's "Live" status and the robot's antenna. Nothing else takes colour: the portrait is greyscale (`.shot`) and buttons stay ink
+- **Colour**: the page chrome is black and white, and colour is spent in exactly two places, both of them things Prem has made. (1) Products: Agentica's card sits on its own green streak ground (`.streak-forest`), each product tile gets a pastel streak (`.streak-light`) tinted by its `hue` in `data.ts`, and the screenshots (`public/products/*.jpg`, the `shot` field) are shown in full colour. Each `hue` is measured off that product's live site, so the ground echoes the screenshot; re-measure it if a product rebrands. (2) The GitHub calendar, which runs the `--live` green as a scale with a Less/More key. `--live` is also the dot beside a product's "Live" status and the robot's antenna. Nothing else takes colour apart from the portrait, which is shown in its real colour; buttons stay ink
 - **Anti-references**: No dark navy/green page chrome (old site), no heavy drop shadows, no busy animations, no product-tile animation. A redesign round in Nov 2026 also ruled out serif type, a dark default theme and heavy condensed display type: evolve this language, don't replace it
 - **Reference feel**: Editorial / typographic-first — think Stripe Docs meets a personal portfolio
 - **Motion**: Subtle — fade-up on scroll (IntersectionObserver + CSS), hover underlines, no distracting motion
@@ -31,7 +31,7 @@ Every major section uses this exact 3-part structure:
   <span className="dim">Secondary faded line</span>
 </h2>
 ```
-- **Eyebrow**: `font-mono`, `0.625rem`, `letter-spacing: 0.25em`, `text-transform: uppercase`, `color: var(--text-4)`
+- **Eyebrow**: Inter, `0.625rem`, `letter-spacing: 0.25em`, `text-transform: uppercase`, `color: var(--text-4)`
 - **Title**: `.section-title` — Inter, `font-weight: 300`, `letter-spacing: -0.035em`, `line-height: 1.06`
 - **Dim span**: `color: var(--text-4)` — fades the secondary line to ~40% opacity
 - Applied to: About, Experience, Products, Contact sections
@@ -53,7 +53,7 @@ Every major section uses this exact 3-part structure:
 - Next.js 16 (App Router, static export, `trailingSlash: true`)
 - Tailwind CSS v4 (`@theme` tokens in `src/app/globals.css`)
 - TypeScript, shadcn-style UI primitives on Base UI
-- `next/font` (Inter + Google Sans Code), CSS-only motion
+- `next/font` (Inter only), CSS-only motion
 
 ### Commands
 ```bash
@@ -89,7 +89,7 @@ npm run lint             # ESLint
 
 ### Sections
 1. **Hero** — availability badge, name on one line (sized from the column on phones so it runs edge to edge), tagline, three CTAs, stat strip (years, products live, current team)
-2. **About** — bio (forward deployed engineer, agentic development, indie builder), then a wide GitHub card (stats left, green contribution calendar right; stacked on phones)
+2. **About** — bio (Lead AI Engineer, agentic development, indie builder), then a wide GitHub card (stats left, green contribution calendar right; stacked on phones)
 3. **Experience** — tabbed: Chromia (current), Ancileo + prior roles
 4. **Products** — Agentica featured (green ground, screenshot in the corner, waitlist), then hue-tinted screenshot tiles for Decenchro, Thirdspace, Hiregents, SaaSClips (2×2 grid; three columns only when the tile count divides by 3); side projects list below
 5. **Contact** — minimal, email + socials

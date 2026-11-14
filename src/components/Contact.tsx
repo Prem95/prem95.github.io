@@ -24,11 +24,10 @@ export default function Contact() {
   return (
     <Section id="contact" num="04" label="Contact" title="Get in touch">
       <div className="max-w-xl">
-        <p className="leading-relaxed text-muted-foreground">
-          I&apos;m looking for Forward Deployed Engineer roles, remote or in
-          Southeast Asia, taking AI systems and SaaS products from first
-          prototype to production. If that sounds like your team, or you just
-          want to talk shop, send a note.
+        <p className="text-[1.05rem] leading-[1.7] text-muted-foreground">
+          I&apos;m looking for Lead AI Engineer roles, remote or in Southeast
+          Asia, taking AI systems and SaaS products from first
+          prototype to production.
         </p>
 
         {/* phones: the email button takes the full row, the other two split the next */}
@@ -76,16 +75,16 @@ export default function Contact() {
           {references.map((ref) => (
             <li
               key={ref.email}
-              className="flex flex-col gap-1 border-b border-border py-4 last:border-b-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+              className="flex flex-col gap-1.5 border-b border-border py-5 last:border-b-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
             >
               <div className="min-w-0">
                 <div className="flex flex-wrap items-baseline gap-x-2">
-                  <h4 className="text-sm font-semibold">{ref.name}</h4>
+                  <h4 className="text-[0.95rem] font-semibold">{ref.name}</h4>
                   <span className="font-mono text-[0.65rem] text-muted-foreground">
                     {ref.location}
                   </span>
                 </div>
-                <p className="mt-0.5 text-xs text-muted-foreground">
+                <p className="mt-1 text-sm text-muted-foreground">
                   {ref.position}, {ref.company}
                 </p>
               </div>

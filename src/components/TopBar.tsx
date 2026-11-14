@@ -24,7 +24,7 @@ const socials = [
   { label: "LinkedIn", href: config.linkedin, Icon: Linkedin },
 ];
 
-// "Open to Forward Deployed Engineer roles · Remote / SEA" → "Remote / SEA"
+// "Open to Lead AI Engineer roles · Remote / SEA" → "Remote / SEA"
 const where = config.availability.split(" · ")[1] ?? "";
 
 /** The one piece of chrome on the page: identity, numbered nav, booking. */
@@ -59,7 +59,7 @@ export default function TopBar() {
             width={28}
             height={28}
             priority
-            className="shot size-7 shrink-0 rounded-full border border-border object-cover"
+            className="size-7 shrink-0 rounded-full border border-border object-cover"
           />
           <span className="truncate max-[339px]:hidden">{config.name}</span>
         </a>

@@ -31,7 +31,7 @@ const LAST_TICK = 17;
 function Sprite({ pose }: { pose: string[] }) {
   return (
     <pre
-      className="m-0 font-mono"
+      className="m-0 font-[family-name:var(--font-code)]"
       style={{ fontSize: "0.085em", lineHeight: 1.05 }}
     >
       {pose.map((row, ri) => (

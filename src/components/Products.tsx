@@ -41,6 +41,7 @@ export default function Products() {
       >
         <span aria-hidden="true" className="streak-forest" />
         <span aria-hidden="true" className="streak-grain" />
+        <span aria-hidden="true" className="brush opacity-60" />
         <span aria-hidden="true" className="streak-forest-veil" />
 
         <div className="relative z-10 min-w-0">
@@ -124,6 +125,7 @@ export default function Products() {
                 style={{ transform: groundFlip[i % groundFlip.length] }}
               />
               <span aria-hidden="true" className="streak-grain" />
+              <span aria-hidden="true" className="brush opacity-70" />
 
               <div className="relative z-10 flex flex-1 flex-col">
                 {/* secondary text takes the tile's own hue, not a flat grey */}
@@ -154,7 +156,7 @@ export default function Products() {
                 />
 
                 <h3 className="mt-6 font-sans text-[1.7rem] font-light leading-none tracking-[-0.03em]">
-                  {product.name}
+                  <span className="brushed-ink">{product.name}</span>
                 </h3>
 
                 {product.points && (
@@ -187,11 +189,11 @@ export default function Products() {
         <div className="mt-4">
           {otherProjects.map((proj) => (
             <div key={proj.name}>
-              <div className="group hover-indent flex items-start justify-between gap-4 border-b border-border py-4">
+              <div className="group hover-indent flex items-start justify-between gap-4 border-b border-border py-5">
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-baseline gap-x-2">
-                    <h4 className="text-sm font-semibold">{proj.name}</h4>
-                    <span className="flex gap-2">
+                    <h4 className="text-[0.95rem] font-semibold">{proj.name}</h4>
+                    <span className="flex flex-wrap gap-x-2">
                       {proj.tech.slice(0, 3).map((t) => (
                         <span
                           key={t}
@@ -202,7 +204,7 @@ export default function Products() {
                       ))}
                     </span>
                   </div>
-                  <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
+                  <p className="mt-1.5 max-w-[68ch] text-sm leading-[1.65] text-muted-foreground">
                     {proj.description}
                   </p>
                 </div>

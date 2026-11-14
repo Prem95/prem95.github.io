@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { config } from "@/lib/data";
 
 export const dynamic = "force-static";
-export const alt = `${config.name} — Forward Deployed Engineer`;
+export const alt = `${config.name} — ${config.role}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -41,7 +41,7 @@ export default function OpengraphImage() {
               backgroundColor: "#1f9d57",
             }}
           />
-          Forward Deployed Engineer
+          {config.role}
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
