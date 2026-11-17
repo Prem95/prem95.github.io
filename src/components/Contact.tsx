@@ -74,7 +74,7 @@ export default function Contact() {
         <ul className="mt-4">
           {references.map((ref) => (
             <li
-              key={ref.email}
+              key={ref.name}
               className="flex flex-col gap-1.5 border-b border-border py-5 last:border-b-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
             >
               <div className="min-w-0">
@@ -88,12 +88,23 @@ export default function Contact() {
                   {ref.position}, {ref.company}
                 </p>
               </div>
-              <a
-                href={`mailto:${ref.email}`}
-                className="link-underline shrink-0 font-mono text-[0.75rem] text-foreground"
-              >
-                {ref.email}
-              </a>
+              {ref.email ? (
+                <a
+                  href={`mailto:${ref.email}`}
+                  className="link-underline shrink-0 font-mono text-[0.75rem] text-foreground"
+                >
+                  {ref.email}
+                </a>
+              ) : ref.url ? (
+                <a
+                  href={ref.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline shrink-0 font-mono text-[0.75rem] text-foreground"
+                >
+                  {new URL(ref.url).hostname.replace(/^www\./, "")}
+                </a>
+              ) : null}
             </li>
           ))}
         </ul>

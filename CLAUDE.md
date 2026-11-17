@@ -4,11 +4,12 @@
 Recruiters, potential clients, collaborators, and fellow engineers who land on the site to quickly assess Prem's background, credibility, and work. They scan fast — they want to know who he is, what he builds, and how to reach him. Context: desktop and mobile, often via a shared link or Google search.
 
 ### Brand Personality
-**Sharp / Technical / Ambitious** — Prem positions himself as a Lead AI Engineer; he is currently a Forward Deployed Engineer at Chromia (AI and robotics backend, Web3), previously Senior AI Engineer at Ancileo building agentic insurance products, and an indie builder shipping real products (Agentica, Decenchro, Thirdspace, Hiregents, SaaSClips). The site should feel like it was built by someone who cares about craft: precise, confident, and forward-looking. Not flashy. Not safe. Distinctively clean.
+**Sharp / Technical / Ambitious** — Prem positions himself as a Lead AI Engineer; he is currently Lead AI Engineer at Chromia (AI and robotics backend, Web3; Sweden, remote), previously Senior AI Engineer at Ancileo building agentic insurance products, and an indie builder shipping real products (Agentica, Decenchro, Thirdspace, Hiregents, SaaSClips). The site should feel like it was built by someone who cares about craft: precise, confident, and forward-looking. Not flashy. Not safe. Distinctively clean.
 
 ### Positioning & search
 - **Headline role / target keyword: Lead AI Engineer** (changed from Forward Deployed Engineer in Nov 2026) — building applications, SaaS products and production AI systems for startups and organisations. It lives in `config.role` and leads the `<title>`, meta description (`config.tagline`), OG/Twitter titles, share image, JSON-LD `jobTitle`/`hasOccupation`, the first bio paragraph (the About lead tile) and the contact line. The hero no longer shows a tagline or badge.
-- Experience entries keep the real job titles (e.g. Forward Deployed Engineer at Chromia, Senior AI Engineer at Ancileo); never rewrite past titles to match the keyword.
+- Experience entries keep the real job titles (e.g. Lead AI Engineer at Chromia, Senior AI Engineer at Ancileo, Machine Learning Engineer at Orchestrator, formerly Azara AI); never rewrite past titles to match the keyword.
+- Experience on the site follows Prem's CV (`cv/cv.html`, local only, not committed): titles, locations, dates and bullets should match it.
 
 ### Aesthetic Direction
 - **Theme**: Light mode — off-white (#FAFAFA) background, near-black (#18181B) text/accent

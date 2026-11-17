@@ -36,7 +36,8 @@ const personJsonLd = {
   },
   knowsAbout: [
     "AI Agents",
-    "Forward Deployed Engineering",
+    "Multi-Agent Systems",
+    "Model Context Protocol",
     "Agentic Development",
     "AI Agent Deployment",
     "SaaS Development",

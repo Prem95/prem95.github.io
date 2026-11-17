@@ -15,9 +15,8 @@ export const config = {
 export const about = {
   // First line is the lead; the rest render as supporting paragraphs
   bio: [
-    "Lead AI Engineer with 8 years building applications, SaaS products and production systems for startups and organisations.",
+    "Lead AI Engineer with 9 years building applications, SaaS products and production systems for startups and organisations.",
     "Most of my work now is agentic development: AI agents, RAG pipelines and multi-agent workflows on LangGraph, OpenAI and AWS Bedrock, with Claude Code subagents for accelerated agentic development.",
-    "I work close to the people using the software: scoping the problem with them, building it full stack, and handling the deployment, infrastructure and monitoring until it runs in production.",
   ],
 };
 
@@ -25,16 +24,15 @@ export const experience = [
   {
     company: "Chromia",
     url: "https://chromia.com",
-    role: "Forward Deployed Engineer",
-    location: "Freelance/Contract",
+    role: "Lead AI Engineer",
+    location: "Sweden (Remote)",
     range: "2026 — Present",
     start: 2026,
     end: null,
     description: [
-      "Architect and deploy the Chromia AI backend for AI and robotics projects, taking servers, services and open-source AI stacks from prototype to production.",
-      "Run Chromia's AI Labs, including the Eval Engine for evaluating AI models and agents.",
-      "Build secure Web3 AI agent applications focused on data and privacy, integrating Atbash tool-call guards and Decenchro's self-hosted, auditable agents.",
-      "Embed with developers and teams building on Chromia: scope their problems with them, then ship proofs of concept, MVPs and developer tools such as a vector database research agent.",
+      "Architect and deploy Chromia's AI backend for AI and robotics projects, taking open-source AI stacks from prototype to production.",
+      "Run Chromia AI Labs and its Eval Engine for LLM and AI agent evaluation; build secure Web3 AI agents with tool-call guardrails.",
+      "Embed with client teams to scope problems and ship PoCs, MVPs and developer tools, including a vector database research agent.",
     ],
   },
   {
@@ -46,15 +44,15 @@ export const experience = [
     start: 2024,
     end: 2026,
     description: [
-      "Developed an internal claims-assessment AI engine built on LangGraph, the OpenAI SDK, and an in-house AI library. Runs end-to-end, assessing the peril for claim approval against policy.",
+      "Built an end-to-end claims-assessment AI engine on LangGraph and the OpenAI SDK, assessing perils against policy for approval.",
       "Designed the foundation of a multi-tenant insurance conversational agent on AWS Strands and Bedrock AgentCore, provisioned via Terraform (IaC). Connected on WhatsApp via Twilio.",
       "Owned the Flowable BPM workflow manager automating claims assessment for the Ops and AI teams; led a cross-functional team of 3 engineers and QAs through to production.",
     ],
   },
   {
-    company: "Azara AI",
+    company: "Orchestrator (formerly Azara AI)",
     url: "https://www.getorchestrator.com/",
-    role: "AI Engineer",
+    role: "Machine Learning Engineer",
     location: "United States (Remote)",
     range: "February 2023 — November 2023",
     start: 2023,
@@ -66,7 +64,7 @@ export const experience = [
     ],
   },
   {
-    company: "Azara AI",
+    company: "Orchestrator (formerly Azara AI)",
     url: "https://www.getorchestrator.com/",
     role: "Product Manager",
     location: "United States (Remote)",
@@ -86,10 +84,8 @@ export const experience = [
     start: 2019,
     end: 2022,
     description: [
-      "Shipped liveness detection and facial recognition for e-KYC, deployed to private and government clients across Malaysia.",
-      "Extended CNN architectures for liveness detection and prototyped a hybrid CNN for 3D facial-depth estimation as an anti-spoofing measure.",
-      "Directed data sourcing across 30+ global sources plus multi-university collection for model training and fine-tuning.",
       "Drove the team to ISO 30107-3 certification, the first company in Southeast Asia to achieve it.",
+      "Shipped e-KYC liveness detection and facial recognition to private and government clients, trained on data from 30+ global sources.",
     ],
   },
   {
@@ -101,8 +97,7 @@ export const experience = [
     start: 2019,
     end: 2020,
     description: [
-      "Consulted the CEO on eKYC architecture for payments and BNPL, turning market demands into technical requirements, project plans and deadlines.",
-      "Built a complete machine learning pipeline (data collection, model training and evaluation) for the existing system, and set up the AI training servers on AWS and on-premise.",
+      "Built backend services in Python for early-stage security and AI products.",
     ],
   },
   {
@@ -114,8 +109,7 @@ export const experience = [
     start: 2018,
     end: 2019,
     description: [
-      "Built facial recognition for loan origination, deployed across four US fintech and neo-banking partners.",
-      "Embedded liveness detection and facial verification into the digital onboarding and KYC pipeline, blocking fraudulent applications ahead of credit scoring and underwriting.",
+      "Built facial recognition and liveness detection for loan-origination KYC, deployed across four US fintech and neo-banking partners.",
     ],
   },
   {
@@ -270,9 +264,16 @@ export const references = [
     email: "chernloon@wise.ai",
   },
   {
+    name: "Jason Sosa",
+    position: "CEO",
+    company: "Orchestrator (formerly Azara AI)",
+    location: "United States",
+    url: "https://www.jasonsosa.com/about",
+  },
+  {
     name: "Shahid",
     position: "COO / Finance",
-    company: "Azara AI",
+    company: "Orchestrator (formerly Azara AI)",
     location: "United States",
     email: "shahid@raising1bn.com",
   },
