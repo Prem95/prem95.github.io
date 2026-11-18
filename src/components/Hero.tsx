@@ -1,3 +1,4 @@
+import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { config } from "@/lib/data";
 
@@ -36,21 +37,36 @@ export default function Hero() {
         </span>
       </h1>
 
-      {/* one primary action, two plain links. Phones: the button takes the
-          full row and the links sit under it */}
+      {/* booking first, the CV beside it, two plain links. Phones: the two
+          buttons split the row and the links sit under it */}
       <div
         className="rise relative mt-7 flex flex-col gap-2.5 sm:mt-10 sm:flex-row sm:items-center sm:gap-7"
         style={{ "--rv-d": "0.45s" } as React.CSSProperties}
       >
-        <Button
-          size="xl"
-          className="w-full sm:w-auto"
-          render={
-            <a href={config.booking} target="_blank" rel="noopener noreferrer" />
-          }
-        >
-          Book a call
-        </Button>
+        <div className="flex flex-col gap-2.5 min-[360px]:flex-row">
+          <Button
+            size="xl"
+            className="min-[360px]:flex-1 sm:flex-none"
+            render={
+              <a
+                href={config.booking}
+                target="_blank"
+                rel="noopener noreferrer"
+              />
+            }
+          >
+            Book a call
+          </Button>
+          <Button
+            size="xl"
+            variant="outline"
+            className="min-[360px]:flex-1 sm:flex-none"
+            render={<a href={config.cv} download="Prem-Kumar-CV.pdf" />}
+          >
+            <Download />
+            Download CV
+          </Button>
+        </div>
         <div className="flex items-center gap-6">
           <a href="#contact" className={link}>
             Contact

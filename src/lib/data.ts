@@ -9,6 +9,7 @@ export const config = {
   twitter: "https://x.com/defichemist95",
   linkedin: "https://www.linkedin.com/in/premstrk/",
   booking: "https://cal.com/prem-kumar-95/30min",
+  cv: "/Prem-Kumar-CV.pdf",
   availability: "Open to Lead AI Engineer roles · Remote / SEA",
 };
 

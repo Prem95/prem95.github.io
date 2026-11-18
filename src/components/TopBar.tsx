@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, CalendarDays } from "lucide-react";
+import { ArrowUpRight, CalendarDays, Download } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Github, Linkedin, Twitter } from "@/components/BrandIcons";
 import { Button } from "@/components/ui/button";
@@ -219,6 +219,15 @@ export default function TopBar() {
           >
             <CalendarDays />
             Book a call
+          </Button>
+          <Button
+            size="xl"
+            variant="outline"
+            className="w-full"
+            render={<a href={config.cv} download="Prem-Kumar-CV.pdf" />}
+          >
+            <Download />
+            Download CV
           </Button>
           <div className="flex items-center justify-between">
             <span className="eyebrow">{where}</span>
